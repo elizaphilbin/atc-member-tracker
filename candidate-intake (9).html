@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Associate Therapist Collective — LinkedIn Group Members</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Brightside brand tokens */
+    --sapphire:#2E4985;
+    --sapphire-deep:#22375f;
+    --aqua:#39CEF6;
+    --aqua-mid:#449EEE;
+    --aqua-deep:#3882DF;
+    --white:#FFFFFF;
+    --dark-grey:#5E6883;
+    --valencia:#FFDAAE;
+    --sky:#ABDCFF;
+    --leaf:#BCEDBE;
+    --surface:#F7FBFD;
+    --line:#E1E9F2;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--surface);
+    color:var(--sapphire);
+    font-family:'DM Sans', sans-serif;
+    min-height:100vh;
+    padding:0 0 70px;
+  }
+
+  /* Half-circle "sunrise" motif, echoing Brightside's core shape language */
+  .hero{
+    position:relative;
+    background:var(--sapphire);
+    overflow:hidden;
+    padding:52px 24px 76px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    right:-90px; top:-140px;
+    width:340px; height:340px;
+    border-radius:50%;
+    background:var(--aqua-deep);
+    opacity:0.55;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    right:60px; bottom:-160px;
+    width:220px; height:440px;
+    border-radius:110px;
+    background:var(--aqua);
+    opacity:0.35;
+  }
+  .hero-inner{
+    position:relative;
+    max-width:880px;
+    margin:0 auto;
+    z-index:1;
+  }
+  .logo-mark{
+    display:block;
+    height:26px;
+    width:auto;
+    color:var(--white);
+    margin-bottom:22px;
+  }
+  .logo-mark svg{ display:block; height:100%; width:auto; }
+
+  .eyebrow{
+    font-family:'DM Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--sky);
+    margin:0 0 12px;
+  }
+  h1{
+    font-family:'Outfit', sans-serif;
+    font-weight:700;
+    font-size:clamp(30px, 4vw, 42px);
+    line-height:1.08;
+    margin:0 0 12px;
+    color:var(--white);
+    max-width:560px;
+  }
+  .hero p{
+    margin:0;
+    max-width:520px;
+    color:#CFE0FF;
+    font-size:15.5px;
+    line-height:1.6;
+  }
+
+  main{
+    max-width:880px;
+    margin:-40px auto 0;
+    padding:0 24px;
+    display:grid;
+    gap:28px;
+    position:relative;
+    z-index:2;
+  }
+
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 18px 40px -28px rgba(46,73,133,0.35);
+  }
+
+  form{ display:grid; gap:18px; }
+  .field-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  .field-row.three-col{
+    grid-template-columns:1.2fr 0.9fr 1fr;
+  }
+  label{
+    display:block;
+    font-family:'Outfit', sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    color:var(--sapphire);
+    margin-bottom:7px;
+  }
+  input, select{
+    width:100%;
+    border:1.5px solid var(--line);
+    background:var(--surface);
+    border-radius:12px;
+    padding:12px 14px;
+    font-family:'DM Sans', sans-serif;
+    font-size:15px;
+    color:var(--sapphire);
+  }
+  input:focus, select:focus, button:focus-visible{
+    outline:2px solid var(--aqua-deep);
+    outline-offset:1px;
+    border-color:var(--aqua-deep);
+    background:var(--white);
+  }
+  .hint{
+    font-size:12.5px;
+    color:var(--dark-grey);
+    margin-top:5px;
+  }
+  .actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-top:4px;
+  }
+  button.primary{
+    background:var(--sapphire);
+    color:var(--white);
+    border:none;
+    border-radius:999px;
+    padding:12px 26px;
+    font-family:'Outfit', sans-serif;
+    font-size:14.5px;
+    font-weight:600;
+    cursor:pointer;
+    transition:background .15s ease, transform .1s ease;
+  }
+  button.primary:hover{ background:var(--sapphire-deep); }
+  button.primary:active{ transform:translateY(1px); }
+  button.primary:disabled{ background:#9aa6c4; cursor:default; }
+  #formStatus{
+    font-size:13.5px;
+    color:var(--aqua-deep);
+    min-height:18px;
+  }
+  #formStatus.error{ color:#B75454; }
+
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-family:'Outfit', sans-serif;
+    font-size:21px;
+    font-weight:700;
+    margin:0;
+    color:var(--sapphire);
+  }
+  .toolbar{ display:flex; gap:10px; align-items:center; }
+  .toolbar input[type="search"]{
+    padding:9px 12px;
+    font-size:13.5px;
+    width:180px;
+    border-radius:999px;
+  }
+  .toolbar button{
+    background:none;
+    border:1.5px solid var(--line);
+    border-radius:999px;
+    padding:8px 16px;
+    font-family:'Outfit', sans-serif;
+    font-size:13px;
+    font-weight:600;
+    color:var(--sapphire);
+    cursor:pointer;
+  }
+  .toolbar button:hover{ border-color:var(--aqua-deep); background:var(--surface); }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+    font-size:14.5px;
+  }
+  thead th{
+    text-align:left;
+    font-family:'Outfit', sans-serif;
+    font-size:11.5px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--dark-grey);
+    font-weight:600;
+    padding:0 10px 10px;
+    border-bottom:1.5px solid var(--line);
+  }
+  tbody td{
+    padding:13px 10px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  tbody tr:hover{ background:var(--surface); }
+  .name-cell{ font-weight:600; color:var(--sapphire); }
+  .state-chip{
+    display:inline-block;
+    background:var(--sky);
+    color:var(--sapphire-deep);
+    border-radius:999px;
+    padding:3px 12px;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0.01em;
+  }
+  a.li-link{
+    color:var(--aqua-deep);
+    text-decoration:none;
+    font-size:13.5px;
+    word-break:break-all;
+  }
+  a.li-link:hover{ text-decoration:underline; }
+  .ts{
+    font-family:'DM Mono', monospace;
+    font-size:12px;
+    color:var(--dark-grey);
+    white-space:nowrap;
+  }
+  .del-btn{
+    background:none;
+    border:none;
+    color:#a9b0c8;
+    cursor:pointer;
+    font-size:13px;
+    padding:4px 6px;
+    font-family:'DM Sans', sans-serif;
+  }
+  .del-btn:hover{ color:#B75454; }
+
+  .map-layout{
+    display:flex;
+    gap:24px;
+    align-items:flex-start;
+    flex-wrap:wrap;
+  }
+  #mapWrap{
+    flex:1 1 420px;
+    min-width:340px;
+    overflow-x:auto;
+  }
+  #mapWrap svg{
+    width:100%;
+    height:auto;
+    display:block;
+    min-width:340px;
+    max-width:640px;
+    margin:0 auto;
+  }
+  #mapWrap svg path,
+  #mapWrap svg circle{
+    transition:fill .25s ease;
+    cursor:default;
+  }
+  .map-state-list{
+    flex:0 0 220px;
+    max-height:420px;
+    overflow-y:auto;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:6px 4px;
+  }
+  .map-state-list .row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    padding:5px 10px;
+    font-size:13px;
+    border-radius:6px;
+  }
+  .map-state-list .row:hover{
+    background:var(--surface);
+  }
+  .map-state-list .row.zero{
+    color:#a9b0c8;
+  }
+  .map-state-list .name{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    min-width:0;
+  }
+  .map-state-list .dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    flex-shrink:0;
+  }
+  .map-state-list .count{
+    font-family:'DM Mono', monospace;
+    font-weight:500;
+    color:var(--sapphire);
+    flex-shrink:0;
+  }
+  .map-state-list .row.zero .count{
+    color:#a9b0c8;
+  }
+  .map-legend{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-top:16px;
+  }
+  .map-legend .swatch{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    font-size:12.5px;
+    color:var(--dark-grey);
+  }
+  .map-legend .chip{
+    width:14px;
+    height:14px;
+    border-radius:4px;
+    display:inline-block;
+    flex-shrink:0;
+  }
+
+  .empty{
+    text-align:center;
+    padding:52px 20px;
+    color:var(--dark-grey);
+  }
+  .empty .bubble{
+    width:56px; height:56px;
+    margin:0 auto 16px;
+    position:relative;
+  }
+  .empty .bubble::before{
+    content:"";
+    position:absolute;
+    width:40px; height:40px;
+    border-radius:50%;
+    background:var(--sky);
+    top:0; left:0;
+  }
+  .empty .bubble::after{
+    content:"";
+    position:absolute;
+    width:24px; height:24px;
+    border-radius:50% 50% 50% 4px;
+    background:var(--aqua);
+    bottom:0; right:0;
+  }
+  .empty p{ margin:0; font-size:14.5px; }
+
+  .count-tag{
+    font-family:'DM Mono', monospace;
+    font-size:12px;
+    color:var(--dark-grey);
+  }
+
+  footer{
+    max-width:880px;
+    margin:34px auto 0;
+    padding:0 24px;
+    font-size:12.5px;
+    color:var(--dark-grey);
+  }
+
+  @media (max-width:700px){
+    .field-row.three-col{ grid-template-columns:1fr; }
+  }
+  @media (max-width:600px){
+    .field-row{ grid-template-columns:1fr; }
+    .toolbar input[type="search"]{ width:120px; }
+    main{ margin-top:-28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <span class="logo-mark" aria-label="Brightside Health">
+<svg width="388" height="58" viewBox="0 0 388 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M275.202 26.3138H259.408V12.6924H254.826V44.2766H259.408V30.6353H275.202V44.2766H279.809V12.6924H275.202V26.3138Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M302.252 21.6185C300.555 20.4914 298.499 19.9307 296.087 19.9307C293.674 19.9307 291.751 20.4489 290.012 21.4882C288.271 22.5275 286.911 23.9973 285.931 25.8975C284.966 27.7977 284.484 30.0434 284.484 32.6317C284.484 35.0728 284.974 37.2223 285.954 39.08C286.948 40.9236 288.33 42.3622 290.1 43.4015C291.884 44.4238 293.951 44.9364 296.308 44.9364C298.664 44.9364 300.686 44.3587 302.558 43.2032C304.429 42.0337 305.826 40.3883 306.749 38.2672L302.252 36.84C301.666 38.0548 300.847 38.9894 299.794 39.6464C298.757 40.2892 297.52 40.612 296.087 40.612C293.909 40.612 292.241 39.9041 291.086 38.4853C290.131 37.3016 289.576 35.71 289.412 33.7249H307.055C307.23 30.8873 306.893 28.4377 306.046 26.3761C305.211 24.3144 303.948 22.7286 302.252 21.6156V21.6185ZM291.086 26.158C292.241 24.7109 293.966 23.9859 296.262 23.9859C298.338 23.9859 299.881 24.6429 300.892 25.9598C301.663 26.951 302.15 28.3471 302.357 30.1482H289.514C289.757 28.5057 290.276 27.169 291.086 26.1552V26.158Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M329.996 24.4475C329.265 22.8815 328.11 21.7431 326.53 21.0266C324.964 20.296 323.123 19.9307 321.002 19.9307C318.266 19.9307 316.074 20.531 314.42 21.7289C312.783 22.9268 311.673 24.5438 311.087 26.5771L315.363 27.894C315.774 26.563 316.499 25.6115 317.535 25.0422C318.575 24.456 319.716 24.1644 320.959 24.1644C322.933 24.1644 324.321 24.6175 325.125 25.5237C325.839 26.3024 326.232 27.4494 326.3 28.9616C325.402 29.089 324.499 29.2136 323.59 29.3411C322.129 29.545 320.733 29.7659 319.402 29.9981C318.071 30.2331 316.878 30.5022 315.825 30.8108C314.61 31.2045 313.588 31.7255 312.755 32.3684C311.92 32.9971 311.291 33.7645 310.869 34.6707C310.444 35.5769 310.232 36.6304 310.232 37.8283C310.232 39.114 310.532 40.3005 311.13 41.3823C311.744 42.45 312.645 43.3137 313.828 43.9707C315.012 44.6135 316.482 44.9364 318.238 44.9364C320.447 44.9364 322.304 44.4974 323.808 43.6195C324.949 42.9512 325.935 42.0252 326.77 40.8414V44.2765H330.828V29.6894C330.828 28.6954 330.786 27.7665 330.698 26.9028C330.61 26.0391 330.375 25.2207 329.996 24.4447V24.4475ZM325.785 36.4888C325.609 37.2647 325.235 38.0095 324.666 38.726C324.094 39.4425 323.341 40.0343 322.406 40.5016C321.469 40.9547 320.35 41.1813 319.05 41.1813C318.071 41.1813 317.266 41.0283 316.638 40.7197C316.009 40.411 315.539 40.0032 315.233 39.4906C314.924 38.9639 314.771 38.3947 314.771 37.7801C314.771 37.1656 314.91 36.6162 315.188 36.1773C315.482 35.7383 315.87 35.3645 316.352 35.0587C316.85 34.7528 317.411 34.4895 318.04 34.2686C318.787 34.0335 319.634 33.8381 320.585 33.6767C321.551 33.5011 322.624 33.3256 323.808 33.15C324.567 33.0367 325.388 32.9149 326.255 32.7847C326.243 33.1726 326.227 33.6144 326.201 34.1157C326.17 34.9936 326.031 35.7837 325.785 36.486V36.4888Z" fill="currentColor"/>
+<path d="M341.547 12.0322H336.962V44.2763H341.547V12.0322Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M354.65 14.0063H350.043V20.5877H345.503V24.272H350.043V34.9539C350.043 36.2396 350.057 37.395 350.088 38.4202C350.131 39.4283 350.408 40.4223 350.921 41.4022C351.49 42.4981 352.34 43.3024 353.464 43.815C354.591 44.3275 355.871 44.6051 357.304 44.6475C358.737 44.6928 360.198 44.5682 361.691 44.2737V40.3912C360.141 40.6092 358.788 40.663 357.632 40.5441C356.491 40.411 355.659 39.8928 355.132 38.9866C354.854 38.5051 354.701 37.9104 354.67 37.211C354.656 36.5086 354.65 35.6817 354.65 34.733V24.272H361.691V20.5877H354.65V14.0063Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M387.764 28.5737C387.634 27.608 387.385 26.6225 387.019 25.6115C386.654 24.6005 386.122 23.6745 385.419 22.8249C384.731 21.9612 383.831 21.2674 382.72 20.7407C381.61 20.2139 380.234 19.9505 378.597 19.9505C376.462 19.9505 374.641 20.4121 373.134 21.3325C372.214 21.8961 371.427 22.5984 370.767 23.4338V12.6924H366.664V44.2794H371.314V31.9522C371.314 30.5475 371.466 29.3553 371.775 28.3755C372.095 27.3956 372.528 26.6055 373.069 26.0052C373.624 25.4048 374.267 24.9743 374.998 24.711C375.731 24.4335 376.504 24.2947 377.326 24.2947C378.583 24.2947 379.597 24.5496 380.373 25.0621C381.163 25.5747 381.769 26.2459 382.194 27.0813C382.633 27.9139 382.924 28.8201 383.072 29.7999C383.233 30.7656 383.312 31.7086 383.312 32.629V44.2766H387.962V31.1167C387.962 30.3861 387.897 29.5365 387.764 28.5737Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M53.3022 27.6276C54.0016 27.2029 54.5935 26.6393 55.0721 25.9285C55.8764 24.7589 56.2785 23.2892 56.2785 21.5192C56.2785 20.1288 55.9557 18.7553 55.3128 17.396C54.67 16.0367 53.6533 14.9096 52.2629 14.0175C50.8752 13.1113 49.0543 12.6582 46.8001 12.6582H34.167V44.2452H48.1623C50.3117 44.2452 52.0958 43.8431 53.5146 43.0389C54.9333 42.2204 55.9868 41.0933 56.6721 39.6604C57.3744 38.2275 57.7256 36.568 57.7256 34.6819C57.7256 32.9261 57.2272 31.3403 56.2332 29.9215C55.5195 28.8878 54.5397 28.1261 53.2993 27.6305L53.3022 27.6276ZM40.2244 18.2286H46.718C47.8592 18.2286 48.7286 18.5571 49.329 19.2169C49.9294 19.8739 50.2295 20.6866 50.2295 21.6523C50.2295 22.4283 50.0766 23.0626 49.7679 23.561C49.4621 24.0425 49.043 24.4021 48.5191 24.6372C47.9923 24.8722 47.392 24.9883 46.7208 24.9883H40.2273V18.2314L40.2244 18.2286ZM51.1697 36.6756C50.8186 37.2901 50.3287 37.7715 49.7 38.1227C49.0713 38.4597 48.3548 38.6268 47.5506 38.6268H40.2244V30.5558H47.5506C48.4709 30.5558 49.2384 30.7314 49.8529 31.0826C50.4816 31.4196 50.9488 31.8783 51.2575 32.4645C51.5662 33.0507 51.7191 33.7162 51.7191 34.461C51.7191 35.3078 51.5351 36.0469 51.1697 36.6756Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M72.848 20.5112C72.1315 20.5537 71.4377 20.6783 70.7637 20.885C70.0897 21.0748 69.4695 21.3466 68.9003 21.6978C68.1555 22.1367 67.5269 22.6918 67.0143 23.3658C66.7707 23.6858 66.5527 24.0228 66.3573 24.3739V20.5565H61.0928V44.2454H67.1021V32.1362C67.1021 31.23 67.2267 30.4172 67.4759 29.7007C67.7251 28.9701 68.0904 28.3414 68.5718 27.8147C69.0533 27.2738 69.6451 26.8434 70.3474 26.5205C71.0497 26.1835 71.8314 25.9881 72.6951 25.9286C73.573 25.855 74.3404 25.9202 74.9974 26.1269V20.5565C74.2809 20.4687 73.5645 20.4546 72.848 20.5141V20.5112Z" fill="currentColor"/>
+<path d="M84.5635 20.5532H78.5967V44.2421H84.5635V20.5532Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M138.095 26.2145C137.818 25.1611 137.35 24.1529 136.691 23.1872C136.048 22.2215 135.142 21.4258 133.969 20.7971C132.8 20.1684 131.287 19.8541 129.43 19.8541C127.105 19.8541 125.173 20.3581 123.638 21.3663C122.925 21.8392 122.299 22.3858 121.752 22.9975V12.6582H116.445V44.2452H122.5V32.2238C122.5 30.7456 122.661 29.5618 122.981 28.6698C123.318 27.7777 123.743 27.1037 124.253 26.6506C124.765 26.1834 125.312 25.869 125.898 25.7076C126.484 25.5462 127.031 25.4669 127.544 25.4669C128.815 25.4669 129.795 25.7529 130.483 26.3221C131.185 26.8913 131.689 27.6022 131.995 28.4489C132.304 29.2956 132.485 30.1452 132.545 30.9948C132.604 31.8274 132.632 32.5155 132.632 33.0564V44.2424H138.687V30.9495C138.687 30.5558 138.659 29.9271 138.599 29.0634C138.54 28.1997 138.373 27.251 138.095 26.2117V26.2145Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M150.737 13.9751H144.77V20.5564H140.734V25.1639H144.77V34.2005C144.77 35.6193 144.784 36.8909 144.815 38.018C144.843 39.1281 145.152 40.2268 145.736 41.3086C146.378 42.464 147.316 43.3051 148.542 43.8318C149.785 44.3444 151.19 44.6135 152.753 44.6446C154.333 44.6899 155.942 44.5568 157.579 44.251V39.2923C156.174 39.482 154.894 39.5415 153.738 39.4679C152.583 39.3943 151.742 38.9412 151.215 38.1086C150.938 37.6696 150.785 37.0863 150.754 36.3528C150.739 35.608 150.731 34.7726 150.731 33.8522V25.1668H157.576V20.5593H150.731V13.9751H150.737Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M177.883 31.7197C176.802 31.091 175.36 30.5416 173.562 30.0743C171.718 29.6071 170.345 29.2248 169.439 28.9331C168.547 28.6414 167.955 28.3554 167.663 28.0779C167.385 27.8003 167.247 27.4577 167.247 27.047C167.247 26.3589 167.575 25.8322 168.235 25.4668C168.909 25.1015 169.793 24.9543 170.888 25.0279C172.016 25.1157 172.908 25.4159 173.565 25.9284C174.222 26.441 174.604 27.1348 174.706 28.0127L180.803 26.9168C180.599 25.4838 180.05 24.2406 179.158 23.1872C178.28 22.1337 177.124 21.3238 175.691 20.7517C174.258 20.1825 172.613 19.8965 170.755 19.8965C168.898 19.8965 167.173 20.2023 165.754 20.8169C164.35 21.4172 163.262 22.2781 162.486 23.4052C161.71 24.5153 161.322 25.8322 161.322 27.3529C161.322 28.5678 161.577 29.6042 162.09 30.468C162.602 31.3147 163.435 32.0482 164.59 32.6627C165.746 33.2772 167.289 33.8323 169.218 34.3307C170.928 34.7838 172.186 35.1491 172.99 35.4266C173.808 35.7042 174.335 35.9902 174.57 36.2819C174.805 36.5594 174.921 36.9332 174.921 37.4005C174.921 38.1453 174.629 38.7315 174.043 39.1563C173.457 39.5669 172.624 39.7708 171.543 39.7708C170.226 39.7708 169.138 39.4564 168.275 38.8278C167.428 38.1991 166.879 37.3297 166.629 36.2167L160.532 37.1371C160.929 39.6094 162.039 41.5237 163.865 42.883C165.709 44.2282 168.122 44.9022 171.104 44.9022C174.086 44.9022 176.632 44.2084 178.387 42.8179C180.143 41.4274 181.018 39.5216 181.018 37.0918C181.018 35.8628 180.769 34.8178 180.273 33.9541C179.775 33.0762 178.979 32.3314 177.883 31.7168V31.7197Z" fill="currentColor"/>
+<path d="M191.232 20.5537H185.266V44.2426H191.232V20.5537Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M212.064 21.3267C210.589 20.378 208.808 19.8965 206.712 19.8965C204.446 19.8965 202.47 20.4374 200.79 21.5192C199.108 22.601 197.8 24.0849 196.865 25.971C195.945 27.8429 195.483 29.9838 195.483 32.3966C195.483 34.8093 195.937 36.8936 196.843 38.7797C197.763 40.6657 199.043 42.1581 200.683 43.2541C202.32 44.35 204.228 44.8994 206.409 44.8994C208.762 44.8994 210.73 44.35 212.311 43.2541C212.483 43.1323 212.65 43.0077 212.815 42.8774V44.2424H218.079V12.6582H212.07V21.3267H212.064ZM212.285 36.1715C211.934 37.2533 211.356 38.0944 210.552 38.6947C209.762 39.2951 208.703 39.5953 207.372 39.5953C206.041 39.5953 205.033 39.2724 204.214 38.6296C203.396 37.9867 202.79 37.123 202.393 36.0412C202 34.9453 201.801 33.7304 201.801 32.3994C201.801 31.0684 202.005 29.8847 202.416 28.8029C202.827 27.7069 203.455 26.8347 204.302 26.1919C205.166 25.5349 206.262 25.2035 207.593 25.2035C208.836 25.2035 209.838 25.5037 210.597 26.1041C211.373 26.7044 211.937 27.5455 212.288 28.6273C212.639 29.7091 212.815 30.9665 212.815 32.3994C212.815 33.8323 212.639 35.0897 212.288 36.1715H212.285Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M240.202 21.6523C238.46 20.4827 236.347 19.8965 233.861 19.8965C231.522 19.8965 229.452 20.4289 227.653 21.4965C225.855 22.55 224.445 24.0339 223.42 25.9483C222.397 27.8626 221.885 30.1168 221.885 32.7052C221.885 35.0755 222.403 37.1796 223.442 39.0232C224.496 40.8526 225.943 42.2912 227.786 43.3446C229.644 44.3839 231.785 44.9022 234.215 44.9022C236.495 44.9022 238.593 44.3018 240.51 43.1039C242.442 41.906 243.852 40.2239 244.744 38.0603L238.777 36.3498C238.338 37.3155 237.701 38.0546 236.868 38.5644C236.036 39.077 235.033 39.3318 233.864 39.3318C232.006 39.3318 230.596 38.7315 229.63 37.5336C228.933 36.6444 228.497 35.4889 228.31 34.0673H244.942C245.191 31.2014 244.9 28.7065 244.064 26.5883C243.232 24.4672 241.943 22.8218 240.204 21.6523H240.202ZM234.124 25.0732C235.866 25.0732 237.115 25.6056 237.874 26.6732C238.383 27.3642 238.72 28.3554 238.896 29.6354H228.466C228.698 28.5451 229.081 27.6417 229.624 26.9366C230.59 25.6934 232.088 25.0732 234.121 25.0732H234.124Z" fill="currentColor"/>
+<path d="M188.236 18.0926C190.097 18.0926 191.606 16.5812 191.606 14.7169C191.606 12.8526 190.097 11.3413 188.236 11.3413C186.375 11.3413 184.866 12.8526 184.866 14.7169C184.866 16.5812 186.375 18.0926 188.236 18.0926Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M81.5846 11.3413C79.7212 11.3413 78.209 12.8564 78.209 14.7198C78.209 16.5832 79.7212 18.0982 81.5846 18.0982C83.448 18.0982 84.9602 16.5832 84.9602 14.7198C84.9602 12.8564 83.4508 11.3413 81.5846 11.3413Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M106.168 18.339C106.168 19.8257 105.893 20.579 105.599 20.8905L105.593 20.8849C105.256 21.2417 104.902 21.4229 104.52 21.4739C103.146 20.9755 101.671 20.7291 100.107 20.7291C98.6377 20.7291 97.2642 20.933 95.9984 21.3578C94.7325 21.7798 93.6196 22.3999 92.6794 23.2269C91.7335 24.0254 90.9887 25.0223 90.4393 26.189L90.4308 26.2088C89.9069 27.3982 89.6549 28.7179 89.6549 30.1509C89.6549 32.3767 90.2581 34.2968 91.507 35.86C90.9321 36.398 90.4761 37.0126 90.159 37.7007C89.7314 38.6154 89.5161 39.5783 89.5161 40.5921C89.5161 42.093 89.9098 43.4042 90.7282 44.4633C90.0032 44.9645 89.3802 45.5592 88.8761 46.2587C88.1512 47.2584 87.7773 48.3657 87.7773 49.5551C87.7773 52.0981 88.8648 54.0918 91.0425 55.3973C93.1495 56.6631 96.2051 57.2323 100.062 57.2323C103.919 57.2323 106.966 56.581 109.099 55.1594C111.262 53.7151 112.35 51.6648 112.35 49.1076C112.35 47.8474 112.109 46.7232 111.591 45.7688C111.087 44.8484 110.399 44.0895 109.521 43.5004C108.668 42.9284 107.697 42.5291 106.624 42.2969C105.579 42.042 104.486 41.9146 103.353 41.9146H97.1453C96.1343 41.9146 95.5764 41.6994 95.2819 41.4417C94.9336 41.1075 94.758 40.7082 94.758 40.1871C94.758 39.8246 94.826 39.4763 94.9675 39.1365C95.0497 38.9609 95.1431 38.7967 95.2507 38.6522C96.6922 39.2413 98.3149 39.5301 100.105 39.5301C101.546 39.5301 102.9 39.3262 104.166 38.9014C105.454 38.4823 106.581 37.8791 107.53 37.0834C108.507 36.2564 109.254 35.2624 109.781 34.107C110.339 32.912 110.611 31.5923 110.611 30.1509C110.611 28.8737 110.396 27.6956 109.94 26.6308C109.671 25.937 109.331 25.297 108.915 24.7193C109.58 24.3426 110.484 23.8499 110.934 23.2353C111.679 22.2272 112.35 20.8509 112.35 19.2225V16.7305H106.168V18.3305V18.339ZM94.8713 46.8534C95.7038 47.0262 96.5931 47.1083 97.5191 47.1083H103.163C103.585 47.1083 104.007 47.1366 104.429 47.1876C104.837 47.2612 105.165 47.3773 105.434 47.5274L105.448 47.5359L105.463 47.5444C105.743 47.6888 105.958 47.8729 106.125 48.1108L106.134 48.1249C106.281 48.3288 106.397 48.646 106.397 49.1529C106.397 49.7335 106.275 50.1809 106.069 50.5236C105.868 50.8634 105.553 51.1522 105.092 51.3788L105.077 51.3873C104.086 51.9084 102.455 52.2142 100.056 52.2142C97.6579 52.2142 96.0663 51.9027 95.0553 51.3816C94.5654 51.1268 94.2426 50.8322 94.0359 50.5179C93.8291 50.2036 93.7187 49.8156 93.7187 49.3285C93.7187 48.7989 93.8518 48.3062 94.1123 47.8446C94.353 47.4821 94.6079 47.1508 94.8713 46.8506V46.8534ZM104.072 32.3201C103.803 32.9091 103.46 33.3707 103.061 33.7247C102.65 34.0929 102.195 34.3562 101.688 34.5233C101.152 34.6989 100.623 34.7895 100.105 34.7895C99.5864 34.7895 99.0596 34.7046 98.5216 34.5233C98.0203 34.3562 97.5701 34.0957 97.1594 33.7389C96.7856 33.3849 96.4571 32.9205 96.1881 32.3258C95.9332 31.7396 95.7916 31.0231 95.7916 30.165C95.7916 29.3069 95.9332 28.5565 96.1881 28.0071V27.9929C96.4685 27.3643 96.797 26.8913 97.1651 26.5373C97.5757 26.1749 98.0288 25.9143 98.5273 25.7529C99.0625 25.5773 99.592 25.4867 100.11 25.4867C100.629 25.4867 101.155 25.5717 101.693 25.7529C102.197 25.92 102.653 26.1862 103.067 26.5515L103.061 26.543C103.455 26.8913 103.797 27.3671 104.066 27.9901V28.0043C104.321 28.5537 104.469 29.2588 104.469 30.1622C104.469 31.0656 104.327 31.7396 104.072 32.3229V32.3201Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M21.4658 38.0207C23.1112 38.0207 24.445 39.3545 24.445 40.9998V46.9553C24.445 48.6007 23.1112 49.9345 21.4658 49.9345C19.8205 49.9345 18.4867 48.6007 18.4867 46.9553V40.9998C18.4867 39.3545 19.8205 38.0207 21.4658 38.0207ZM12.3414 33.3792C13.5053 32.2153 15.3886 32.2153 16.5525 33.3792C17.7164 34.5431 17.7164 36.4263 16.5525 37.5902L10.4101 43.7326C9.24616 44.8965 7.36295 44.8965 6.19904 43.7326C5.03512 42.5687 5.03512 40.6855 6.19904 39.5216L12.3414 33.3792ZM16.5525 19.3414C17.7164 20.5053 17.7164 22.3886 16.5525 23.5525C15.3886 24.7164 13.5053 24.7164 12.3414 23.5525L6.19904 17.4101C5.03512 16.2462 5.03512 14.3629 6.19904 13.199C7.36295 12.0351 9.24616 12.0351 10.4101 13.199L16.5525 19.3414ZM21.4658 18.911C23.1112 18.911 24.445 17.5772 24.445 15.9318V9.97916C24.445 8.33383 23.1112 7 21.4658 7C19.8205 7 18.4867 8.33383 18.4867 9.97916V15.9347C18.4867 17.58 19.8205 18.9138 21.4658 18.9138V18.911ZM8.93465 25.4867C10.58 25.4867 11.9138 26.8205 11.9138 28.4658C11.9138 30.1112 10.58 31.445 8.93465 31.445H2.97916C1.33383 31.445 0 30.1112 0 28.4658C0 26.8205 1.33383 25.4867 2.97916 25.4867H8.93465Z" fill="url(#paint0_linear_4968_28301)"/>
+<defs>
+<linearGradient id="paint0_linear_4968_28301" x1="12.2168" y1="7.00283" x2="12.231" y2="49.9316" gradientUnits="userSpaceOnUse">
+<stop stop-color="#3FBFF5"/>
+<stop offset="0.52" stop-color="#47AAF2"/>
+<stop offset="1" stop-color="#367DDD"/>
+</linearGradient>
+</defs>
+</svg>
+    </span>
+    <p class="eyebrow">Associate Therapist Collective</p>
+    <h1>LinkedIn Group Members</h1>
+    <p>Enter a name, licensing state, master's degree or license type, and LinkedIn profile to add someone from the Associate Therapist Collective group to the tracker. Everyone on this link sees the same list.</p>
+  </div>
+</div>
+
+<main>
+  <section class="card" aria-labelledby="formHeading">
+    <h2 id="formHeading" style="font-family:'Outfit',sans-serif; font-size:19px; font-weight:700; margin:0 0 18px; color:var(--sapphire);">New group member</h2>
+    <form id="candidateForm">
+      <div class="field-row three-col">
+        <div>
+          <label for="nameInput">Full name</label>
+          <input type="text" id="nameInput" placeholder="e.g. Sunny Brightside" autocomplete="off" required />
+        </div>
+        <div>
+          <label for="stateInput">Licensing state</label>
+          <select id="stateInput" required>
+            <option value="" disabled selected>Select a state</option>
+          </select>
+        </div>
+        <div>
+          <label for="licenseInput">Master's degree / license type</label>
+          <input type="text" id="licenseInput" placeholder="e.g. LPC, LMSW, AMFT" autocomplete="off" required />
+        </div>
+      </div>
+      <div>
+        <label for="linkedinInput">LinkedIn profile URL</label>
+        <input type="url" id="linkedinInput" placeholder="https://www.linkedin.com/in/..." autocomplete="off" required />
+        <p class="hint">Paste the full profile link.</p>
+      </div>
+      <div class="actions">
+        <button type="submit" class="primary" id="submitBtn">Add member</button>
+        <span id="formStatus" role="status"></span>
+      </div>
+    </form>
+  </section>
+
+  <section class="card" aria-labelledby="mapHeading">
+    <div class="section-head">
+      <h2 id="mapHeading">State coverage map</h2>
+    </div>
+    <p class="hint" style="margin:0 0 16px;">Color reflects how many logged members are licensed in each state. Updates automatically as the log changes.</p>
+    <div class="map-layout">
+      <div id="mapWrap"></div>
+      <div id="mapStateList" class="map-state-list"></div>
+    </div>
+    <div id="mapLegend" class="map-legend"></div>
+    <p class="hint" id="mapNote" style="margin:12px 0 0;"></p>
+  </section>
+
+  <section class="card" aria-labelledby="listHeading">
+    <div class="section-head">
+      <h2 id="listHeading">Group member log</h2>
+      <div class="toolbar">
+        <input type="search" id="searchInput" placeholder="Filter by name or state" />
+        <button id="exportBtn" type="button">Export CSV</button>
+      </div>
+    </div>
+    <span class="count-tag" id="countTag"></span>
+    <div id="listWrap"></div>
+  </section>
+</main>
+
+<footer>
+  Stored for everyone using this tool link. Entries persist across visits. Built for tracking members of the Associate Therapist Collective LinkedIn group.
+</footer>
+
+<script>
+const STATES = [
+  ["AL","Alabama"],["AK","Alaska"],["AZ","Arizona"],["AR","Arkansas"],["CA","California"],
+  ["CO","Colorado"],["CT","Connecticut"],["DE","Delaware"],["DC","District of Columbia"],
+  ["FL","Florida"],["GA","Georgia"],["HI","Hawaii"],["ID","Idaho"],["IL","Illinois"],
+  ["IN","Indiana"],["IA","Iowa"],["KS","Kansas"],["KY","Kentucky"],["LA","Louisiana"],
+  ["ME","Maine"],["MD","Maryland"],["MA","Massachusetts"],["MI","Michigan"],["MN","Minnesota"],
+  ["MS","Mississippi"],["MO","Missouri"],["MT","Montana"],["NE","Nebraska"],["NV","Nevada"],
+  ["NH","New Hampshire"],["NJ","New Jersey"],["NM","New Mexico"],["NY","New York"],
+  ["NC","North Carolina"],["ND","North Dakota"],["OH","Ohio"],["OK","Oklahoma"],["OR","Oregon"],
+  ["PA","Pennsylvania"],["RI","Rhode Island"],["SC","South Carolina"],["SD","South Dakota"],
+  ["TN","Tennessee"],["TX","Texas"],["UT","Utah"],["VT","Vermont"],["VA","Virginia"],
+  ["WA","Washington"],["WV","West Virginia"],["WI","Wisconsin"],["WY","Wyoming"],
+  ["OTHER","Other / Non-U.S."]
+];
+
+const SEED_DATA = [{"name":"Krina Adhikari Shah, LPC, CC","license":"LPC","state":"IL","linkedin":"https://www.linkedin.com/in/krina-adhikari-lpc/"},{"name":"Eliza Philbin","license":"MFT","state":"NY","linkedin":"https://www.linkedin.com/in/eliza-philbin-aa3a71121/"},{"name":"Kalen Koch","license":"LPC","state":"CO","linkedin":"https://www.linkedin.com/in/kalenkoch/"},{"name":"Alyssa White DiDonato","license":"LCHMCA","state":"NC","linkedin":"https://www.linkedin.com/in/alyssa-white10/"},{"name":"Stephanie Murray","license":"","state":"OTHER","linkedin":"https://www.linkedin.com/in/stephaniemurray11/"},{"name":"Cinthia Milian, MA, LPC, CPXP","license":"LPC","state":"TX","linkedin":"https://www.linkedin.com/in/cinthiamilianlpc/"},{"name":"Jessica Smart","license":"LPC","state":"TX","linkedin":"https://www.linkedin.com/in/jessica-smart-75174569/"},{"name":"Raegan Carrillo, M.S, LPC- Associate","license":"LPCA","state":"TX","linkedin":"https://www.linkedin.com/in/raegan-carrillo/"},{"name":"Julie Velie","license":"LCHMCA","state":"VA","linkedin":"https://www.linkedin.com/in/julievelie/"},{"name":"Labrea Law, LPC-Associate","license":"LPCA","state":"TX","linkedin":"https://www.linkedin.com/in/labrea-law-lpc-associate-b0b791237/"},{"name":"Brittney Manuel, LPC- Associate","license":"LPCA","state":"TX","linkedin":"https://www.linkedin.com/in/brittney-manuel-lpc-associate-75530477/"},{"name":"Julia R. Beron, MSW, LCSWA","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/juliaberon/"},{"name":"Ann Rose Xavier","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/ann-rose-xavier-8945881b7/"},{"name":"Keiko Hashimoto, M.S., LPC-Associate, NCC","license":"LPCA","state":"TX","linkedin":"https://www.linkedin.com/in/keiko-hashimoto-m-s-lpc-associate-ncc-197297a8/"},{"name":"Patricia Bunn","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/patricia-b-830421191/"},{"name":"Jennifer Leal","license":"LPCA","state":"TX","linkedin":"https://www.linkedin.com/in/jennifer-leal-4ba71b23b/"},{"name":"LaShonda Smith MSW, LCSWA, LCASA","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/lashonda-smith-msw-lcswa-lcasa-48893b300/"},{"name":"Brittni Broca MA, LPC","license":"LPC","state":"TX","linkedin":"https://www.linkedin.com/in/brittni-broca-ma-lpc-439833bb/"},{"name":"Nickesha Smallhorne Davis, M.Ed, LPCA","license":"LPCA","state":"CT","linkedin":"https://www.linkedin.com/in/nickesha-smallhorne-davis-m-ed-lpca-9ab9451a/"},{"name":"Alexis Davis, APC, LCMHCA, NCC","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/alexis-davis-apc-lcmhca-ncc-0906b2141/"},{"name":"Amanda Espinosa, LCSWA, CTP","license":"LCSWA","state":"FL","linkedin":"https://www.linkedin.com/in/amanda-espinosa-lcswa-ctp-34a85b284/"},{"name":"Nekea S, M.A, AMFT, APCC","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/nekea/"},{"name":"Melanie (Castro) Phillips, MA, AMFT","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/melaniecastrophillips/"},{"name":"Kathleen Ryan","license":"MSW","state":"CA","linkedin":"https://www.linkedin.com/in/kathleen-ryan-136b31234/"},{"name":"Yolonda M. Young- Adisa MSW, ASW","license":"MSW","state":"CA","linkedin":"https://www.linkedin.com/in/yolonda-m-young-adisa-msw-asw-84b54b11/"},{"name":"Jerri D","license":"MSW","state":"AZ","linkedin":"https://www.linkedin.com/in/jerri-doby/"},{"name":"Elizabeth T. Peang, MSW, LSWAIC","license":"MSW","state":"WA","linkedin":"https://www.linkedin.com/in/elizabethpeang/"},{"name":"Maureen Riley","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/maureenriley/"},{"name":"Heather Quincy","license":"LMSW","state":"AZ","linkedin":"https://www.linkedin.com/in/heather-quincy-085992102/"},{"name":"Chaplain Aziza Robertson, M.A., AMFT","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/a-i-robertson85/"},{"name":"Alfred White","license":"LMHCA","state":"WA","linkedin":"https://www.linkedin.com/in/alfred-white-44a4a91a/"},{"name":"Yeji Lee","license":"MSW","state":"CA","linkedin":"https://www.linkedin.com/in/yeji-lee-thx/"},{"name":"Emma-Lee Rush, MSW, LCSWA","license":"LCSWA","state":"SC","linkedin":"https://www.linkedin.com/in/emma-lee-rush-msw-lcswa-05873a24a/"},{"name":"Jannette Hernandez","license":"MSW","state":"CA","linkedin":"https://www.linkedin.com/in/jannette-hernandez-27bb5958/"},{"name":"Sharvika Talwar","license":"LPCA","state":"CA","linkedin":"https://www.linkedin.com/in/sharvika-talwar-093514260/"},{"name":"Farah Khuzouz","license":"MFT","state":"NY","linkedin":"https://www.linkedin.com/in/farahkhuzouz/"},{"name":"Luke Lorefice, LCSW","license":"LCSW","state":"NY","linkedin":"https://www.linkedin.com/in/luke-lorefice-lcsw-8a38a35a/"},{"name":"Kathryn Williams","license":"MFT","state":"GA","linkedin":"https://www.linkedin.com/in/kathryn-williams-aaa808360/"},{"name":"Chelsea Rodriguez","license":"MFT","state":"CA","linkedin":"https://www.linkedin.com/in/chelsea-rodriguez-/"},{"name":"Emily Kirker","license":"LCSW","state":"NC","linkedin":"https://www.linkedin.com/in/emily-kirker-a31b72172/"},{"name":"Cherice Alc\u00e9","license":"MFT","state":"CA","linkedin":"https://www.linkedin.com/in/cherice-alce/"},{"name":"Ma'Nesia Jones-Lynch","license":"MFT","state":"GA","linkedin":"https://www.linkedin.com/in/ma-nesia-jones-lynch-b038b357/"},{"name":"Samantha Marcelle, LMSW","license":"MSW","state":"TN","linkedin":"https://www.linkedin.com/in/samantha-marcelle/"},{"name":"Tatyana Jones","license":"MFT","state":"GA","linkedin":"https://www.linkedin.com/in/tatyana-jones-9b633b199/"},{"name":"Allison Maine","license":"MFT","state":"GA","linkedin":"https://www.linkedin.com/in/allison-mainer-37349b199/"},{"name":"Joshua Corwin","license":"LMFTA","state":"CA","linkedin":"https://www.linkedin.com/in/joshua-corwin/"},{"name":"Katherine Gypsea V.","license":"MHCA","state":"WA","linkedin":"https://www.linkedin.com/in/katherine-gypsea-v-bb086745/"},{"name":"Camillia Keith Depke","license":"LPC","state":"IL","linkedin":"https://www.linkedin.com/in/camillia-keith-depke-250b5919/"},{"name":"Virginia-Louise Alves","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/virginia-louise-alves-03768445/"},{"name":"Malala Noraddin","license":"LPCA","state":"OR","linkedin":"https://www.linkedin.com/in/malala-noraddin-b18728216/"},{"name":"Coleen Golab","license":"LMHC","state":"NY","linkedin":"https://www.linkedin.com/in/coleen-golab-00a86191/"},{"name":"Taylor Geathers, MSW, LCSWA","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/taylor-geathers-lcswa/"},{"name":"Melanie Morgan, Ed.D., LPC Associate, CSC","license":"LPCA","state":"TX","linkedin":"https://www.linkedin.com/in/melaniedmorgan/"},{"name":"Jiah Waldon, MSW, LSW/LCSWA","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/jiahwaldon/"},{"name":"Perla Puente, M.A.","license":"LPCA","state":"TX","linkedin":"https://www.linkedin.com/in/perla-puente-m-a-891a3834b/"},{"name":"Quitley M.","license":"LMSW","state":"MS","linkedin":"https://www.linkedin.com/in/quitley-m-7008161a9/"},{"name":"Taylor Smith","license":"LPC-S","state":"TX","linkedin":"https://www.linkedin.com/in/taylor-smith-70b6a22a4/"},{"name":"Vanessa A.","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/vanessaarnez/"},{"name":"Christine Kirby MA LCMHC","license":"LCMHC","state":"NC","linkedin":"https://www.linkedin.com/in/christine-kirby-ma-lcmhc-50078a211/"},{"name":"Ritu Sancheti","license":"LMFTA","state":"CA","linkedin":"https://www.linkedin.com/in/ritu-sancheti/"},{"name":"Briana Harper M.Ed, LPC-Associate","license":"LPCA","state":"TX","linkedin":"https://www.linkedin.com/in/brianakharper/"},{"name":"Lauren Leavey","license":"LPCA","state":"CT","linkedin":"https://www.linkedin.com/in/lauren-leavey-b2795a200/"},{"name":"Gabriela Polanco, LMFT- Associate","license":"LMFTA","state":"TX","linkedin":"https://www.linkedin.com/in/gabriela-polanco-lmft-associate-31326190/"},{"name":"Aldo Tinajero, M.Ed., LPC-Associate, LCDC","license":"LPCA","state":"TX","linkedin":"https://www.linkedin.com/in/aldo-tinajero-m-ed-lpc-associate-lcdc-26137a218/"},{"name":"Tasbeel Khan","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/tasbeel-khan-57a801122/"},{"name":"Marrion T.","license":"LPC-S","state":"TX","linkedin":"https://www.linkedin.com/in/marrion-t-8a7b821b6/"},{"name":"Aubreigh H.","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/aubreigh-h-117aaa128/"},{"name":"Kristina Jeanty","license":"LSW","state":"PA","linkedin":"https://www.linkedin.com/in/kristina-jeanty/"},{"name":"Ashley Campbell, MSW, LCSW-A","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/ashleycampbell7/"},{"name":"Alyse DeHerrera","license":"MFTA","state":"CA","linkedin":"https://www.linkedin.com/in/alysedeherrera/"},{"name":"Rachel Bedoyan","license":"MFT","state":"CA","linkedin":"https://www.linkedin.com/in/rachel-bedoyan-6325b6224/"},{"name":"Sarita Gurung","license":"ASW","state":"CA","linkedin":"https://www.linkedin.com/in/sarita-gurung-5143812b2/"},{"name":"Sydney Miller-Cole","license":"MSW","state":"VA","linkedin":"https://www.linkedin.com/in/sydneymillercole/"},{"name":"Denver Payton LMSW","license":"LMSW","state":"NY","linkedin":"https://www.linkedin.com/in/denverlynnpayton/"},{"name":"Alison Muraski","license":"MFT","state":"GA","linkedin":"https://www.linkedin.com/in/alison-m-b7a68358/"},{"name":"Justice Johnson","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/justice-johnson-219015189/"},{"name":"Jordan DeLaney LMSW,MPH","license":"LMSW","state":"GA","linkedin":"https://www.linkedin.com/in/jordantdelaney/"},{"name":"Brentt J. Blackmon, AMFT, APCC","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/blackmonway/"},{"name":"Jennifer H.","license":"MSW","state":"NY","linkedin":"https://www.linkedin.com/in/jennifer-h-925757216/"},{"name":"Elisabeth H.","license":"LMHC","state":"MD","linkedin":"https://www.linkedin.com/in/elisabeth-h-11677883/"},{"name":"Mike Zhun Guo","license":"Mental Health Awareness","state":"OTHER","linkedin":"https://www.linkedin.com/in/mike-zhun-guo-0106494b/"},{"name":"Dae\u2019Sha Chatman, MSW","license":"MSW","state":"TX","linkedin":"https://www.linkedin.com/in/dae%E2%80%99sha-chatman-msw-034a091b1/"},{"name":"Caressa Ely Prine","license":"LMSW","state":"AL","linkedin":"https://www.linkedin.com/in/caressa-ely-prine-a290ba356/"},{"name":"Trinda Owens, LMSW","license":"LMSW","state":"AL","linkedin":"https://www.linkedin.com/in/trinda-owens-lmsw-b6b32888/"},{"name":"Melvina Clark, LMSW","license":"LMSW","state":"GA","linkedin":"https://www.linkedin.com/in/melvina-clark-lmsw-a3017810/"},{"name":"Sarah L.","license":"MSW","state":"CA","linkedin":"https://www.linkedin.com/in/sarah-l-504a3615/"},{"name":"Nyree Beachum, MSW, LCSWA","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/nyree-beachum-msw-lcswa-666a6334/"},{"name":"Emma Green","license":"MFTA","state":"GA","linkedin":"https://www.linkedin.com/in/emma--green/"},{"name":"Lauren Pomerantz, M.A., AMFT","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/laurenpomerantz/"},{"name":"Justin DeGarbo, MA, AMFT","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/justindegarbo/"},{"name":"Sharon Goldey","license":"ASW","state":"CA","linkedin":"https://www.linkedin.com/in/sharon-goldey-75a6285/"},{"name":"Katie Zheng, LMSW","license":"LMSW","state":"NY","linkedin":"https://www.linkedin.com/in/katie-zheng-lmsw-13b12712a/"},{"name":"Larry Deffendoll, MS, RMHCI, LMHCA, NCC","license":"LMHCA","state":"FL","linkedin":"https://www.linkedin.com/in/larry-deffendoll-ms-rmhci-lmhca-ncc-618182255/"},{"name":"Brittany Greene, MA, LCMHCA, LCAS-A, NCC","license":"LMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/brittany-greene-ma-lcmhca-lcas-a-ncc-58868b18a/"},{"name":"Carolyn B.","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/carolynbabiyans/"},{"name":"Sharon A.","license":"LMFT","state":"NJ","linkedin":"https://www.linkedin.com/in/sharon-a-9670892b8/"},{"name":"Tonya Roberts","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/tonya-roberts-293791a0/"},{"name":"Karen Rutt, MS, LAC, NCC","license":"LAC","state":"NJ","linkedin":"https://www.linkedin.com/in/karenrutt/"},{"name":"Lillyan H.","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/lillyan-hoang/"},{"name":"Laneka Smith B.A, M.A, MPhi","license":"PC","state":"GA","linkedin":"https://www.linkedin.com/in/laneka-smith-b-a-m-a-mphil-566172149/"},{"name":"Erin Mikala Dickerson","license":"LCSW","state":"NC","linkedin":"https://www.linkedin.com/in/erin-mikala-d-b38ab38b/"},{"name":"Nasir Grayman, MA, LCMHCA, NCC","license":"LMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/nasir-grayman/"},{"name":"Chelsea Fulcher","license":"LMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/chelsea-fulcher-6141a189/"},{"name":"Elbisa Lindov, MA, LCMHCA, NCC","license":"LMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/elbisa-lindov-ma-lcmhca-ncc-9a5bb4159/"},{"name":"Julieta Serrato","license":"LMFT","state":"CA","linkedin":"https://www.linkedin.com/in/julieta-serrato-9a04a3125/"},{"name":"Daisy Lopez","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/daisy-lopez-137361177/"},{"name":"Amanda Lee","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/amandalee1225/"},{"name":"Sally Isaac-Matta","license":"MFT","state":"PA","linkedin":"https://www.linkedin.com/in/sally-isaac-matta-a99509197/"},{"name":"Jaqueline Mendoza","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/therapybyjaqueline/"},{"name":"Christine Wells Cooper","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/christie-wells-cooper/"},{"name":"Shirley Shani Ben Zvi \ud83c\udf97\ufe0f\ud83c\udff3\ufe0f\u200d\ud83c\udf08\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","license":"AMFT","state":"GA","linkedin":"https://www.linkedin.com/in/shirley-shani-ben-zvi/"},{"name":"Caitlyn McCrain, MSW, LMSW, BHP","license":"LMSW","state":"AZ","linkedin":"https://www.linkedin.com/in/caitlynmccrain/"},{"name":"Justin Fredericks","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/justin-d-fredericks/"},{"name":"Doug Cherry","license":"ASW","state":"CA","linkedin":"https://www.linkedin.com/in/doug-cherry-802085185/"},{"name":"Trina Thomas","license":"LPC","state":"OH","linkedin":"https://www.linkedin.com/in/trina-thomas-858826344/"},{"name":"Anthorne Arnold","license":"LMHCA","state":"FL","linkedin":"https://www.linkedin.com/in/anthorne-arnold/"},{"name":"Chris Jackson","license":"LMHCA","state":"RI","linkedin":"https://www.linkedin.com/in/cjackso/"},{"name":"Deborah Alvarez","license":"LPCA","state":"CA","linkedin":"https://www.linkedin.com/in/deborah-alvarez-7b44688b/"},{"name":"Kenth June Genobis","license":"LPCA","state":"OTHER","linkedin":"https://www.linkedin.com/in/kenthgenobis/"},{"name":"Paula Mukau, MSW, LCSWA","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/paula-mukau-msw-lcswa-644232131/"},{"name":"Sydney Fox","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/sydney-fox-8259aa133/"},{"name":"Maria Van Wie, LMSW","license":"LMSW","state":"MD","linkedin":"https://www.linkedin.com/in/maria-van-wie-lmsw-60b287252/"},{"name":"Sandra C. Okafor","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/sandracokafor/"},{"name":"Khadijah Simmons MSW, LMSW","license":"LMSW","state":"LA","linkedin":"https://www.linkedin.com/in/khadijah-simmons-msw-lmsw-9030b5b4/"},{"name":"Jamie Owens LMSW","license":"LMSW","state":"AR","linkedin":"https://www.linkedin.com/in/jamie-owens-lmsw-861b74aa/"},{"name":"Ruby Mor\u00faa, LMSW","license":"LMSW","state":"NM","linkedin":"https://www.linkedin.com/in/rubymorua/"},{"name":"Brianna Fripp, LMSW","license":"LMSW","state":"GA","linkedin":"https://www.linkedin.com/in/brianna-fripp/"},{"name":"Oluwadamilola Ezekiel, LMSW","license":"LMSW","state":"TX","linkedin":"https://www.linkedin.com/in/dami-ezekiel-2d96am/"},{"name":"Carmelia Ward MSW, LCSW, ADHD-CCSP","license":"LCSW","state":"NC","linkedin":"https://www.linkedin.com/in/carmelia-ward-msw-lcsw-adhd-ccsp-0a163326b/"},{"name":"Michi Medley, LMSW, A-CAS","license":"LMSW","state":"OK","linkedin":"https://www.linkedin.com/in/michi-medley-asd/"},{"name":"Kalia Petry, M.A., APCC, AMFT","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/kaliapetry/"},{"name":"Tamula Thwai","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/tamula-thwai-0bb25a243/"},{"name":"Carlea Atkinson MA, LCMHC, NCC","license":"LCMHC","state":"NC","linkedin":"https://www.linkedin.com/in/carleaatkinsonlcmhc/"},{"name":"Esther Lemande, LMSW","license":"LMSW","state":"TX","linkedin":"https://www.linkedin.com/in/esther-lemande-lmsw-681013143/"},{"name":"Paula Vazquez, MA, LPC-Associate, LCDC-","license":"LPCA","state":"TX","linkedin":"https://www.linkedin.com/in/paula-vazquez-ma-lpc-associate-lcdc-i-0965a527a/"},{"name":"Hunter Thomas, M.A., LCMHCA","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/hunter-thomas-m-a-lcmhca-8a720720a/"},{"name":"Nathaniel J. Aviles, ACSW, LMSW, MSW","license":"LMSW","state":"CA","linkedin":"https://www.linkedin.com/in/nathanielaviles/"},{"name":"Shiedda Dotson","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/shiedda-dotson-482549249/"},{"name":"Keziah Cash, MSW, LCSWA","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/keziah-cash/"},{"name":"Berenice Barrientos","license":"LPC","state":"TX","linkedin":"https://www.linkedin.com/in/berenice-barrientos-8b8b39351/"},{"name":"Marian Chavez, LMSW","license":"LMSW","state":"TX","linkedin":"https://www.linkedin.com/in/marian-chavez-lmsw/"},{"name":"Skarlet Castro, MSW","license":"LMSW","state":"CA","linkedin":"https://www.linkedin.com/in/skarlet-castro-msw-446ab513b/"},{"name":"Deron Thompson","license":"LMSW","state":"CO","linkedin":"https://www.linkedin.com/in/deron-thompson2000/"},{"name":"Santiago Vega-Siurano, LMSW, ACSW","license":"LMSW","state":"CA","linkedin":"https://www.linkedin.com/in/santiagogael/"},{"name":"Marina Dewberry, LCSW","license":"LCSW","state":"TX","linkedin":"https://www.linkedin.com/in/marina-dewberry-lcsw-379b3195/"},{"name":"Bryant Floyd, LMSW","license":"LMSW","state":"TX","linkedin":"https://www.linkedin.com/in/bryant-floyd-lmsw-5713871a6/"},{"name":"Brittney Howard, LMSW","license":"LMSW","state":"SC","linkedin":"https://www.linkedin.com/in/brittney-howard-lmsw-2584b7146/"},{"name":"Ashley B.","license":"LMSW","state":"DC","linkedin":"https://www.linkedin.com/in/ashley-b-a93462117/"},{"name":"ShaTina Williams, LMSW","license":"LMSW","state":"OH","linkedin":"https://www.linkedin.com/in/shatina-hunter/"},{"name":"Eduardo Argueta Flores, LCSWA, LMSW","license":"LCSWA","state":"GA","linkedin":"https://www.linkedin.com/in/edarguetaflores/"},{"name":"Maria Murphy, LMSW","license":"LMSW","state":"TX","linkedin":"https://www.linkedin.com/in/maria-murphy-lmsw-1b698b5b/"},{"name":"Nayona Pe\u00f1a, LMSW, LSW","license":"LMSW","state":"TX","linkedin":"https://www.linkedin.com/in/nayona-pe%C3%B1a-lmsw-lsw-66912595/"},{"name":"Nakisha Bullock, LMSW","license":"LMSW","state":"TN","linkedin":"https://www.linkedin.com/in/nakisha-bullock-lmsw-877b4639/"},{"name":"ABBY ZUCKERMAN, LMSW","license":"LMSW","state":"NY","linkedin":"https://www.linkedin.com/in/abby-zuckerman-lmsw-18a422197/"},{"name":"Emma C.","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/emma-c-06a36522a/"},{"name":"Stephanie Cheng, LMSW","license":"LMSW","state":"NY","linkedin":"https://www.linkedin.com/in/stephycheng88/"},{"name":"Laura Meyer, LPC, ACS","license":"LPC","state":"CO","linkedin":"https://www.linkedin.com/in/laura-meyer-lpc-acs-3b9759a0/"},{"name":"Anup Sharma, MD, PhD","license":"PHD","state":"PA","linkedin":"https://www.linkedin.com/in/anup-sharma-md-phd-7948a434/"},{"name":"Clinton Cretcher","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/clinton-cretcher/"},{"name":"Eboni T.","license":"LMSW","state":"TX","linkedin":"https://www.linkedin.com/in/eboni-t-023b15105/"},{"name":"Deannie Reyes-Rodriguez, LMSW","license":"LMSW","state":"TX","linkedin":"https://www.linkedin.com/in/deannie-reyes-rodriguez-lmsw-3b009325/"},{"name":"Deshondra L. Fortson","license":"MSW","state":"TX","linkedin":"https://www.linkedin.com/in/deshondra-l-fortson-23541042/"},{"name":"Marco Ontiveros","license":"MFT","state":"CA","linkedin":"https://www.linkedin.com/in/marco-ontiveros-59320b153/"},{"name":"Stephanie AV Jones, LISW-CP, ADC, CCHW","license":"LISW-P","state":"SC","linkedin":"https://www.linkedin.com/in/stephanie-av-jones-lisw/"},{"name":"Daleisha Johnson, MSW","license":"MSW","state":"SC","linkedin":"https://www.linkedin.com/in/daleisha-johnson-msw-28ab18184/"},{"name":"Linda Drew ACSW","license":"ACSW","state":"CA","linkedin":"https://www.linkedin.com/in/linda-drew-acsw-72373123b/"},{"name":"Francine Bahati MSW","license":"MSW","state":"NY","linkedin":"https://www.linkedin.com/in/francine-bahati-msw-2b1096282/"},{"name":"Brooks Farley, MSW, LCSWA","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/brooks-farley-msw-lcswa-0a10b1137/"},{"name":"Christine M. Johnson, MSW","license":"MSW","state":"DC","linkedin":"https://www.linkedin.com/in/christine-m-johnson23/"},{"name":"Giselle Facemire","license":"LMFT","state":"SD","linkedin":"https://www.linkedin.com/in/giselle-facemire/"},{"name":"Marc J. LaBranche, MSW, RCSWI","license":"MSW","state":"FL","linkedin":"https://www.linkedin.com/in/marc-j-labranche-msw-rcswi-b15870130/"},{"name":"Arikasia Williams, ASW","license":"ASW","state":"CA","linkedin":"https://www.linkedin.com/in/arikasia-williams-asw-b19756171/"},{"name":"Stephanie (Holmes) Modler","license":"LCSW","state":"MD","linkedin":"https://www.linkedin.com/in/stephanie-holmes-modler-87885b82/"},{"name":"Irene Wilson","license":"MSW","state":"CT","linkedin":"https://www.linkedin.com/in/irene-wilson-64196ba8/"},{"name":"Jasmine McAlister, MSW","license":"MSW","state":"FL","linkedin":"https://www.linkedin.com/in/jasmine-mcalister-msw-2a91b8b2/"},{"name":"Lolybeth Montero","license":"MSW","state":"GA","linkedin":"https://www.linkedin.com/in/lolybeth-montero/"},{"name":"Florence Burrows","license":"LSWAIC","state":"WA","linkedin":"https://www.linkedin.com/in/florencemlburrows/"},{"name":"Mischa Patteson, LSW","license":"LSW","state":"PA","linkedin":"https://www.linkedin.com/in/michelle-patteson/"},{"name":"Cheron Williams","license":"MSW","state":"NC","linkedin":"https://www.linkedin.com/in/cheron-williams-70734b2b/"},{"name":"Kseniya Cherepnina","license":"MSW","state":"FL","linkedin":"https://www.linkedin.com/in/kseniya-cherepnina-14244b61/"},{"name":"Niema Byrd","license":"MSW","state":"NC","linkedin":"https://www.linkedin.com/in/niema-byrd-6b61761a/"},{"name":"Brett Zelencik","license":"LCPC","state":"IL","linkedin":"https://www.linkedin.com/in/brett-zelencik/"},{"name":"Ashley G. Casas Pineda, M.A., NCC, LPC-Associate","license":"LPCA","state":"TX","linkedin":"https://www.linkedin.com/in/ashleygpineda01/"},{"name":"Kaela Demerjian","license":"","state":"CA","linkedin":"https://www.linkedin.com/in/kaelasaez/"},{"name":"Bailey Everett","license":"MFT","state":"GA","linkedin":"https://www.linkedin.com/in/bailey-everett-0316622b9/"},{"name":"Jennifer Fox","license":"LCSW","state":"TN","linkedin":"https://www.linkedin.com/in/jennifer-fox-8aaa5018b/"},{"name":"Madison Benavidez","license":"MFT","state":"GA","linkedin":"https://www.linkedin.com/in/madison-b-62b7a5201/"},{"name":"Angelica Simpkins","license":"CMHC","state":"NC","linkedin":"https://www.linkedin.com/in/angelica-simpkins-845713240/"},{"name":"Megan Taylor, ATR-P","license":"LMHC-A","state":"NC","linkedin":"https://www.linkedin.com/in/meganrtaylor9/"},{"name":"Alyssa Lew","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/alyssalew/"},{"name":"Heather Rossi-Price, MA 1st degree connection","license":"CMHC","state":"NC","linkedin":"https://www.linkedin.com/in/heatherlrossi/"},{"name":"Emily Anderson","license":"LMFTA","state":"WA","linkedin":"https://www.linkedin.com/in/emily-anderson-46353116a/"},{"name":"Branwen Saechao","license":"LMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/branwen-saechao-1060a3200/"},{"name":"Christian Valle, ASW","license":"ASW","state":"CA","linkedin":"https://www.linkedin.com/in/christian-valle-asw-762794177/"},{"name":"Andrew Daniel, MA, LCMHCA","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/andrew-daniel-ma-lcmhca-8212611ba/"},{"name":"Matthew Koch","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/matthewskoch/"},{"name":"Temeka Green, LMSW, LCSWA","license":"LCSWA","state":"SC","linkedin":"https://www.linkedin.com/in/temeka-green-lmsw-lcswa-3033b521b/"},{"name":"Bridgitte Green, AMFT, MA, M.Ed","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/bridgitte-green-amft-ma-m-ed-a83130213/"},{"name":"Carlos Gallaga, M.S., AMFT","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/carlosgallaga/"},{"name":"Leonardo Poareo","license":"MSW","state":"LA","linkedin":"https://www.linkedin.com/in/leonardopoareo2a9a4653/"},{"name":"Kimberly Katz","license":"MSW","state":"NY","linkedin":"https://www.linkedin.com/in/kimberly-katz/"},{"name":"Ruby Hernandez","license":"MSW","state":"CA","linkedin":"https://www.linkedin.com/in/hernandezruby/"},{"name":"Anja Beslic, AMFT","license":"AMFT","state":"MA","linkedin":"https://www.linkedin.com/in/anja-beslic/"},{"name":"Elizabeth Grant, MS, MA, BCBA, IBA, AMFT, APCC","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/elizabethjgrant/"},{"name":"Laura Bylone","license":"MSW","state":"CA","linkedin":"https://www.linkedin.com/in/lauraannbylone/"},{"name":"Vitoria Cottiss","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/vcottiss/"},{"name":"Chandler Green, AMFT","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/chandler-green-amft-0b9b16168/"},{"name":"Aaron Mostin, MA, AMFT","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/aaron-mostin-ma-amft-63a69318/"},{"name":"Kiara Torres, LCSW, MSW","license":"MSW","state":"NJ","linkedin":"https://www.linkedin.com/in/kiara-torres-lcsw-msw-6407152b9/"},{"name":"Polina Natanelova","license":"LMSW","state":"AZ","linkedin":"https://www.linkedin.com/in/polina-natanelova-662bb133/"},{"name":"Melissa M. Matos, Ph.D.","license":"PsyD","state":"CA","linkedin":"https://www.linkedin.com/in/melissamatosphd/"},{"name":"Paola R.","license":"LPC","state":"CO","linkedin":"https://www.linkedin.com/in/paola-rod/"},{"name":"Dana Wilson, LPC","license":"LPC","state":"NY","linkedin":"https://www.linkedin.com/in/dana-w-b25b0a44/"},{"name":"Kelsey I.","license":"MSW","state":"GA","linkedin":"https://www.linkedin.com/in/kelsey-i-618270ab/"},{"name":"Elizabeth D.","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/elizabethdavis8389/"},{"name":"Melanie Minges, PhD, LPC, NCC","license":"LPC","state":"PA","linkedin":"https://www.linkedin.com/in/melanieminges/"},{"name":"Andrew Oshobu, MSW, QSW, ADC, LMSW, CCTP-I, SSP Provider","license":"LMSW","state":"TX","linkedin":"https://www.linkedin.com/in/andrew-oshobu/"},{"name":"Grace K.","license":"","state":"PA","linkedin":"https://www.linkedin.com/in/gkillea/"},{"name":"Samantha Buijk","license":"ASW","state":"IL","linkedin":"https://www.linkedin.com/in/samanthabuijk/"},{"name":"Jennifer Spencer","license":"SW","state":"OH","linkedin":"https://www.linkedin.com/in/jchordas/"},{"name":"Rita Pillai, MSW, LSW, RYT","license":"LSW","state":"IL","linkedin":"https://www.linkedin.com/in/ritapwithyogatea/"},{"name":"Sulain Gomez Luna, MSW","license":"MSW","state":"NY","linkedin":"https://www.linkedin.com/in/sulaingomez/"},{"name":"Anthony Haggard","license":"ACSW","state":"CA","linkedin":"https://www.linkedin.com/in/anthony-haggard-90156086/"},{"name":"Angelina Vuong, MSW","license":"MSW","state":"CA","linkedin":"https://www.linkedin.com/in/angelina-vuong/"},{"name":"Neysa Nankervis Callen","license":"MSW","state":"CA","linkedin":"https://www.linkedin.com/in/neysanc/"},{"name":"Stephanie Murray, ACSW, MSW","license":"ACSW","state":"CA","linkedin":"https://www.linkedin.com/in/stephaniemurraymsw/"},{"name":"Jacob Hiseley","license":"LMSW","state":"OK","linkedin":"https://www.linkedin.com/in/jacob-hiseley-926b4b294/"},{"name":"Yulia C.","license":"MSW","state":"NY","linkedin":"https://www.linkedin.com/in/yuliacole/"},{"name":"Matt Johnson","license":"LMFT","state":"CA","linkedin":"https://www.linkedin.com/in/mattjohnson143/"},{"name":"Stacy Rosas","license":"MSW","state":"IL","linkedin":"https://www.linkedin.com/in/stacy-rosas-4314291a7/"},{"name":"Lorraine LEMARD, MSW","license":"MSW","state":"FL","linkedin":"https://www.linkedin.com/in/effelorrainelemard/"},{"name":"D'Andra Galarza","license":"LCSW","state":"NV","linkedin":"https://www.linkedin.com/in/d-andra-galarza-2083244/"},{"name":"Beatriz Pontes de Lucena Domingues","license":"LPCA","state":"CT","linkedin":"https://www.linkedin.com/in/beatrizpontes-d/"},{"name":"Sara G.","license":"MSW","state":"CA","linkedin":"https://www.linkedin.com/in/sara-g-3277b89b/"},{"name":"James Battles","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/james-battles-58232164/"},{"name":"Heidi Ferguson, LMSW","license":"LMSW","state":"TX","linkedin":"https://www.linkedin.com/in/heidi-ferguson-lmsw-ab597b72/"},{"name":"Meredith Brooks","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/meredith-brooks-6a4957/"},{"name":"Alexia Y. Cadenas, LCSW","license":"LCSW","state":"FL","linkedin":"https://www.linkedin.com/in/alexia-y-cadenas-lcsw-1921171a7/"},{"name":"Gina Grammatico, LMFT","license":"LMFT","state":"CA","linkedin":"https://www.linkedin.com/in/gina-grammatico-lmft-82625691/"},{"name":"Ally Denman","license":"MSW","state":"MI","linkedin":"https://www.linkedin.com/in/ally-denman-73a63b27a/"},{"name":"Liv DeHaan","license":"LSW","state":"IL","linkedin":"https://www.linkedin.com/in/liv-dehaan-72508615/"},{"name":"Karen Qualls","license":"","state":"SC","linkedin":"https://www.linkedin.com/in/karen-qualls-ba7308155/"},{"name":"Karla Huerta, LMSW","license":"LMSW","state":"AZ","linkedin":"https://www.linkedin.com/in/karla-huerta-lmsw-b70082117/"},{"name":"Alex W.","license":"LMSW","state":"WA","linkedin":"https://www.linkedin.com/in/alex-w-719497188/"},{"name":"Kalpana Sanmugam","license":"MS Counseling Psyc","state":"KY","linkedin":"https://www.linkedin.com/in/kalpanasanmugam/"},{"name":"Tiffany Hall, MSW","license":"MSW","state":"NY","linkedin":"https://www.linkedin.com/in/tiffany-hall-086433109/"},{"name":"Kierra Vincent, LMSW","license":"LMSW","state":"IN","linkedin":"https://www.linkedin.com/in/kierra-vincent-lmsw-8322101b1/"},{"name":"Jontel Armstead, MSW","license":"MSW","state":"NC","linkedin":"https://www.linkedin.com/in/jontel-armstead/"},{"name":"Dellanie Almond, LCSW, CCM, Qualified Supervisor CSW","license":"LCSW","state":"FL","linkedin":"https://www.linkedin.com/in/dellanie-almond-lcsw-ccm-qualified-supervisor-csw-56807524/"},{"name":"Robin M. Hill, ACSW","license":"ACSW","state":"CA","linkedin":"https://www.linkedin.com/in/robin-m-hill-acsw-0067b9a/"},{"name":"Purposeful Life HINSHAW","license":"MSW","state":"CO","linkedin":"https://www.linkedin.com/in/purposeful-life-hinshaw-3b6852352/"},{"name":"Alissa Talbert","license":"MSW","state":"NC","linkedin":"https://www.linkedin.com/in/alissa-talbert-79a593100/"},{"name":"Virginia A","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/virginia-a-5b64aa21b/"},{"name":"Debra Sedeno","license":"AMFT","state":"WY","linkedin":"https://www.linkedin.com/in/debra-sedeno-85a64a91/"},{"name":"Jodi Kurlander","license":"LMSW","state":"NY","linkedin":"https://www.linkedin.com/in/jodi-kurlander-b235831bb/"},{"name":"Linda Grunwell, MSW, LMSW, LSW","license":"LMSW","state":"TN","linkedin":"https://www.linkedin.com/in/linda-grunwell-0a872961/"},{"name":"Meghan Co","license":"LCSW-C","state":"MD","linkedin":"https://www.linkedin.com/in/meghan-co-2a299570/"},{"name":"MiKaila Fox","license":"MSW","state":"AL","linkedin":"https://www.linkedin.com/in/mikailabsapp/"},{"name":"Dr. Marco Antonio Romero, DSW, MSW, ACSW, LSW, BSOM","license":"DSW, MSW","state":"CA","linkedin":"https://www.linkedin.com/in/dr-marco-antonio-romero-dsw-msw-acsw-lsw-bsom-a78a6315/"},{"name":"Yahaira Castillo","license":"LCSW","state":"TX","linkedin":"https://www.linkedin.com/in/yahaira-castillo/"},{"name":"Donell Frank","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/donell-frank-88a97b80/"},{"name":"Noelle Allen Newman M.A. AMFT","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/noelle-allen-newman-m-a-amft-5b85515b/"},{"name":"Will Cerf, LMSW, CASAC-T","license":"LMSW","state":"NY","linkedin":"https://www.linkedin.com/in/willcerf/"},{"name":"Elissa T.","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/elissa-t-0b3174b0/"},{"name":"Nick Twomey","license":"MSW","state":"NJ","linkedin":"https://www.linkedin.com/in/nick-t-6050aa36/"},{"name":"Emily Ann Peterson, MBA","license":"LMHCA","state":"WA","linkedin":"https://www.linkedin.com/in/emilyannpeterson/"},{"name":"Tenea Smith","license":"LPCA","state":"OR","linkedin":"https://www.linkedin.com/in/tenea-smith-7b3805314/"},{"name":"Denise Zabel","license":"LPC","state":"MI","linkedin":"https://www.linkedin.com/in/denisezabel/"},{"name":"Amanda Robottom","license":"LPC-A","state":"TX","linkedin":"https://www.linkedin.com/in/amandabrobottom/"},{"name":"Kimberly Ingham","license":"MSW","state":"CA","linkedin":"https://www.linkedin.com/in/kimberly-ingham-74171824/"},{"name":"Dianysha Varfley","license":"MFT","state":"GA","linkedin":"https://www.linkedin.com/in/dianyshavarfley/"},{"name":"Lucy Makin","license":"MSW","state":"NY","linkedin":"https://www.linkedin.com/in/lucy-makin-126b94243/"},{"name":"Ariana Miller","license":"APCC","state":"CA","linkedin":"https://www.linkedin.com/in/ariana-miller-1ab697b1/"},{"name":"Shartara Robinson","license":"MSW","state":"TX","linkedin":"https://www.linkedin.com/in/shartara-robinson-2882b1250/"},{"name":"Sarah Potte","license":"CMHC","state":"AZ","linkedin":"https://www.linkedin.com/in/sarahallisonpotter/"},{"name":"Somalin Mishra","license":"MSW","state":"TX","linkedin":"https://www.linkedin.com/in/somalin-mishra-748721304/"},{"name":"Emily Chin","license":"MSW","state":"OR","linkedin":"https://www.linkedin.com/in/emily-chin-4a2867237/"},{"name":"Wendy Braun","license":"MSW","state":"OH","linkedin":"https://www.linkedin.com/in/wendy-braun-b6449a174/"},{"name":"Andrew Cunha, OCPSA, CDCA II, CPRS","license":"MSW","state":"OH","linkedin":"https://www.linkedin.com/in/andrew-cunha-ocpsa-cdca-ii-cprs-8b1674386/"},{"name":"Joshua Lambert, MA, LCMHC, LADC","license":"LCMHC","state":"VT","linkedin":"https://www.linkedin.com/in/joshua-lambert-ma-lcmhc-ladc-14a72420/"},{"name":"Dawn Burns","license":"LSW","state":"IL","linkedin":"https://www.linkedin.com/in/dawn-burns-4942aa2ab/"},{"name":"Lois Goudeau, M.Ed., LCPC, DBH-C","license":"LCPC","state":"IL","linkedin":"https://www.linkedin.com/in/clinicianlcpccoach/"},{"name":"Clarissa Pflug","license":"CMH","state":"AZ","linkedin":"https://www.linkedin.com/in/clarissa-pflug-%F0%9F%9B%8B%EF%B8%8F-8b7686260/"},{"name":"Michelle Anne Jackson","license":"MSW","state":"AZ","linkedin":"https://www.linkedin.com/in/academicsatworkjax/"},{"name":"Pia Guerrero","license":"ACSW","state":"CA","linkedin":"https://www.linkedin.com/in/pia-guerrero-a661142/"},{"name":"Kelly Barreca-Fish","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/kelly-b-6a654a314/"},{"name":"Chandra Andersson","license":"CMHC","state":"OH","linkedin":"https://www.linkedin.com/in/chandra-andersson-023a0b91/"},{"name":"Paul Laskonis","license":"Psych","state":"OR","linkedin":"https://www.linkedin.com/in/paul-laskonis-a2490919/"},{"name":"Marlenne Lizardo, LPC Associate","license":"LPCA","state":"TX","linkedin":"https://www.linkedin.com/in/marlenne-lizardo/"},{"name":"Lucy B.","license":"CMHC","state":"TX","linkedin":"https://www.linkedin.com/in/loantblucy/"},{"name":"Miesha E.","license":"Masters","state":"CA","linkedin":"https://www.linkedin.com/in/mieshaedwards/"},{"name":"Rebecca A. Miller, M.S. Ed","license":"MSEd","state":"OR","linkedin":"https://www.linkedin.com/in/rebecca-ann-miller/"},{"name":"Isabella Cash","license":"MSW","state":"OR","linkedin":"https://www.linkedin.com/in/isabella-cash-59bb43207/"},{"name":"Kymanie Jones","license":"MSClinicalPysch","state":"GA","linkedin":"https://www.linkedin.com/in/kymanie-jones/"},{"name":"Yasmine C.","license":"MSW","state":"VA","linkedin":"https://www.linkedin.com/in/yasmine-c-8a015b187/"},{"name":"Dr. Asha C. Givens, LISW-CP, ADC, Certified Holistic Doula","license":"LISW","state":"SC","linkedin":"https://www.linkedin.com/in/dr-asha-c-givens-lisw-cp-adc-certified-holistic-doula-850022346/"},{"name":"Katrina Chesney","license":"SW","state":"TN","linkedin":"https://www.linkedin.com/in/katrina-chesney-147441154/"},{"name":"LaKeysha Sawyer","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/lakeysha-sawyer-msw/"},{"name":"Sherri McCarron","license":"MSClinicalPysch","state":"NJ","linkedin":"https://www.linkedin.com/in/sherri-mccarron-661637307/"},{"name":"Maria Keeter","license":"","state":"AZ","linkedin":"https://www.linkedin.com/in/maria-keeter-9a1a10328/"},{"name":"Alexandra G T","license":"Psyd","state":"DC","linkedin":"https://www.linkedin.com/in/alexandra-gt/"},{"name":"Lusine W.","license":"MSClinicalPysch","state":"CA","linkedin":"https://www.linkedin.com/in/lusine-werbiskis/"},{"name":"Rumer Jones","license":"CMHC","state":"LA","linkedin":"https://www.linkedin.com/in/rumer-jones-3b3950244/"},{"name":"Aaliyah Ufret","license":"Pysch","state":"PA","linkedin":"https://www.linkedin.com/in/aaliyah-ufret-98b0b1235/"},{"name":"Michael Kaska","license":"CMHC","state":"AZ","linkedin":"https://www.linkedin.com/in/michael-kaska-204363355/"},{"name":"Katie Salib, MA, LMSW","license":"LCSW","state":"CT","linkedin":"https://www.linkedin.com/in/katiesalib22/"},{"name":"Callista C","license":"MFT","state":"CA","linkedin":"https://www.linkedin.com/in/callista-c-925740160/"},{"name":"Angela Kalsbeek, MSW, APSW","license":"MSW","state":"WI","linkedin":"https://www.linkedin.com/in/angela-kalsbeek-msw-apsw-65964548/"},{"name":"Dominique Vincent, LAMFT, M.A., B.S., CLC, CPC","license":"LAMFT","state":"NJ","linkedin":"https://www.linkedin.com/in/dominique-vincent-lamft-m-a-b-s-clc-cpc-23879315/"},{"name":"Amanda Welch","license":"MSW","state":"TX","linkedin":"https://www.linkedin.com/in/amanda-welch-06222520a/"},{"name":"Melinda Sims, LMSW","license":"LMSW","state":"IL","linkedin":"https://www.linkedin.com/in/melindasuesims/"},{"name":"Holly Ellison","license":"MFT","state":"PA","linkedin":"https://www.linkedin.com/in/hollyellison/"},{"name":"Angie Gunn LCSW CST CSTS 2nd degree connection","license":"LCSW","state":"OR","linkedin":"https://www.linkedin.com/in/angie-gunn-lcsw-cst-csts-2a147343/"},{"name":"Asya M. Little, MA, NCC, LCMHCA","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/asya-m-little-ma-ncc-lcmhca-029003222/"},{"name":"Liliana Sills","license":"","state":"TX","linkedin":"https://www.linkedin.com/in/liliana-sills-8784a4270/"},{"name":"Rebecca Winschief, MSW, LSW","license":"LSW","state":"IN","linkedin":"https://www.linkedin.com/in/rebecca-winschief-msw-lsw-484a23395/"},{"name":"Karli Knauss","license":"MSW","state":"WI","linkedin":"https://www.linkedin.com/in/karli-knauss-b42347299/"},{"name":"Zion Selent","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/zion-selent-85a017202/"},{"name":"Evelyn Torres","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/evelyn-torres-8b30a173/"},{"name":"Annelise Latini Neely","license":"","state":"NC","linkedin":"https://www.linkedin.com/in/anneliselatini/"},{"name":"Crystal W.","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/crystal-w-185185174/"},{"name":"Patricia Beckett MAPW,BFA, LPCA","license":"LPCA","state":"CA","linkedin":"https://www.linkedin.com/in/patricia-beckett-mapw-bfa-lpca-836b2610/"},{"name":"Megan Snapp","license":"LCMHC","state":"NC","linkedin":"https://www.linkedin.com/in/megan-snapp-0633a1137/"},{"name":"Rayanne A.","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/rayanne-a-938207228/"},{"name":"Kawahjahlin Rogers, MS, LAMFT","license":"LAMFT","state":"CA","linkedin":"https://www.linkedin.com/in/kawahjahlin-rogers-ms-lamft-b79b59249/"},{"name":"Leah Gastanaga, MS","license":"LMHCA","state":"FL","linkedin":"https://www.linkedin.com/in/leahgastanaga/"},{"name":"Nicole Curry","license":"Counseling","state":"AL","linkedin":"https://www.linkedin.com/in/nicole-curry-ab238b2a9/"},{"name":"Miranda Perez","license":"MFT","state":"TX","linkedin":"https://www.linkedin.com/in/miranda-perez-409006294/"},{"name":"Hallie Gnatovich, LMFT","license":"LMFT","state":"CA","linkedin":"https://www.linkedin.com/in/hallie-gnatovich-lmft-a35a81395/"},{"name":"Cyan Griffin, MA, AMFT","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/cyangriffin/"},{"name":"Alexis Wells, LCMHCA, NCC","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/alexis-n-wells/"},{"name":"Rebekah Rutledge, LCMHCA","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/rebekah-rutledge-lcmhca-3b95931b4/"},{"name":"Kelley Cock, LCMHCA","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/kelley-cock-lcmhca-0775031ba/"},{"name":"Gina Orozco","license":"MFT","state":"OR","linkedin":"https://www.linkedin.com/in/rsorozco/"},{"name":"Claire LeMoine, LCMHCA","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/clairelemoine/"},{"name":"Erin Deuel","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/erin-d-01307843/"},{"name":"Brittany Stark, M. Ed., LPC-S","license":"LPC-S","state":"TX","linkedin":"https://www.linkedin.com/in/brittany-stark-m-ed-lpc-s-a43536233/"},{"name":"Karalyn Binder","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/karalyn-binder-2379b5212/"},{"name":"Angela Hathaway, MA, NCC, LCMHCA, LCASA","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/angela-hathaway-ma-ncc-lcmhca-lcasa-83242872/"},{"name":"Aalia Solomon","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/aalia-s-01aa08189/"},{"name":"Briana Symone James, MA, LCMHCA, NCC","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/symonejames37/"},{"name":"Matt Taylor","license":"LICSW","state":"MA","linkedin":"https://www.linkedin.com/in/mattgtaylor/"},{"name":"Kalista Inch","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/kalista-inch-72b188176/"},{"name":"Kristin Babendreier","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/kristin-babendreier-48428350/"},{"name":"Jonathan Revels, MS, LCMHCA, LPCA, LCAS, AADC, CCS, CS, NCC","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/jonathanwrevels/"},{"name":"Jailyn Weaver, M.A., LCMHCA, NCC","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/jailyn-weaver-m-a-lcmhca-ncc-20146316a/"},{"name":"Jazzania Cuen","license":"MFT","state":"AZ","linkedin":"https://www.linkedin.com/in/jazzania-cuen-bilingual-mft/"},{"name":"Dr. Dana Knighten","license":"Licensed","state":"LA","linkedin":"https://www.linkedin.com/in/dr-dana-knighten-3623011a4/"},{"name":"Liz Kent, LCSW-C","license":"LCSW-C","state":"MD","linkedin":"https://www.linkedin.com/in/lizkentbusinesscoachformoms/"},{"name":"Isabella F.","license":"Master Psych","state":"CA","linkedin":"https://www.linkedin.com/in/isabellafwalko/"},{"name":"Ariel Spires","license":"MSW","state":"IL","linkedin":"https://www.linkedin.com/in/ariel-spires-79765496/"},{"name":"Rita Boling","license":"MFT","state":"GA","linkedin":"https://www.linkedin.com/in/rita-boling-837789388/"},{"name":"A. Elizabeth Gately","license":"LMSW","state":"TX","linkedin":"https://www.linkedin.com/in/aelizabethgately/"},{"name":"Alea Hornsby","license":"MSW","state":"GA","linkedin":"https://www.linkedin.com/in/alea-hornsby/"},{"name":"Michael Vanisacker","license":"Master Psych","state":"MI","linkedin":"https://www.linkedin.com/in/michael-vanisacker-022018214/"},{"name":"Marisa London, MSW","license":"MSW","state":"OR","linkedin":"https://www.linkedin.com/in/marisa-london-msw-233107161/"},{"name":"Keliya Venable","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/keliya-venable-074148350/"},{"name":"Jeannie McKiernan-Clarke, M.A.","license":"MFT","state":"PA","linkedin":"https://www.linkedin.com/in/jeannie-mckiernan-clarke-m-a-7a525773/"},{"name":"Mary Francis","license":"Psychologists","state":"OTHER","linkedin":"https://www.linkedin.com/in/mary-francis-378bbb1aa/"},{"name":"Kyrie Regan, LSW","license":"LSW","state":"PA","linkedin":"https://www.linkedin.com/in/kyrie-regan-lsw-60803641/"},{"name":"Sofia Morales","license":"MSW","state":"NY","linkedin":"https://www.linkedin.com/in/sofiamorales401/"},{"name":"Alondra Gomez","license":"APCC","state":"CA","linkedin":"https://www.linkedin.com/in/alondra-gomez-6a243b212/"},{"name":"Kayley Palmer","license":"SW intern","state":"PA","linkedin":"https://www.linkedin.com/in/dr-kayley-palmer-h-c-dsw-bs-pubh-cgp-cymhp-3150372b9/"},{"name":"Corina Tsinnajinnie","license":"Associate Therapist","state":"CA","linkedin":"https://www.linkedin.com/in/corina-tsinnajinnie-30893a24b/?lipi=urn%3Ali%3Apage%3Ad_flagship3_groups_manage%3BIom3SW0qS%2F27OQxs2fibCg%3D%3D"},{"name":"Chris Cummins, MBA, LMFT, LCADC","license":"LMFT","state":"CA","linkedin":"https://www.linkedin.com/in/chriscumminslmft/?lipi=urn%3Ali%3Apage%3Ad_flagship3_groups_manage%3BIom3SW0qS%2F27OQxs2fibCg%3D%3D"},{"name":"Jovana Radibratovi\u0107","license":"Therapist","state":"OTHER","linkedin":"https://www.linkedin.com/in/jovanaradibratovi%C4%87/?lipi=urn%3Ali%3Apage%3Ad_flagship3_groups_manage%3BIom3SW0qS%2F27OQxs2fibCg%3D%3D"},{"name":"Amanda Reising","license":"MSSW","state":"KY","linkedin":"https://www.linkedin.com/in/amanda-reising-6a803425/"},{"name":"Zack S","license":"","state":"AL","linkedin":"https://www.linkedin.com/in/zack-s-3482b43ab/"},{"name":"Zachary Sheeley","license":"ALC","state":"AL","linkedin":"https://www.linkedin.com/in/zachary-sheeley-b365aa397/"},{"name":"Julia M.","license":"APCC","state":"CA","linkedin":"https://www.linkedin.com/in/julia-m-b7bb6a2b6/"},{"name":"Mikylah Bausch","license":"LICSWA","state":"WA","linkedin":"https://www.linkedin.com/in/mikylah-bausch-7761911a5/"},{"name":"Nick Mason","license":"BS in psych","state":"DC","linkedin":"https://www.linkedin.com/in/nick-mason-b64952185/"},{"name":"Amanda McGill, MA, LCMHCA, NCC","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/amanda-mcgill-ma-lcmhca-ncc-57615b14a/"},{"name":"Alana Lindsey","license":"MSW","state":"TX","linkedin":"https://www.linkedin.com/in/alana-lindsey-76071427b/"},{"name":"Michele Sacerdote","license":"MHCA","state":"NH","linkedin":"https://www.linkedin.com/in/michele-sacerdote-16150280/"},{"name":"Cheyenne Eckard","license":"MSW","state":"NC","linkedin":"https://www.linkedin.com/in/cheyenne-eckard-ab7198273/"},{"name":"Ayesha A","license":"CMHC","state":"NJ","linkedin":"https://www.linkedin.com/in/ayesha-a-435001220/"},{"name":"Caryn Cohen","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/caryn-cohen/"},{"name":"Tina Zink","license":"AMFT","state":"PA","linkedin":"https://www.linkedin.com/in/tz-new-beginnings/"},{"name":"Brittany Thornton","license":"MFT","state":"IN","linkedin":"https://www.linkedin.com/in/brittany-thornton-9a186a183/"},{"name":"Cory Thorson, M.S., AMFT","license":"AMFT","state":"UT","linkedin":"https://www.linkedin.com/in/corythorson/"},{"name":"Truvella Porter, LMSW, ACM","license":"LMSW","state":"MI","linkedin":"https://www.linkedin.com/in/truvella-porter-lmsw-acm-370aab52/"},{"name":"Stephan Westcott","license":"CMHC","state":"WA","linkedin":"https://www.linkedin.com/in/stephanwestcott/"},{"name":"Karla Santiago, LCPC, LPC, LMHC","license":"LCPC","state":"FL","linkedin":"https://www.linkedin.com/in/karla-santiago-lcpc-lpc-lmhc-06106419/"},{"name":"Quinten Oppong, LMFT","license":"LMFT","state":"GA","linkedin":"https://www.linkedin.com/in/quinten-oppong-lmft-851073152/"},{"name":"Niani Jackson, MSW, ASW","license":"MSW","state":"CA","linkedin":"https://www.linkedin.com/in/niani-jackson-msw-asw-571ab816b/"},{"name":"Vanessa Wasbin","license":"MSW","state":"CA","linkedin":"https://www.linkedin.com/in/wasbin/"},{"name":"Reanna Roane","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/reanna-roane/"},{"name":"Dr. Sharon Cuba Rodriguez","license":"PhD SW","state":"NJ","linkedin":"https://www.linkedin.com/in/dr-sharon-cuba-rodriguez-55392485/"},{"name":"Taylor Golden, MS, LPC, NCC","license":"LPC","state":"TX","linkedin":"https://www.linkedin.com/in/taylor-golden-ms-lpc-ncc-70b6a22a4/"},{"name":"Anastasija (Ana) Ignjatovic","license":"MSW","state":"NY","linkedin":"https://www.linkedin.com/in/anastasija-ignjatovic-6a7a0922a/"},{"name":"Linda Lucchetti","license":"BS in psych","state":"NY","linkedin":"https://www.linkedin.com/in/lindalucchetti/"},{"name":"Sara Tippey","license":"LSW","state":"IN","linkedin":"https://www.linkedin.com/in/sara-tippey-830678401/"},{"name":"Kaylea Sparrow","license":"LCMHCA","state":"NC","linkedin":"https://www.linkedin.com/in/kaylea-sparrow-92ab371b6/"},{"name":"Dan Kline","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/dan-kline-86288391/"},{"name":"Tiana (Sellers) McKnight, MSW, LCSWA, LMSW, GC-C","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/tiana-mcknight-msw-lcswa-lmsw-gc-c-525b30139/"},{"name":"Adam Savitske, MSW, LSW","license":"LSW","state":"PA","linkedin":"https://www.linkedin.com/in/adamsavitske/"},{"name":"Antonique Jones, M.Ed., LCMHC","license":"LCMHC","state":"NC","linkedin":"https://www.linkedin.com/in/antoniquejones/"},{"name":"Moriah Yager","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/moriah-yager-b4b6b43a1/"},{"name":"Cecily Shawkey","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/cecily-shawkey-a4267b12b/"},{"name":"Elliot Carey","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/elliot-carey-97b297238/"},{"name":"Tamika Daniel, MSW, LCSWA","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/tamika-daniel/"},{"name":"Yessalin Islas - Lara","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/yislas29/"},{"name":"Para E. Black","license":"LCSWA","state":"NC","linkedin":"https://www.linkedin.com/in/para-e-black-183393104/"},{"name":"Cynthia A.","license":"AMFT","state":"CA","linkedin":"https://www.linkedin.com/in/gacynthia/"},{"name":"Davin Hasset","license":"BS in psych","state":"TX","linkedin":"https://www.linkedin.com/in/davin-hassett-765a31279/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3B7nENUq%2FhQTaIfexP4uSE6w%3D%3D"},{"name":"Luke Janes","license":"PhD Counseling","state":"CA","linkedin":"https://www.linkedin.com/in/lukewarming/overlay/about-this-profile/"},{"name":"Heather L. Englund MSW, LSW","license":"MSW","state":"OH","linkedin":"https://www.linkedin.com/in/heather-l-englund-msw-lsw-b8217757/overlay/about-this-profile/"},{"name":"Robert Neil Olson MSW/MHP/LICSW","license":"MSW","state":"WA","linkedin":"https://www.linkedin.com/in/robertneilolsonlicsw/"},{"name":"Jasmine (M.Ed) Newbould","license":"CMHC","state":"GA","linkedin":"https://www.linkedin.com/in/jasminenewbould/overlay/about-this-profile/"},{"name":"Michael Caputo LMFT","license":"LMFT","state":"NY","linkedin":"https://www.linkedin.com/in/michaelcaputo/"},{"name":"Erika Piloto, MSW, LCSW-QS, LMSW-C","license":"LCSW","state":"FL","linkedin":"https://www.linkedin.com/in/erika-piloto-msw-lcsw-qs-lmsw-c-1848501a7/overlay/about-this-profile/"},{"name":"Nataliane Martins","license":"MFT","state":"CA","linkedin":"https://www.linkedin.com/in/nataliane-martins-8a2613b2/"},{"name":"Araceli Saenz Rosales","license":"MFT","state":"TX","linkedin":"https://www.linkedin.com/in/araceli-saenz-rosales/"},{"name":"Louise Love, ACC","license":"ACC","state":"CA","linkedin":"https://www.linkedin.com/in/louise-love-coaching/"},{"name":"India Grimes, MA, LPCA","license":"LPCA","state":"SC","linkedin":"https://www.linkedin.com/in/indiagm/"},{"name":"Kasey Schomaker","license":"BS in psych","state":"IL","linkedin":"https://www.linkedin.com/in/kaseyschomaker/"},{"name":"Jocelyn Hernandez (ASW)","license":"ASW","state":"CA","linkedin":"https://www.linkedin.com/in/jocelyn-hernandez-asw-23327a292/overlay/about-this-profile/"},{"name":"Tara Baker","license":"M.S. in Counseling Psychology","state":"MO","linkedin":"https://www.linkedin.com/in/tarabakeroverfelt/"},{"name":"Stacie Aspiazu","license":"LMSW","state":"ID","linkedin":"https://www.linkedin.com/in/stacie-aspiazu-677402235/overlay/about-this-profile/"},{"name":"Kelsea P","license":"MSW","state":"NE","linkedin":"https://www.linkedin.com/in/kelseaperreault/overlay/about-this-profile/"},{"name":"Savannah Henry","license":"MSW","state":"AK","linkedin":"https://www.linkedin.com/in/schenry1/"},{"name":"Sasha Conant","license":"LMSW","state":"ID","linkedin":"https://www.linkedin.com/in/sasha-conant-952879401/"},{"name":"Briana McLean, LACMH","license":"LACMH","state":"DE","linkedin":"https://www.linkedin.com/in/briana-mclean-lacmh-5256a89b/"},{"name":"Sarah McGee","license":"LAC","state":"DE","linkedin":"https://www.linkedin.com/in/sarah-mcgee-de/"},{"name":"Zachary Herzog, LMSW, LCSWA","license":"LMSW","state":"NY","linkedin":"https://www.linkedin.com/in/zachary-herzog-lmsw-lcswa-38b417b9/"},{"name":"Lexi Humphreys","license":"MSW","state":"AK","linkedin":"https://www.linkedin.com/in/lexihumphreys/"},{"name":"Laura Lee Bond","license":"LCSW","state":"TX","linkedin":"https://www.linkedin.com/in/laura-lee-bonde/"},{"name":"l. ramos","license":"MSW","state":"AK","linkedin":"https://www.linkedin.com/in/l-ramos-25320522/"},{"name":"Angela Mendiola","license":"MSCP, LMHC, NCC","state":"HI","linkedin":"https://www.linkedin.com/in/missmendiola/"},{"name":"Ally Unger","license":"LAC","state":"AZ","linkedin":"https://www.linkedin.com/in/allyunger/"},{"name":"Omowumi Akinlofa","license":"LGPC","state":"MD","linkedin":"https://www.linkedin.com/in/omowumi-akinlofa-bab89278/"},{"name":"Noelle Rowe, LCMHCA","license":"LCHMCA","state":"NC","linkedin":"https://www.linkedin.com/in/noelle-rowe/"},{"name":"Joseph Parker M.S. LPC-A","license":"LPCA","state":"TX","linkedin":"https://www.linkedin.com/in/joseph-parker-m-s-lpc-a-b36b774b/?lipi=urn%3Ali%3Apage%3Ad_flagship3_groups_manage%3BVwWWP%2BCoSGSzKFrT1ElIGw%3D%3D"},{"name":"DEBORAH TOME","license":"LCSW","state":"FL","linkedin":"https://www.linkedin.com/in/deborah-tome-0a8798174/"},{"name":"Imani Hagans LPC","license":"LPC","state":"VA","linkedin":"https://www.linkedin.com/in/imani-hagans-lpc-9a0a8175/"},{"name":"Marie Alexis","license":"LPC","state":"PA","linkedin":"https://www.linkedin.com/in/marie-alexis-027a01295/"},{"name":"Emma Sullivan, LMSW","license":"LMSW","state":"NY","linkedin":"https://www.linkedin.com/in/emmasulliv/"},{"name":"Nicole Rucka, LCPC-C","license":"LCPC-C","state":"ME","linkedin":"https://www.linkedin.com/in/nicole-rucka-lcpc-c-21215312a/"},{"name":"Angela Brogan","license":"MA Counseling","state":"WV","linkedin":"https://www.linkedin.com/in/angela-brogan-b564b1254/"},{"name":"Aminah Quadri","license":"MA Counseling","state":"TX","linkedin":"https://www.linkedin.com/in/aminah-quadri-60b29676/"},{"name":"Heather Kray","license":"MA Counseling","state":"FL","linkedin":"https://www.linkedin.com/in/heather-kray/"},{"name":"Shezada Holland","license":"LPCA","state":"SC","linkedin":"https://www.linkedin.com/in/shezada-holland-08772b403/"},{"name":"Lillian Baker, LMSW","license":"LMSW","state":"OTHER","linkedin":"https://www.linkedin.com/in/lillian-baker-lmsw-109063311/"},{"name":"Emilee Omoto, LMFT, AAMFT Approved Supervisor","license":"LMFT","state":"HI","linkedin":"https://www.linkedin.com/in/emilee-omoto-lmft-27638862/"}];
+
+const SUPPLEMENTAL_ADDS = [
+  {"name":"Lillian Baker, LMSW","license":"LMSW","state":"MD","linkedin":"https://www.linkedin.com/in/lillian-baker-lmsw-109063311/"},
+  {"name":"Emilee Omoto, LMFT, AAMFT Approved Supervisor","license":"LMFT","state":"HI","linkedin":"https://www.linkedin.com/in/emilee-omoto-lmft-27638862/"},
+  {"name":"Gabrielle Self","license":"LPC","state":"GA","linkedin":"https://www.linkedin.com/in/gabrielle-self-0528321a1/"},
+  {"name":"Shelbee Avelino","license":"LPCA","state":"TN","linkedin":"https://www.linkedin.com/in/shelbee-avelino-8bb57219b/"},
+  {"name":"Jon Misura","license":"MSW","state":"HI","linkedin":"https://www.linkedin.com/in/jon-misura-73490783/"},
+  {"name":"Julia Suh","license":"Pursuing MA, Mental Health Counseling/Counselor","state":"HI","linkedin":"https://www.linkedin.com/in/juliasuhhawaii/"},
+  {"name":"Sarah Kolzow","license":"BA in psych","state":"CA","linkedin":"https://www.linkedin.com/in/sarah-kolzow-33263318b/"},
+  {"name":"Jillian Thony","license":"MFT","state":"AK","linkedin":"https://www.linkedin.com/in/jillianthony/"},
+  {"name":"Logan Hartsog, MSW LGSW","license":"LGSW","state":"WV","linkedin":"https://www.linkedin.com/in/logan-hartsog-msw-lgsw-4a5154380/"},
+  {"name":"Allen (Allie) Liu","license":"LMSW","state":"NY","linkedin":"https://www.linkedin.com/in/allenliu314/"},
+  {"name":"Brittany Strudwick","license":"MFT","state":"IN","linkedin":"https://www.linkedin.com/in/brittany-strudwick-9a186a183/"},
+  {"name":"Soleil Merroir","license":"LCSW","state":"CA","linkedin":"https://www.linkedin.com/in/soleil-merroir-2a147343/"},
+  {"name":"Kat Noren","license":"","state":"CA","linkedin":"https://www.linkedin.com/in/katherinenoren/"},
+  {"name":"Rachel Ramirez","license":"LMFT","state":"CA","linkedin":"https://www.linkedin.com/in/rachelramierz/"},
+  {"name":"Tamara Lucke, MSW","license":"MSW","state":"MT","linkedin":"https://www.linkedin.com/in/tamara-lucke-01555771/"}
+];
+
+const FIELD_UPDATES = [
+  {"linkedin":"https://www.linkedin.com/in/omowumi-akinlofa-bab89278/","license":"LGPC","state":"MD"},
+  {"linkedin":"https://www.linkedin.com/in/sarahallisonpotter/","name":"Sarah Potter"},
+  {"linkedin":"https://www.linkedin.com/in/kelseaperreault/overlay/about-this-profile/","name":"Kelsea Perreault"},
+  {"linkedin":"https://www.linkedin.com/in/nekea/","name":"Nekea Strong"},
+  {"linkedin":"https://www.linkedin.com/in/anneliselatini/","license":"Coach"},
+  {"linkedin":"https://www.linkedin.com/in/maria-keeter-9a1a10328/","license":"Student"},
+  {"linkedin":"https://www.linkedin.com/in/karen-qualls-ba7308155/","license":"School Counselor"},
+  {"linkedin":"https://www.linkedin.com/in/gkillea/","license":"B.S. Elementary Education"},
+  {"linkedin":"https://www.linkedin.com/in/kaelasaez/","license":"Yoga Instructor"}
+];
+
+// Confirmed (by URL and by name) to have no match in the most recent full
+// group export — treated as having left the group.
+const REMOVE_URLS = [
+  "https://www.linkedin.com/in/cinthiamilianlpc/",
+  "https://www.linkedin.com/in/kathleen-ryan-136b31234/",
+  "https://www.linkedin.com/in/emily-kirker-a31b72172/",
+  "https://www.linkedin.com/in/taylor-smith-70b6a22a4/",
+  "https://www.linkedin.com/in/alison-m-b7a68358/",
+  "https://www.linkedin.com/in/emma--green/",
+  "https://www.linkedin.com/in/meredith-brooks-6a4957/",
+  "https://www.linkedin.com/in/angie-gunn-lcsw-cst-csts-2a147343/",
+  "https://www.linkedin.com/in/miranda-perez-409006294/",
+  "https://www.linkedin.com/in/rita-boling-837789388/",
+  "https://www.linkedin.com/in/brittany-thornton-9a186a183/",
+  "https://www.linkedin.com/in/sara-tippey-830678401/",
+  "https://www.linkedin.com/in/heather-kray/"
+].map(u => u.toLowerCase().trim());
+
+const US_MAP_INNER_SVG = `
+<g class="state">
+
+<path class="al" d="m 643,467.4 .4,-7.3 -.9,-1.2 -1.7,-.7 -2.5,-2.8 .5,-2.9 48.8,-5.1 -.7,-2.2 -1.5,-1.5 -.5,-1.4 .6,-6.3 -2.4,-5.7 .5,-2.6 .3,-3.7 2.2,-3.8 -.2,-1.1 -1.7,-1 v -3.2 l -1.8,-1.9 -2.9,-6.1 -12.9,-45.8 -45.7,4 1.3,2 -1.3,67 4.4,33.2 .9,-.5 1.3,.1 .6,.4 .8,-.1 2,-3.8 v -2.3 l 1.1,-1.1 1.4,.5 3.4,6.4 v .9 l -3.3,2.2 3.5,-.4 4.9,-1.6 z">
+<title>Alabama</title></path>
+
+<!-- The scale of Alaska is 42% that of the contiguous United States, so its area is reduced to about 17.6%. The Islands of Four Mountains, Andreanof Islands, Rat Islands and Near Islands are not shown. -->
+<path class="ak" d="m 15.8,572 h 2.4 l .7,.7 -1,1.2 -1.9,.2 -2.5,1.3 -3.7,-.1 2.2,-.9 .3,-1.1 2.5,-.3 z m 8.3,-1.7 1.3,.5 h .9 l .5,1.2 .3,-.6 .9,.2 1.1,1.5 0,.5 -4.2,1.9 -2.4,-.1 -1,-.5 -1.1,.7 -2,0 -1.1,-1.4 4.7,-.5 z m 5.4,-.1 1,.1 .7,.7 v 1 l -1.3,.1 -.9,-1.1 z m 2.5,.3 1.3,-.1 -.1,1 -1.1,.6 z m .3,2.2 3.4,-.1 .2,1.1 -1.3,.1 -.3,-.5 -.8,.6 -.4,-.6 -.9,-.2 z m 166.3,7.6 2.1,.1 -1,1.9 -1.1,-.1 -.4,-.8 .5,-1.3 m -1.1,-2.9 .6,-1.3 -.2,-2.3 2.4,-.5 4.5,4.4 1.3,3.4 1.9,1.6 .3,5.1 -1.4,0 -1.3,-2.3 -3.1,-2.4 h -.6 l 1.1,2.8 1.7,.2 .2,2.1 -.9,.1 -4.1,-4.4 -.1,-.9 1.9,-1 0,-1 -.5,-.8 -1.6,-.6 -1.7,-1.3 1.4,.1 .5,-.4 -.6,-.9 -.6,.5 z m -3.6,-9.1 1.3,.1 2.4,2.5 -.2,.8 -.8,-.1 -.1,1.8 .5,.5 0,1.5 -.8,.3 -.4,1.2 -.8,-.4 -.4,-2.2 1.1,-1.4 -2.1,-2.2 .1,-1.2 z m 1.5,-1.5 1.9,.2 2.5,.1 3.4,3.2 -.2,.5 -1.1,.6 -1.1,-.2 -.1,-.7 -1.2,-1.6 -.3,.7 1,1.3 -.2,1.2 -.8,-.1 -1.3,.2 -.1,-1.7 -2.6,-2.8 z m -12.7,-8.9 .9,-.4 h 1.6 l .7,-.5 4.1,2.2 .1,1.5 -.5,.5 h -.8 l -1.4,-.7 1.1,1.3 1.8,0 .5,2 -.9,0 -2.2,-1.5 -1.1,-.2 .6,1.3 .1,.9 .8,-.6 1.7,1.2 1.3,-.1 -.2,.8 1.9,4.3 0,3.4 .4,2.1 -.8,.3 -1.2,-2 -.5,-1.5 -1.6,-1.6 -.2,-2.7 -.6,-1.7 h -.7 l .3,1.1 0,.5 -1.4,1 .1,-3.3 -1.6,-1.6 -1.3,-2.3 -1.2,-1.2 z m 7.2,-2.3 1.1,1.8 2.4,-.1 1,2.1 -.6,.6 2,3.2 v 1.3 l -1.2,.8 v .7 l -2,1.9 -.5,-1.4 -.1,-1.3 .6,-.7 v -1.1 l -1.5,-1.9 -.5,-3.7 -.9,-1.5 z m -56.7,-18.3 -4,4.1 v 1.6 l 2.1,-.8 .8,-1.9 2.2,-2.4 z m -31.6,16.6 0,.6 1.8,1.2 .2,-1.4 .6,.9 3.5,.1 .7,-.6 .2,-1.8 -.5,-.7 -1.4,0 0,-.8 .4,-.6 v -.4 l -1.5,-.3 -3.3,3.6 z m -8.1,6.2 1.5,5.8 h 2.1 l 2.4,-2.5 .3,1.2 6.3,-4 .7,-1 -1,-1.1 v -.7 l .5,-1.3 -.9,-.1 -2,1 0,-1.2 -2.7,-.6 -2.4,.3 -.2,3.4 -.8,-2 -1.5,-.1 -1,.6 z m -2.2,8.2 .1,-.7 2.1,-1.3 .6,.3 1.3,.2 1.3,1.2 -2.2,-.2 -.4,-.6 -1,.6 z m -5.2,3.3 -1.1,.8 1.5,1.4 .8,-.7 -.1,-1.3 z m -6.3,-7.9 1.4,.1 .4,.6 -1.8,.1 z m -13.9,11.9 v .5 l .7,.1 -.1,-.6 z m -.4,-3.2 -1,1 v .5 l .7,1.1 1,-1 -.7,-.1 z m -2,-.8 -.3,1 -1.3,.1 -.4,.2 0,1.3 -.5,.9 .6,0 .7,-.9 .8,-.1 .9,-1 .2,-1.3 z m -4.4,-2 -.2,1.8 1.4,.8 1.2,-.6 0,-1 1.7,-.3 -.1,-.6 -.9,-.2 -.7,.6 -.9,-.5 z m -4.9,-.1 1,.7 -.3,1.2 -1.4,-1.1 z m -4.2,1.3 1.4,.1 -.7,.8 z m -3.5,3 1.8,1.1 -1.7,.1 z m -25.4,-31.2 1.2,.6 -.8,.6 z m -.7,-6.3 .4,1.2 .8,-1.2 z m 24.3,-19.3 1.5,-.1 .9,.4 1.1,-.5 1.3,-.1 1.6,.8 .8,1.9 -.1,.9 -1.2,2 -2.4,-.2 -2.1,-1.8 -1,-.4 -1.1,-2 z m -21.1,-14.4 .1,1.9 2,2 v .5 l -.8,-.2 -1.7,-.8 -.3,-1.1 -.3,-1.6 z m 18.3,-23.3 v 1.2 l 1.9,1.8 h 2.3 l .6,1.1 v 1.6 l 2.1,1.9 1.8,1.2 -.1,.7 -.7,1.1 -1.4,-1.2 -2.1,.1 -.8,-.8 -.9,-2.1 -1.5,-2.2 -2.6,-.1 -1,-.7 1,-2.1 z m 16.8,-4.5 1,0 .1,1.1 h -1 z m 16.2,19.7 .9,.1 0,1.2 -1.7,-.5 z m 127.8,77.7 -1.2,.4 -.1,1.1 h 1.2 z m -157.6,-4.5 -1.3,-.4 -4.1,.6 -2.8,1.4 -.1,1.9 1.9,.7 1.5,-.9 1.7,-.1 4.7,1.4 .1,-1.3 -1.6,-1.1 z m 2.1,2.3 -.4,-1.4 1.2,.2 .1,1.4 1.8,0 .4,-2.5 .3,2.4 2.5,-.1 3.2,-3.3 .8,.1 -.7,1.3 1.4,.9 4.2,-.2 2.6,-1.2 1.4,-.1 .3,1.5 .6,-.5 .4,-1.4 5.9,.2 1.9,-1.6 -1.3,-1.1 .6,-1.2 2.6,.2 -.2,-1.2 2.5,.2 .7,-1.1 1.1,.2 4.6,-1.9 .2,-1.7 5.6,-2.4 2,-1.9 1.2,-.6 1.3,.8 2.3,-.9 1.1,-1.9 .5,-1.3 1.7,-.9 1.5,-.7 .4,-1.4 -1.1,-1.7 -2.2,-.2 -.2,-1.3 .8,-1.6 1.4,-.2 1.3,-1.5 1.9,-.1 3.4,-3.2 .4,-1.4 1.5,-2.3 3.8,-4.1 2.5,-.9 1.9,-.9 2.1,.8 1.4,2.6 -1.5,0 -1.4,-1.5 -3,2 -1.7,.1 -.2,3.1 -3.1,4.9 .6,2 2.3,0 -.6,1 -1.4,.1 -2.4,1.8 0,.9 1.9,1 3.4,-.6 1.4,-1.7 1.4,.1 3,-1.7 .5,-2.3 1.6,-.1 6.3,.8 1,-1.1 1,-4.5 -1.6,1.1 .6,-2.2 -1.6,-1.4 .8,-1.5 .1,1.5 3.4,0 .7,-1 1.6,-.1 -.3,1.7 1.9,.1 -1.9,1.3 4.1,1.1 -3.5,.4 -1.3,1.2 .9,1.4 4.6,-1.7 2.3,1.7 .7,-.9 .6,1.4 4,2.3 h 2.9 l 3.9,-.5 4.3,1.1 2,1.9 4.5,.4 1.8,-1.5 .8,2.4 -1.8,.7 1.2,1.2 7.4,3.8 1.4,2.5 5.4,4.1 3.3,-2 -.6,-2.2 -3.5,-2 3.1,1.2 .5,-.7 .9,1.3 0,2.7 2.1,-.6 2.1,1.8 -2.5,-9.8 1.2,1.3 1.4,6 2.2,2.5 2.4,-.4 1.8,3.5 h .9 l .6,5.6 3.4,.5 1.6,2.2 1.8,1.1 .4,2.8 -1.8,2.6 2.9,1.6 1.2,-2.4 -.2,3.1 -.8,.9 1.4,1.7 .7,-2.4 -.2,-1.2 .8,.2 .6,2.3 -1,1.4 .6,2.6 .5,.4 .3,-1.6 .7,.6 -.3,2 1.2,.2 -.4,.9 1.7,-.1 0,-1 h -1 l .1,-1.7 -.8,-.6 1.7,-.3 .5,-.8 0,-1.6 .5,1.3 -.6,1.8 1.2,3.9 1.8,.1 2.2,-4.2 .1,-1.9 -1.3,-4 -.1,-1.2 .5,-1.2 -.7,-.7 -1.7,.1 -2.5,-2 -1.7,0 -2,-1.4 -1.5,0 -.5,-1.6 -1.4,-.3 -.2,-1.5 -1,-.5 .1,-1.7 -5.1,-7.4 -1.8,-1.5 v -1.2 l -4.3,-3.5 -.7,-1.1 -1.6,-2 -1.9,-.6 0,-2.2 -1.2,-1.3 -1.7,-.7 -2.1,1.3 -1.6,2.1 -.4,2.4 -1.5,.1 -2.5,2.7 -.8,-.3 v -2.5 l -2.4,-2.2 -2.3,-2 -.5,-2 -2.5,-1.3 .2,-2.2 -2.8,-.1 -.7,1.1 -1.2,0 -.7,-.7 -1.2,.8 -1.8,-1.2 0,-85.8 -6.9,-4.1 -1.8,-.5 -2.2,1.1 -2.2,.1 -2.3,-1.6 -4.3,-.6 -5.8,-3.6 -5.7,-.4 -2,.5 -.2,-1.8 -1.8,-.7 1.1,-1 -.2,-.9 -3.2,-1.1 h -2.4 l -.4,.4 -.9,-.6 .1,-2.6 -.8,-.9 -2.5,2.9 -.8,-.1 v -.8 l 1.7,-.8 v -.8 l -1.9,-2.4 -1.1,-.1 -4.5,3.1 h -3.9 l .4,-.9 -1.8,-.1 -5.2,3.4 -1.8,0 -.6,-.8 -2.7,1.5 -3.6,3.7 -2.8,2.7 -1.5,1.2  -2.6,.1 -2.2,-.4 -2.3,-1.3 v 0 l -2.8,3.9 -.1,2.4 2.6,2.4 2.1,4.5 .2,5.3 2.9,2 3.4,.4 .7,.8 -1.5,2.3 .7,2.7 -1.7,-2.6 v -2.4 l -1.5,-.3 .1,1.2 .7,2.1 2.9,3.7 h -1.4 l -2.2,1.1 -6.2,-2.5 -.1,-2 1.4,-1.3 0,-1.4 -2.1,-.5 -2.3,.2 -4.8,.2 1.5,2.3 -1.9,-1.8 -8.4,1.2 -.8,1.5 4.9,4.7 -.8,1.4 -.3,2 -.7,.8 -.1,1.9 4.4,3.6 4.1,.2 4.6,1.9 h 2 l .8,-.6 3.8,.1 .1,-.8 1.2,1.1 .1,2 -2.5,-.1 .1,3.3 .5,3.2 -2.9,2.7 -1.9,-.1 -2,-.8 -1,.1 -3.1,2.1 -1.7,.2 -1.4,-2.8 -3.1,0 -2.2,2 -.5,1.8 -3.3,1.8 -5.3,4.3 -.3,3.1 .7,2.2 1,1.2 1,-.4 .9,1 -.8,.6 -1.5,.9 1.1,1.5 -2.6,1.1 .8,2.2 1.7,2.3 .8,4.1 4,1.5 2.6,-.8 1.7,-1.1 .5,2.1 .3,4.4 -1.9,1.4 0,4.4 -.6,.9 h -1.7 l 1.7,1.2 2.1,-.1 .4,-1 4.6,-.6 2,2.6 1.3,-.7 1.3,5.1 1,.5 1,-.7 .1,-2.4 .9,-1 .7,1.1 .2,1.6 1.6,.4 4.7,-1.2 .2,1.2 -2,1.1 -1.6,1.7 -2.8,7 -4.3,2 -1.4,1.5 -.3,1.4 -1,-.6 -9.3,3.3 -1.8,4.1 -1.3,-.4 .5,-1.1 -1.5,-1.4 -3.5,-.2 -5.3,3.2 -2.2,1.3 -2.3,0 -.5,2.4 z">
+<title>Alaska</title></path>
+
+<path class="az" d="m 139.6,387.6 3,-2.2 .8,-2.4 -1,-1.6 -1.8,-.2 -1.1,-1.6 1.1,-6.9 1.6,-.3 2.4,-3.2 1.6,-7 2.4,-3.6 4.8,-1.7 1.3,-1.3 -.4,-1.9 -2.3,-2.5 -1.2,-5.8 -1.4,-1.8 -1.3,-3.4 .9,-2.1 1.4,-3 .5,-2.9 -.5,-4.9 1,-13.6 3.5,-.6 3.7,1.4 1.2,2.7 h 2 l 2.4,-2.9 3.4,-17.5 46.2,8.2 40,6 -17.4,124.1 -37.3,-5.4 -64.2,-37.5 .5,-2.9 2,-1.8 z">
+<title>Arizona</title></path>
+
+<path class="ar" d="m 584.2,367 .9,-2.2 1.2,.5 .7,-1 -.8,-.7 .3,-1.5 -1.1,-.9 .6,-1 -.1,-1.5 -1.1,-.1 .8,-.8 1.3,.8 .3,-1.4 -.4,-1.1 .1,-.7 2,.6 -.4,-1.5 1.6,-1.3 -.5,-.9 -1.1,.1 -.6,-.9 .9,-.9 1.6,-.2 .5,-.8 1.4,-.2 -.1,-.8 -.9,-.9 v -.5 h 1.5 l .4,-.7 -1.4,-1 -.1,-.6 -11.2,.8 2.8,-5.1 1.7,-1.5 v -2.2 l -1.6,-2.5 -39.8,2 -39.1,.7 4.1,24.4 -.7,39 2.6,2.3 2.8,-1.3 3.2,.8 .2,11.9 52.3,-1.3 1.2,-1.5 .5,-3 -1.5,-2.3 -.5,-2.2 .9,-.7 v -.8 l -1.7,-1.1 -.1,-.7 1.6,-.9 -1.2,-1.1 1.7,-7.1 3.4,-1.6 v -.8 l -1.1,-1.4 2.9,-5.4 h 1.9 l 1.5,-1.2 -.3,-5.2 3.1,-4.5 1.8,-.6 -.5,-3.1 z">
+<title>Arkansas</title></path>
+
+<path class="ca" d="m 69.4,365.6 3.4,5.2 -1.4,.1 -1.8,-1.9 z m 1.9,-9.8 1.8,4.1 2.6,1 .7,-.6 -1.3,-2.5 -2.6,-2.4 z m -19.9,-19 v 2.4 l 2,1.2 4.4,-.2 1,-1 -3.1,-.2 z m -5.9,.1 3.3,.5 1.4,2.2 h -3.8 z m 47.9,45.5 -1,-3 .2,-3 -.4,-7.9 -1.8,-4.8 -1.2,-1.4 -.6,-1.5 -7,-8.6 -3.6,.1 -2,-1.9 1.1,-1.8 -.7,-3.7 -2.2,-1.2 -3.9,-.6 -2.8,-1.3 -1.5,-1.9 -4.5,-6.6 -2.7,-2.2 -3.7,-.5 -3.1,-2.3 -4.7,-1.5 -2.8,-.3 -2.5,-2.5 .2,-2.8 .8,-4.8 1.8,-5.1 -1.4,-1.6 -4,-9.4 -2.7,-3.7 -.4,-3 -1.6,-2.3 .2,-2.5 -2,-5 -2.9,-2.7 .6,-7.1 2.4,-.8 1.8,-3.1 -.4,-3.2 -1,-.9 h -2.5 l -2.5,-3.3 -1.5,-3.5 v -7.5 l 1.2,-4.2 .2,-2.1 2.5,.2 -.1,1.6 -.8,.7 v 2.5 l 3.7,3.2 v -4.7 l -1.4,-3.4 .5,-1.1 -1,-1.7 2.8,-1.5 -1.9,-3 -1.4,.5 -1.5,3.8 .5,1.3 -.8,1 -.9,-.1 -5.4,-6.1 .7,-5.6 -1.1,-3.9 -6.5,-12.8 .8,-10.7 2.3,-3.6 .2,-6.4 -5.5,-11.1 .3,-5.2 6.9,-7.5 1.7,-2.4 -.1,-1.4 4,-9.2 .1,-8.4 .9,-2.5 66.1,18.6 -16.4,63.1 1.1,3.5 70.4,105 -.9,2.1 1.3,3.4 1.4,1.8 1.2,5.8 2.3,2.5 .4,1.9 -1.3,1.3 -4.8,1.7 -2.4,3.6 -1.6,7 -2.4,3.2 -1.6,.3 -1.1,6.9 1.1,1.6 1.8,.2 1,1.6 -.8,2.4 -3,2.2 -2.2,-.1 z">
+<title>California</title></path>
+
+<path class="co" d="m 374.6,323.3 -16.5,-1 -51.7,-4.8 -52.6,-6.5 11.5,-88.3 44.9,5.7 37.5,3.4 33.1,2.4 -1.4,22.1 z">
+<title>Colorado</title></path>
+
+<path class="ct" d="m 873.5,178.9 .4,-1.1 -3.2,-12.3 -.1,-.3 -14.9,3.4 v .7 l -.9,.3 -.5,-.7 -10.5,2.4 2.8,16.3 1.8,1.5 -3.5,3.4 1.7,2.2 5.4,-4.5 1.7,-1.3 h .8 l 2.4,-3.1 1.4,.1 2.9,-1.1 h 2.1 l 5.3,-2.7 2.8,-.9 1,-1 1.5,.5 z">
+<title>Connecticut</title></path>
+
+<path class="de" d="m 822.2,226.6 -1.6,.3 -1.5,1.1 -1.2,2.1 7.6,27.1 10.9,-2.3 -2.2,-7.6 -1.1,.5 -3.3,-2.6 -.5,-1.7 -1.8,-1 -.2,-3.7 -2.1,-2.2 -1.1,-.8 -1.2,-1.1 -.4,-3.2 .3,-2.1 1,-2.2 z">
+<title>Delaware</title></path>
+
+<path class="fl" d="m 751.7,445.1 -4,-.7 -1.7,-.9 -2.2,1.4 v 2.5 l 1.4,2.1 -.5,4.3 -2.1,.6 -1,-1.1 -.6,-3.2 -50.1,3.3 -3.3,-6 -48.8,5.1 -.5,2.9 2.5,2.8 1.7,.7 .9,1.2 -.4,7.3 -1.1,.6 .5,.4 1,-.3 .7,-.8 10.5,-2.7 9.2,-.5 8.1,1.9 8.5,5 2.4,.8 2.2,2 -.1,2.7 h 2.4 l 1.9,-1 2.5,.1 2,-.8 2.9,-2 3.1,-2.9 1.1,-.4 .6,.5 h 1.4 l .5,-.8 -.5,-1.2 -.6,-.6 .2,-.8 2,-1.1 5,-.4 .8,1 1,.1 2.3,1 3,1.8 1.2,1.7 1.1,1.2 2.8,1.4 v 2.4 l 2.8,1.9 1,.1 1.6,1.4 .7,1.6 1,.2 .8,2.1 .7,.6 1,-1.1 2.9,.1 .5,1.4 1.1,.9 v 1.3 l 2.9,2.2 .2,9.6 -1.8,5.8 1,1.2 -.2,3.4 -.8,1.4 .7,1.2 2.3,2.3 .3,1.5 .8,1 -.4,-1.9 1.3,-.6 .8,-3.6 -3,-1.2 .1,-.6 2.6,-.4 .9,2.6 1.1,.6 .1,-2 1.1,.3 .6,.8 -.1,.7 -2.9,4.2 -.2,1.1 -1.7,1.9 v 1.1 l 3.7,3.8 5.3,7.9 1.8,2.1 v 1.8 l 2.8,4.6 2.3,.6 .7,-1.2 -2.1,.3 -3,-4.5 .2,-1.4 1.5,-.8 v -1.5 l -.6,-1.3 .9,-.9 .4,.9 .7,.5 v 4 l -1.2,-.6 -.8,.9 1.4,1.6 1,2.6 1.2,-.6 2.3,1.2 2.1,2.2 1.6,5.1 3.1,4.8 .8,-1.3 2.8,-.5 3.2,1.3 .3,1.7 3.3,3.8 .1,1.1 2.2,2.7 -.7,.5 v 2.7 l 2.7,1.4 h 1.5 l 2.7,-1.8 1.5,.3 1.1,.4 2.3,-1.7 .2,-.7 1.2,.3 2.4,-1.7 1.3,-2.3 -.7,-3.2 -.2,-1.3 1.1,-4 .6,-.2 .6,1.6 .8,-1.8 -.8,-7.2 -.4,-10.5 -1,-6.8 -.7,-1.7 -6.6,-11.1 -5.2,-9.1 -2.2,-3.3 -1.3,-3.6 -.2,-3.4 .9,-.3 v -.9 l -1.1,-2.2 -4,-4 -7.6,-9.7 -5.7,-10.4 -4.3,-10.7 -.6,-3.7 -1.2,-1 -.5,-3.8 z m 9.2,134.5 1.7,-.1 -.7,-1 z m 7.3,-1.1 v -.7 l 1.6,-.2 3.7,-3.3 1.5,-.6 2.4,-.9 .3,1.3 1.7,.8 -2.6,1.2 h -2.4 l -3.9,2.5 z m 17.2,-7.6 -3,1.4 -1,1.3 1.1,.1 z m 3.8,-2.9 -1.1,.3 -1.4,2 1.1,-.2 1.5,-1.6 z m 8.3,-15.7 -1.7,5.6 -.8,1 -1,2.6 -1.2,1.6 -.7,1.7 -1.9,2.2 v .9 l 2.7,-2.8 2.4,-3.5 .6,-2 2.1,-4.9 z">
+<title>Florida</title></path>
+
+<path class="ga" d="m 761.8,414.1 v 1.4 l -4.2,6.2 -1.2,.2 1.5,.5 v 2 l -.9,1.1 -.6,6 -2.3,6.2 .5,2 .7,5.1 -3.6,.3 -4,-.7 -1.7,-.9 -2.2,1.4 v 2.5 l 1.4,2.1 -.5,4.3 -2.1,.6 -1,-1.1 -.6,-3.2 -50.1,3.3 -3.3,-6 -.7,-2.2 -1.5,-1.5 -.5,-1.4 .6,-6.3 -2.4,-5.7 .5,-2.6 .3,-3.7 2.2,-3.8 -.2,-1.1 -1.7,-1 v -3.2 l -1.8,-1.9 -2.9,-6.1 -12.9,-45.8 22.9,-2.9 21.4,-3 -.1,1.9 -1.9,1 -1.4,3.2 .2,1.3 6.1,3.8 2.6,-.3 3.1,4 .4,1.7 4.2,5.1 2.6,1.7 1.4,.2 2.2,1.6 1.1,2.2 2,1.6 1.8,.5 2.7,2.7 .1,1.4 2.6,2.8 5,2.3 3.6,6.7 .3,2.7 3.9,2.1 2.5,4.8 .8,3.1 4.2,.4 z">
+<title>Georgia</title></path>
+
+<!-- Hawaii is shown in the same scale as the contiguous United States. The Northwestern Hawaiian Islands are not shown. -->
+<path class="hi" d="m 317,553.7 -.2,3.2 1.7,1.9 .1,1.2 -4.8,4.5 -.1,1.2 1.9,3.2 1.7,4.2 v 2.6 l -.5,1.2 .1,3.4 4.1,2.1 1.1,1.1 1.2,-1.1 2.1,-3.6 4.5,-2.9 3.3,-.5 2.5,-1 1.7,-1.2 3.2,-3.5 -2.8,-1.1 -1.4,-1.4 .1,-1.7 -.5,-.6 h -2 l .2,-2.5 -.7,-1.2 -2.6,-2.3 -4.5,-1.9 -2.8,-.2 -3.3,-2.7 -1.2,-.6 z m -15.3,-17 -1.1,1.5 -.1,1.7 2.7,2.4 1.9,.5 .6,1 .4,3 3.6,.2 5.3,-2.6 -.1,-2.5 -1.4,-.5 -3.5,-2.6 -1.8,-.3 -2.9,1.3 -1.5,-2.7 z m -1.5,11.5 .9,-1.4 2.5,-.3 .6,1.8 z m -7,-8.7 1.7,4 3.1,-.6 .3,-2 -1.4,-1.5 z m -4.1,-6.7 -1.1,2.4 h 5 l 4.8,1.6 2.5,-1.6 .2,-1.5 -4.8,.2 z m -16,-10.6 -1.9,2.1 -2.9,.6 .8,2.2 2.2,2.8 .1,1 2.1,-.3 2.3,.1 1.7,1.2 3.5,-.8 v -.7 l -1,-.8 -.5,-2.1 -.8,-.3 -.5,1 -1.2,-1.3 .2,-1.4 -1.8,-3.3 -1.1,-.7 z m -31.8,-12.4 -4.2,2.9 .2,2.3 2.4,1.2 1.9,1.3 2.7,.4 2.6,-2.2 -.2,-1.9 .8,-1.7 v -1.4 l -1,-.9 z m -10.8,4.8 -.3,1.2 -1.9,.9 -.6,1.8 1,.8 1.1,-1.5 1.9,-.6 .4,-2.6 z">
+<title>Hawaii</title></path>
+
+<path class="id" d="m 165.3,183.1 -24.4,-5.4 8.5,-37.3 2.9,-5.8 .4,-2.1 .8,-.9 -.9,-2 -2.9,-1.2 .2,-4.2 4,-5.8 2.5,-.8 1.6,-2.3 -.1,-1.6 1.8,-1.6 3.2,-5.5 4.2,-4.8 -.5,-3.2 -3.5,-3.1 -1.6,-3.6 1.1,-4.3 -.7,-4 12.7,-56.1 14.2,3 -4.8,22 3.7,7.4 -1.6,4.8 3.6,4.8 1.9,.7 3.9,8.3 v 2.1 l 2.3,3 h .9 l 1.4,2.1 h 3.2 v 1.6 l -7.1,17 -.5,4.1 1.4,.5 1.6,2.6 2.8,-1.4 3.6,-2.4 1.9,1.9 .5,2.5 -.5,3.2 2.5,9.7 2.6,3.5 2.3,1.4 .4,3 v 4.1 l 2.3,2.3 1.6,-2.3 6.9,1.6 2.1,-1.2 9,1.7 2.8,-3.3 1.8,-.6 1.2,1.8 1.6,4.1 .9,.1 -8.5,54.8 -47.9,-8.2 z">
+<title>Idaho</title></path>
+
+<path class="il" d="m 623.5,265.9 -1,5.2 v 2 l 2.4,3.5 v .7 l -.3,.9 .9,1.9 -.3,2.4 -1.6,1.8 -1.3,4.2 -3.8,5.3 -.1,7 h -1 l .9,1.9 v .9 l -2.2,2.7 .1,1.1 1.5,2.2 -.1,.9 -3.7,.6 -.6,1.2 -1.2,-.6 -1,.5 -.4,3.3 1.7,1.8 -.4,2.4 -1.5,.3 -6.9,-3 -4,3.7 .3,1.8 h -2.8 l -1.4,-1.5 -1.8,-3.8 v -1.9 l .8,-.6 .1,-1.3 -1.7,-1.9 -.9,-2.5 -2.7,-4.1 -4.8,-1.3 -7.4,-7.1 -.4,-2.4 2.8,-7.6 -.4,-1.9 1.2,-1.1 v -1.3 l -2.8,-1.5 -3,-.7 -3.4,1.2 -1.3,-2.3 .6,-1.9 -.7,-2.4 -8.6,-8.4 -2.2,-1.5 -2.5,-5.9 -1.2,-5.4 1.4,-3.7 .7,-.7 .1,-2.3 -.7,-.9 1,-1.5 1.8,-.6 .9,-.3 1,-1.2 v -2.4 l 1.7,-2.4 .5,-.5 .1,-3.5 -.9,-1.4 -1,-.3 -1.1,-1.6 1,-4 3,-.8 h 2.4 l 4.2,-1.8 1.7,-2.2 .1,-2.4 1.1,-1.3 1.3,-3.2 -.1,-2.6 -2.8,-3.5 h -1.2 l -.9,-1.1 .2,-1.6 -1.7,-1.7 -2.5,-1.3 .5,-.6 45.9,-2.8 .1,4.6 3.4,4.6 1.2,4.1 1.6,3.2 z">
+<title>Illinois</title></path>
+
+<path class="in" d="m 629.2,214.8 -5.1,2.3 -4.7,-1.4 4.1,50.2 -1,5.2 v 2 l 2.4,3.5 v .7 l -.3,.9 .9,1.9 -.3,2.4 -1.6,1.8 -1.3,4.2 -3.8,5.3 -.1,7 h -1 l .9,1.9 1.1,.8 .6,-1 -.7,-1.7 4.6,-.5 .2,1.2 1.1,.2 .4,-.9 -.6,-1.3 .3,-.8 1.3,.8 1.7,-.4 1.7,.6 3.4,2.1 1.8,-2.8 3.5,-2.2 3,3.3 1.6,-2.1 .3,-2.7 3.8,-2.3 .2,1.3 1.9,1.2 3,-.2 1.2,-.7 .1,-3.4 2.5,-3.7 4.6,-4.4 -.1,-1.7 1.2,-3.8 2.2,1 6.7,-4.5 -.4,-1.7 -1.5,-2.1 1,-1.9 -6.6,-57.2 -.1,-1.4 -32.4,3.4 z">
+<title>Indiana</title></path>
+
+<path class="ia" d="m 556.9,183 2.1,1.6 .6,1.1 -1.6,3.3 -.1,2.5 2,5.5 2.7,1.5 3.3,.7 1.3,2.8 -.5,.6 2.5,1.3 1.7,1.7 -.2,1.6 .9,1.1 h 1.2 l 2.8,3.5 .1,2.6 -1.3,3.2 -1.1,1.3 -.1,2.4 -1.7,2.2 -4.2,1.8 h -2.4 l -3,.8 -1,4 1.1,1.6 1,.3 .9,1.4 -.1,3.5 -.5,.5 -1.7,2.4 v 2.4 l -1,1.2 -.9,.3 -1.8,.6 -1,1.5 .7,.9 -.1,2.3 -.7,.7 -1.5,-.8 -1.1,-1.1 -.6,-1.6 -1.7,-1.3 -14.3,.8 -27.2,1.2 -25.9,-.1 -1.8,-4.4 .7,-2.2 -.8,-3.3 .2,-2.9 -1.3,-.7 -.4,-6.1 -2.8,-5 -.2,-3.7 -2.2,-4.3 -1.3,-3.7 v -1.4 l -.6,-1.7 v -2.3 l -.5,-.9 -.7,-1.7 -.3,-1.3 -1.3,-1.2 1,-4.3 1.7,-5.1 -.7,-2 -1.3,-.4 -.4,-1.6 1,-.5 .1,-1.1 -1.3,-1.5 .1,-1.6 2.2,.1 h 28.2 l 36.3,-.9 18.6,-.7 z">
+<title>Iowa</title></path>
+
+<path class="ks" d="m 459.1,259.5 -43.7,-1.2 -36,-2 -4.8,67 67.7,2.9 62,.1 -.5,-48.1 -3.2,-.7 -2.6,-4.7 -2.5,-2.5 .5,-2.3 2.7,-2.6 .1,-1.2 -1.5,-2.1 -.9,1 -2,-.6 -2.9,-3 z">
+<title>Kansas</title></path>
+
+<path class="ky" d="m 692.1,322.5 -20.5,1.4 -5.2,.8 -17.4,1 -2.6,.8 -22.6,2 -.7,-.6 h -3.7 l 1.2,3.2 -.6,.9 -23.3,1.5 1,-2.7 1.4,.9 .7,-.4 1.2,-4.1 -1,-1 1,-2 .2,-.9 -1.3,-.8 -.3,-1.8 4,-3.7 6.9,3 1.5,-.3 .4,-2.4 -1.7,-1.8 .4,-3.3 1,-.5 1.2,.6 .6,-1.2 3.7,-.6 .1,-.9 -1.5,-2.2 -.1,-1.1 2.2,-2.7 0,-.9 1.1,.8 .6,-1 -.7,-1.7 4.6,-.5 .2,1.2 1.1,.2 .4,-.9 -.6,-1.3 .3,-.8 1.3,.8 1.7,-.4 1.7,.6 3.4,2.1 1.8,-2.8 3.5,-2.2 3,3.3 1.6,-2.1 .3,-2.7 3.8,-2.3 .2,1.3 1.9,1.2 3,-.2 1.2,-.7 .1,-3.4 2.5,-3.7 4.6,-4.4 -.1,-1.7 1.2,-3.8 2.2,1 6.7,-4.5 -.4,-1.7 -1.5,-2.1 1,-1.9 1.3,.5 2.2,.1 1.9,-.8 2.9,1.2 2.2,3.4 v 1 l 4.1,.7 2.3,-.2 1.9,2.1 2.2,.2 v -1 l 1.9,-.8 3,.8 1.2,.8 1.3,-.7 h .9 l .6,-1.7 3.4,-1.8 .5,.8 .8,2.9 3.5,1.4 1.2,2.1 -.1,1.1 .6,1 -.6,3.6 1.9,1.6 .8,1.1 1,.6 -.1,.9 4.4,5.6 h 1.4 l 1.5,1.8 1.2,.3 1.4,-.1 -4.9,6.6 -2.9,1 -3,3 -.4,2.2 -2.1,1.3 -.1,1.7 -1.4,1.4 -1.8,.5 -.5,1.9 -1,.4 -6.9,4.2 z m -98,11.3 -.7,-.7 .2,-1 h 1.1 l .7,.7 -.3,1 z">
+<title>Kentucky</title></path>
+
+<path class="la" d="m 602.5,472.8 -1.2,-1.8 .3,-1.3 -4.8,-6.8 .9,-4.6 1,-1.4 .1,-1.4 -36,2 1.7,-11.9 2.4,-4.8 6,-8.4 -1.8,-2.5 h 2 v -3.3 l -2.4,-2.5 .5,-1.7 -1.2,-1 -1.6,-7.1 .6,-1.4 -52.3,1.3 .5,19.9 .7,3.4 2.6,2.8 .7,5.4 3.8,4.6 .8,4.3 h 1 l -.1,7.3 -3.3,6.4 1.3,2.3 -1.3,1.5 .7,3 -.1,4.3 -2.2,3.5 -.1,.8 -1.7,1.2 1,1.8 1.2,1.1 1.6,-1.3 5.3,-.9 6.1,-.1 9.6,3.8 8,1 1.5,-1.4 1.8,-.2 4.8,2.2 1.6,-.4 1.1,-1.5 -4.2,-1.8 -2.2,1 -1.1,-.2 -1.4,-2 3.3,-2.2 1.6,-.1 v 1.7 l 1.5,-.1 3.4,-.3 .4,2.3 1.1,.4 .6,1.9 4.8,1 1.7,1.6 v .7 h -1.2 l -1.5,1.7 1.7,1.2 5.4,1 2.7,2.8 4.4,-1 -3.7,.2 -.1,-.6 2.8,-.7 .2,-1.8 1.2,-.3 v -1.4 l 1.1,.1 v 1.6 l 2.5,.1 .8,-1.9 .9,.3 .2,2.5 1.2,.2 -1.8,2 2.6,-.9 2,-1.1 2.9,-3.3 h -.7 l -1.3,1.2 -.4,-.1 -.5,-.8 .9,-1.2 v -2.3 l 1.1,-.8 .7,.7 1,-.8 1,-.1 .6,1.3 -.6,1.9 h 2.4 l 5.1,1.7 .5,1.3 1.6,1.4 2.8,.1 1.3,.7 1.8,-1 .9,-1.7 v -1.7 h -1.4 l -1.2,-1.4 -1.1,-1.1 -3.2,-.9 -2.6,.2 -4.2,-2.4 v -2.3 l 1.3,-1 2.4,.6 -3.1,-1.6 .2,-.8 h 3.6 l 2.6,-3.5 -2.6,-1.8 .8,-1.5 -1.2,-.8 h -.8 l -2,2.1 v 2.1 l -.6,.7 -1.1,-.1 -1.6,-1.4 h -1.3 v -1.5 l .6,-.7 .8,.7 1.7,-1.6 .7,-1.6 .8,-.3 z m -10.3,-2.7 1.9,1 .8,1.1 2.5,.1 1.5,.8 .2,1.4 -.4,.6 -.9,-1.5 -1.4,1.2 -.9,1.4 -2.8,.8 -1.6,.1 -3.7,-1 .1,-1.7 2,-2 1.1,-2.4 z m -4.7,1.2 v 1.1 l -1.8,2 h -1.2 v -2.2 l 1.6,-1.5 z">
+<title>Louisiana</title></path>
+
+<path class="me" d="m 875,128.7 .6,4 3.2,2 .8,2.2 2.3,1.4 1.4,-.3 1,-3 -.8,-2.9 1.6,-.9 .5,-2.8 -.6,-1.3 3.3,-1.9 -2.2,-2.3 .9,-2.4 1.4,-2.2 .5,3.2 1.6,-2 1.3,.9 1.2,-.8 v -1.7 l 3.2,-1.3 .3,-2.9 2.5,-.2 2.7,-3.7 v -.7 l -.9,-.5 -.1,-3.3 .6,-1.1 .2,1.6 1,-.5 -.2,-3.2 -.9,.3 -.1,1.2 -1.2,-1.4 .9,-1.4 .6,.1 1.1,-.4 .5,2.8 2,-.3 2.9,.7 v -1 l -1.1,-1.2 1.3,.1 .1,-2.3 .6,.8 .3,1.9 2.1,1.5 .2,-1 .9,-.2 -.3,-.8 .8,-.6 -.1,-1.6 -1.6,-.2 -2,.7 1.4,-1.6 .7,-.8 1.3,-.2 .4,1.3 1.7,1.6 .4,-2.1 2.3,-1.2 -.9,-1.3 .1,-1.7 1.1,.5 h .7 l 1.7,-1.4 .4,-2.3 2.2,.3 .1,-.7 .2,-1.6 .5,1.4 1.5,-1 2.3,-4.1 -.1,-2.2 -1.4,-2 -3,-3.2 h -1.9 l -.8,2.2 -2.9,-3 .3,-.8 v -1.5 l -1.6,-4.5 -.8,-.2 -.7,.4 h -4.8 l -.3,-3.6 -8.1,-26 -7.3,-3.7 -2.9,-.1 -6.7,6.6 -2.7,-1 -1,-3.9 h -2.7 l -6.9,19.5 .7,6.2 -1.7,2.4 -.4,4.6 1.3,3.7 .8,.2 v 1.6 l -1.6,4.5 -1.5,1.4 -1.3,2.2 -.4,7.8 -2.4,-1 -1.5,.4 z m 34.6,-24.7 -1,.8 v 1.3 l .7,-.8 .9,.8 .4,-.5 1.1,.2 -1,-.8 .4,-.8 z m -1.7,2.6 -1,1.1 .5,.4 -.1,1 h 1.1 v -1.8 z m -3,-1.6 .9,1.3 1,.5 .3,-1 v -1.8 l -1.3,-.7 -.4,1.2 z m -1,5 -1.7,-1.7 1.6,-2.4 .8,.3 .2,1.1 1,.8 v 1.1 l -1,1 z">
+<title>Maine</title></path>
+
+<path class="md" d="m 822.9,269.3 0,-1.7 h -.8 l 0,1.8 z m 11.8,-3.9 1.2,-2.2 .1,-2.5 -.6,-.6 -.7,.9 -.2,2.1 -.8,1.4 -.3,1.1 -4.6,1.6 -.7,.8 -1.3,.2 -.4,.9 -1.3,.6 -.3,-2.5 .4,-.7 -.8,-.5 .2,-1.5 -1.6,1 v -2 l 1.2,-.3 -1.9,-.4 -.7,-.8 .4,-1.3 -.8,-.6 -.7,1.6 .5,.8 -.7,.6 -1.1,.5 -2,-1 -.2,-1.2 -1,-1.1 -1.4,-1.7 1.5,-.8 -1,-.6 v -.9 l .6,-1 1.7,-.3 -1.4,-.6 -.1,-.7 -1.3,-.1 -.4,1.1 -.6,.3 .1,-3.4 1,-1 .8,.7 .1,-1.6 -1,-.9 -.9,1.1 -1,1.4 -.6,-1 .2,-2.4 .9,-1 .9,.9 1.2,-.7 -.4,-1.7 -1,1 -.9,-2.1 -.2,-1.7 1.1,-2.4 1.1,-1.4 1.4,-.2 -.5,-.8 .5,-.6 -.3,-.7 .2,-2.1 -1.5,.4 -.8,1.1 1,1.3 -2.6,3.6 -.9,-.4 -.7,.9 -.6,2.2 -1.8,.5 1.3,.6 1.3,1.3 -.2,.7 .9,1.2 -1.1,1 .5,.3 -.5,1.3 v 2.1 l -.5,1.3 .9,1.1 .7,3.4 1.3,1.4 1.6,1.4 .4,2.8 1.6,2 .4,1.4 v 1 h -.7 l -1.5,-1.2 -.4,.2 -1.2,-.2 -1.7,-1.4 -1.4,-.3 -1,.5 -1.2,-.3 -.4,.2 -1.7,-.8 -1,-1 -1,-1.3 -.6,-.2 -.8,.7 -1.6,1.3 -1.1,-.8 -.4,-2.3 .8,-2.1 -.3,-.5 .3,-.4 -.7,-1 1,-.1 1,-.9 .4,-1.8 1.7,-2.6 -2.6,-1.8 -1,1.7 -.6,-.6 h -1 l -.6,-.1 -.4,-.4 .1,-.5 -1.7,-.6 -.8,.3 -1.2,-.1 -.7,-.7 -.5,-.2 -.2,-.7 .6,-.8 v -.9 l -1.2,-.2 -1,-.9 -.9,.1 -1.6,-.3 -.9,-.4 .2,-1.6 -1,-.5 -.2,-.7 h -.7 l -.8,-1.2 .2,-1 -2.6,.4 -2.2,-1.6 -1.4,.3 -.9,1.4 h -1.3 l -1.7,2.9 -3.3,.4 -1.9,-1 -2.6,3.8 -2.2,-.3 -3.1,3.9 -.9,1.6 -1.8,1.6 -1.7,-11.4 60.5,-11.8 7.6,27.1 10.9,-2.3 0,5.3 -.1,3.1 -1,1.8 z m -13.4,-1.8 -1.3,.9 .8,1.8 1.7,.8 -.4,-1.6 z">
+<title>Maryland</title></path>
+
+<path class="ma" d="m 899.9,174.2 h 3.4 l .9,-.6 .1,-1.3 -1.9,-1.8 .4,1 -1.5,1.5 h -2.3 l .1,.8 z m -9,1.8 -1.2,-.6 1,-.8 .6,-2.1 1.2,-1 .8,-.2 .6,.9 1.1,.2 .6,-.6 .5,1.9 -1.3,.3 -2.8,.7 z m -34.9,-23.4 18.4,-3.8 1,-1.5 .3,-1.7 1.9,-.6 .5,-1.1 1.7,-1.1 1.3,.3 1.7,3.3 1,.4 1.1,-1.3 .8,1.3 v 1.1 l -3,2.4 .2,.8 -.9,1 .4,.8 -1.3,.3 .9,1.2 -.8,.7 .6,1 .9,-.2 .3,-.8 1.1,.6 h 1.8 l 2.5,2.6 .2,2.6 1.8,.1 .8,1.1 .6,2 1,.7 h 1.9 l 1.9,-.1 .8,-.9 1.6,-1.2 1.1,-.3 -1.2,-2.1 -.3,.9 -1.5,-3.6 h -.8 l -.4,.9 -1.2,-1 1.3,-1.1 1.8,.4 2.3,2.1 1.3,2.7 1.2,3.3 -1,2.8 v -1.8 l -.7,-1 -3.5,2.3 -.9,-.3 -1.6,1 -.1,1.2 -2.2,1.2 -2,2.1 -2,1.9 h -1.2 l 3.3,-3.3 .5,-1.9 -.5,-.6 -.3,-1.3 -.9,-.1 -.1,1.3 -1,1.2 h -1.2 l -.3,1.1 .4,1.2 -1.2,1.1 -1.1,-.2 -.4,1 -1.4,-3 -1.3,-1.1 -2.6,-1.3 -.6,-2.2 h -.8 l -.7,-2.6 -6.5,2 -.1,-.3 -14.9,3.4 v .7 l -.9,.3 -.5,-.7 -10.5,2.4 -.7,-1 .5,-15 z">
+<title>Massachusetts</title></path>
+
+<path class="mi" d="m 663.3,209.8 .1,1.4 21.4,-3.5 .5,-1.2 3.9,-5.9 v -4.3 l .8,-2.1 2.2,-.8 2,-7.8 1,-.5 1,.6 -.2,.6 -1.1,.8 .3,.9 .8,.4 1.9,-1.4 .4,-9.8 -1.6,-2.3 -1.2,-3.7 v -2.5 l -2.3,-4.4 v -1.8 l -1.2,-3.3 -2.3,-3 -2.9,-1 -4.8,3 -2.5,4.6 -.2,.9 -3,3.5 -1.5,-.2 -2.9,-2.8 -.1,-3.4 1.5,-1.9 2,-.2 1.2,-1.7 .2,-4 .8,-.8 1.1,-.1 .9,-1.7 -.2,-9.6 -.3,-1.3 -1.2,-1.2 -1.7,-1 -.1,-1.8 .7,-.6 1.8,.8 -.3,-1.7 -1.9,-2.7 -.7,-1.6 -1.1,-1.1 h -2.2 l -8.1,-2.9 -1.4,-1.7 -3.1,-.3 -1.2,.3 -4.4,-2.3 h -1.4 l .5,1 -2.7,-.1 .1,.6 .6,.6 -2.5,2.1 .1,1.8 1.5,2.3 1.5,.2 v .6 l -1.5,.5 -2.1,-.1 -2.8,2.5 .1,2.5 .4,5.8 -2.2,3.4 .8,-4.5 -.8,-.6 -.9,5.3 -1,-2.3 .5,-2.3 -.5,-1 .6,-1.3 -.6,-1.1 1,-1 v -1.2 l -1.3,.6 -1.3,3.1 -.7,.7 -1.3,2.4 -1.7,-.2 -.1,1.2 h -1.6 l .2,1.5 .2,2 -3,1.2 .1,1.3 1,1.7 -.1,5.2 -1.3,4.4 -1.7,2.5 1.2,1.4 .8,3.5 -1,2.5 -.2,2.1 1.7,3.4 2.5,4.9 1.2,1.9 1.6,6.9 -.1,8.8 -.9,3.9 -2,3.2 -.9,3.7 -2,3 -1.2,1 z m -95.8,-96.8 3,3.8 17,3.8 1.4,1 4,.8 .7,.5 2.8,-.2 4.9,.8 1.4,1.5 -1,1 .8,.8 3.8,.7 1.2,1.2 .1,4.4 -1.3,2.8 2,.1 1,-.8 .9,.8 -1.1,3.1 1,1.6 1.2,.3 .8,-1.8 2.9,-4.6 1.6,-6 2.3,-2 -.5,-1.6 .5,-.9 1,1.6 -.3,2.2 2.9,-2.2 .2,-2.3 2.1,.6 .8,-1.6 .7,.6 -.7,1.5 -1,.5 -1,2 1.4,1.8 1.1,-.5 -.5,-.7 1,-1.5 1.9,-1.7 h .8 l .2,-2.6 2,-1.8 7.9,-.5 1.9,-3.1 3.8,-.3 3.8,1.2 4.2,2.7 .7,-.2 -.2,-3.5 .7,-.2 4.5,1.1 1.5,-.2 2.9,-.7 1.7,.4 1.8,.1 v -1.1 l -.7,-.9 -1.5,-.2 -1.1,-.8 .5,-1.4 -.8,-.3 -2.6,.1 -.1,-1 1.1,-.8 .6,.8 .5,-1.8 -.7,-.7 .7,-.2 -1.4,-1.3 .3,-1.3 .1,-1.9 h -1.3 l -1.5,1 -1.9,.1 -.5,1.8 -1.9,.2 -.3,-1.2 -2.2,.1 -1,1.2 -.7,-.1 -.2,-.8 -2.6,.4 -.1,-4.8 1,-2 -.7,-.1 -1.8,1.1 h -2.2 l -3.8,2.7 -6.2,.3 -4.1,.8 -1.9,1.5 -1.4,1.3 -2.5,1.7 -.3,.8 -.6,-1.7 -1.3,-.6 v .6 l .7,.7 v 1.3 l -1.5,-.6 h -.6 l -.3,1.2 -2,-1.9 -1.3,-.2 -1.3,1.5 -3.2,-.1 -.5,-1.4 -2,-1.9 -1.3,-1.6 v -.7 l -1.1,-1.4 -2.6,-1.2 -3.3,-.1 -1.1,-.9 h -1.4 l -.7,.4 -2.2,2.2 -.7,1.1 -1,-.7 .2,-1 .8,-2.1 3.2,-5 .8,-.2 1.7,-1.9 .7,-1.6 3,-.6 .8,-.6 -.1,-1 -.5,-.5 -4.5,.2 -2,.5 -2.6,1.2 -1.2,1.2 -1.7,2.2 -1.8,1 -3.3,3.4 -.4,1.6 -7.4,4.6 -4,.5 -1.8,.4 -2.3,3 -1.8,.7 -4.4,2.3 z m 100.7,3.8 3.8,.1 .6,-.5 -.2,-2 -1.7,-1.8 -1.9,.1 -.1,.5 1.1,.4 -1.6,.8 -.3,1 -.6,-.6 -.4,.8 z m -75.1,-41.9 -2.3,.2 -2.7,1.9 -7.1,5.3 .8,1 1.8,.3 2.8,-2 -1.1,-.5 2.3,-1.6 h 1 l 3,-1.9 -.1,-.9 z m 41.1,62.8 v 1 l 2.1,1.6 -.2,-2.4 z m -.7,2.8 1.1,.1 v .9 h -1 z m 21.4,-21.3 v .9 l .8,-.2 v -.5 z m 4.7,3.1 -.1,-1.1 -1.6,-.2 -.6,-.4 h -.9 l -.4,.3 .9,.4 1.1,1.1 z m -18,1.2 -.1,1.1 -.3,.7 .2,2.2 .4,.3 .7,.1 .5,-.9 .1,-1.6 -.3,-.6 -.1,-1.1 z">
+<title>Michigan</title></path>
+
+<path class="mn" d="m 464.7,68.6 -1.1,2.8 .8,1.4 -.3,5.1 -.5,1.1 2.7,9.1 1.3,2.5 .7,14 1,2.7 -.4,5.8 2.9,7.4 .3,5.8 -.1,2.1 -.1,2.2 -.9,2 -3.1,1.9 -.3,1.2 1.7,2.5 .4,1.8 2.6,.6 1.5,1.9 -.2,39.5 h 28.2 l 36.3,-.9 18.6,-.7 -1.1,-4.5 -.2,-3 -2.2,-3 -2.8,-.7 -5.2,-3.6 -.6,-3.3 -6.3,-3.1 -.2,-1.3 h -3.3 l -2.2,-2.6 -2,-1.3 .7,-5.1 -.9,-1.6 .5,-5.4 1,-1.8 -.3,-2.7 -1.2,-1.3 -1.8,-.3 v -1.7 l 2.8,-5.8 5.9,-3.9 -.4,-13 .9,.4 .6,-.5 .1,-1.1 .9,-.6 1.4,1.2 .7,-.1 v 0 l -1.2,-2.2 4.3,-3.1 3.1,-3.7 1.6,-.8 4.7,-5.9 6.3,-5.8 3.9,-2.1 6.3,-2.7 7.6,-4.5 -.6,-.4 -3.7,.7 -2.8,.1 -1,-1.6 -1.4,-.9 -9.8,1.2 -1,-2.8 -1.6,-.1 -1.7,.8 -3.7,3.1 h -4.1 l -2.1,-1 -.3,-1.7 -3.9,-.8 -.6,-1.6 -.7,-1.3 -1,.9 -2.6,.1 -9.9,-5.5 h -2.9 l -.8,-.7 -3.1,1.3 -.8,1.3 -3.3,.8 -1.3,-.2 v -1.7 l -.7,-.9 h -5.9 l -.4,-1.4 h -2.6 l -1.1,.4 -2.4,-1.7 .3,-1.4 -.6,-2.4 -.7,-1.1 -.2,-3 -1,-3.1 -2.1,-1.6 h -2.9 l .1,8 -30.9,-.4 z">
+<title>Minnesota</title></path>
+
+<path class="ms" d="m 623.8,468.6 -5,.1 -2.4,-1.5 -7.9,2.5 -.9,-.7 -.5,.2 -.1,1.6 -.6,.1 -2.6,2.7 -.7,-.1 -.6,-.7 -1.2,-1.8 .3,-1.3 -4.8,-6.8 .9,-4.6 1,-1.4 .1,-1.4 -36,2 1.7,-11.9 2.4,-4.8 6,-8.4 -1.8,-2.5 h 2 v -3.3 l -2.4,-2.5 .5,-1.7 -1.2,-1 -1.6,-7.1 .6,-1.4 1.2,-1.5 .5,-3 -1.5,-2.3 -.5,-2.2 .9,-.7 v -.8 l -1.7,-1.1 -.1,-.7 1.6,-.9 -1.2,-1.1 1.7,-7.1 3.4,-1.6 v -.8 l -1.1,-1.4 2.9,-5.4 h 1.9 l 1.5,-1.2 -.3,-5.2 3.1,-4.5 1.8,-.6 -.5,-3.1 38.3,-2.6 1.3,2 -1.3,67 4.4,33.2 z">
+<title>Mississippi</title></path>
+
+<path class="mo" d="m 555.3,248.9 -1.1,-1.1 -.6,-1.6 -1.7,-1.3 -14.3,.8 -27.2,1.2 -25.9,-.1 1.3,1.3 -.3,1.4 2.1,3.7 3.9,6.3 2.9,3 2,.6 .9,-1 1.5,2.1 -.1,1.2 -2.7,2.6 -.5,2.3 2.5,2.5 2.6,4.7 3.2,.7 .5,48.1 .2,10.8 39.1,-.7 39.8,-2 1.6,2.5 v 2.2 l -1.7,1.5 -2.8,5.1 11.2,-.8 1,-2 1.2,-.5 v -.7 l -1.2,-1.1 -.6,-1 1.7,.2 .8,-.7 -1.4,-1.5 1.4,-.5 .1,-1 -.6,-1 v -1.3 l -.7,-.7 .2,-1 h 1.1 l .7,.7 -.3,1 .8,.7 .8,-1 1,-2.7 1.4,.9 .7,-.4 1.2,-4.1 -1,-1 1,-2 .2,-.9 -1.3,-.8 h -2.8 l -1.4,-1.5 -1.8,-3.8 v -1.9 l .8,-.6 .1,-1.3 -1.7,-1.9 -.9,-2.5 -2.7,-4.1 -4.8,-1.3 -7.4,-7.1 -.4,-2.4 2.8,-7.6 -.4,-1.9 1.2,-1.1 v -1.3 l -2.8,-1.5 -3,-.7 -3.4,1.2 -1.3,-2.3 .6,-1.9 -.7,-2.4 -8.6,-8.4 -2.2,-1.5 -2.5,-5.9 -1.2,-5.4 1.4,-3.7 z">
+<title>Missouri</title></path>
+
+<path class="mt" d="m 247,130.5 57.3,7.9 51,5.3 2,-20.7 5.2,-66.7 -53.5,-5.6 -54.3,-7.7 -65.9,-12.5 -4.8,22 3.7,7.4 -1.6,4.8 3.6,4.8 1.9,.7 3.9,8.3 v 2.1 l 2.3,3 h .9 l 1.4,2.1 h 3.2 v 1.6 l -7.1,17 -.5,4.1 1.4,.5 1.6,2.6 2.8,-1.4 3.6,-2.4 1.9,1.9 .5,2.5 -.5,3.2 2.5,9.7 2.6,3.5 2.3,1.4 .4,3 v 4.1 l 2.3,2.3 1.6,-2.3 6.9,1.6 2.1,-1.2 9,1.7 2.8,-3.3 1.8,-.6 1.2,1.8 1.6,4.1 .9,.1 z">
+<title>Montana</title></path>
+
+<path class="ne" d="m 402.5,191.1 38,1.6 3.4,3.2 1.7,.2 2.1,2 1.8,-.1 1.8,-2 1.5,.6 1,-.7 .7,.5 .9,-.4 .7,.4 .9,-.4 1,.5 1.4,-.6 2,.6 .6,1.1 6.1,2.2 1.2,1.3 .9,2.6 1.8,.7 1.5,-.2 .5,.9 v 2.3 l .6,1.7 v 1.4 l 1.3,3.7 2.2,4.3 .2,3.7 2.8,5 .4,6.1 1.3,.7 -.2,2.9 .8,3.3 -.7,2.2 1.8,4.4 1.3,1.3 -.3,1.4 2.1,3.7 3.9,6.3 h -32.4 l -43.7,-1.2 -36,-2 1.4,-22.1 -33.1,-2.4 3.7,-44.2 z">
+<title>Nebraska</title></path>
+
+<path class="nv" d="m 167.6,296.8 -3.4,17.5 -2.4,2.9 h -2 l -1.2,-2.7 -3.7,-1.4 -3.5,.6 -1,13.6 .5,4.9 -.5,2.9 -1.4,3 -70.4,-105 -1.1,-3.5 16.4,-63.1 47,11.2 24.4,5.4 23.3,4.7 z">
+<title>Nevada</title></path>
+
+<path class="nh" d="m 862.6,93.6 -1.3,.1 -1,-1.1 -1.9,1.4 -.5,6.1 1.2,2.3 -1.1,3.5 2.1,2.8 -.4,1.7 .1,1.3 -1.1,2.1 -1.4,.4 -.6,1.3 -2.1,1 -.7,1.5 1.4,3.4 -.5,2.5 .5,1.5 -1,1.9 .4,1.9 -1.3,1.9 .2,2.2 -.7,1.1 .7,4.5 .7,1.5 -.5,2.6 .9,1.8 -.2,2.5 -.5,1.3 -.1,1.4 2.1,2.6 18.4,-3.8 1,-1.5 .3,-1.7 1.9,-.6 .5,-1.1 1.7,-1.1 1.3,.3 .8,-4.8 -2.3,-1.4 -.8,-2.2 -3.2,-2 -.6,-4 -11.9,-36.8 z">
+<title>New Hampshire</title></path>
+
+<path class="nj" d="m 842.5,195.4 -14.6,-4.9 -1.8,2.5 .1,2.2 -3,5.4 1.5,1.8 -.7,2 -1,1 .5,3.6 2.7,.9 1,2.8 2.1,1.1 4.2,3.2 -3.3,2.6 -1.6,2.3 -1.8,3 -1.6,.6 -1.4,1.7 -1,2.2 -.3,2.1 .8,.9 .4,2.3 1.2,.6 2.4,1.5 1.8,.8 1.6,.8 .1,1.1 .8,.1 1.1,-1.2 .8,.4 2.1,.2 -.2,2.9 .2,2.5 1.8,-.7 1.5,-3.9 1.6,-4.8 2.9,-2.8 .6,-3.5 -.6,-1.2 1.7,-2.9 v -1.2 l -.7,-1.1 1.2,-2.7 -.3,-3.6 -.6,-8.2 -1.2,-1.4 v 1.4 l .5,.6 h -1.1 l -.6,-.4 -1.3,-.2 -.9,.6 -1.2,-1.6 .7,-1.7 v -1 l 1.7,-.7 .8,-2.1 z">
+<title>New Jersey</title></path>
+
+<path class="nm" d="m 357.5,332.9 h -.8 l -7.9,99.3 -31.8,-2.6 -34.4,-3.6 -.3,3 2,2.2 -30.8,-4.1 -1.4,10.2 -15.7,-2.2 17.4,-124.1 52.6,6.5 51.7,4.8 z">
+<title>New Mexico</title></path>
+
+<path class="ny" d="m 872.9,181.6 -1.3,.1 -.5,1 z m -30.6,22.7 .7,.6 1.3,-.3 1.1,.3 .9,-1.3 h 1.9 l 2.4,-.9 5.1,-2.1 -.5,-.5 -1.9,.8 -2,.9 .2,-.8 2.6,-1.1 .8,-1 1.2,.1 4.1,-2.3 v .7 l -4.2,3 4.5,-2.8 1.7,-2.2 1.5,-.1 4.5,-3.1 3.2,-3.1 3,-2.3 1,-1.2 -1.7,-.1 -1,1.2 -.2,.7 -.9,.7 -.8,-1.1 -1.7,1 -.1,.9 -.9,-.2 .5,-.9 -1.2,-.7 -.6,.9 .9,.3 .2,.5 -.3,.5 -1.4,2.6 h -1.9 l .9,-1.8 .9,-.6 .3,-1.7 1.4,-1.6 .9,-.8 1.5,-.7 -1.2,-.2 -.7,.9 h -.7 l -1.1,.8 -.2,1 -2.2,2.1 -.4,.9 -1.4,.9 -7.7,1.9 .2,.9 -.9,.7 -2,.3 -1,-.6 -.2,1.1 -1.1,-.4 .1,1 -1.2,-.1 -1.2,.5 -.2,1.1 h -1 l .2,1 h -.7 l .2,1 -1.8,.4 -1.5,2.3 z m -.8,-.4 -1.6,.4 v 1 l -.7,1.6 .6,.7 2.4,-2.3 -.1,-.9 z m -10.1,-95.2 -.6,1.9 1.4,.9 -.4,1.5 .5,3.2 2.2,2.3 -.4,2.2 .6,2 -.4,1 -.3,3.8 3.1,6.7 -.8,1.8 .9,2.2 .9,-1.6 1.9,1.5 3,14.2 -.5,2 1.1,1 -.5,15 .7,1 2.8,16.3 1.8,1.5 -3.5,3.4 1.7,2.2 -1.3,3.3 -1.5,1.7 -1.5,2.3 -.2,-.7 .4,-5.9 -14.6,-4.9 -1.6,-1.1 -1.9,.3 -3,-2.2 -3,-5.8 h -2 l -.4,-1.5 -1.7,-1.1 -70.5,13.9 -.8,-6 4.3,-3.9 .6,-1.7 3.9,-2.5 .6,-2.4 2.3,-2 .8,-1.1 -1.7,-3.3 -1.7,-.5 -1.8,-3 -.2,-3.2 7.6,-3.9 8.2,-1.6 h 4.4 l 3.2,1.6 .9,-.1 1.8,-1.6 3.4,-.7 h 3 l 2.6,-1.3 2.5,-2.6 2.4,-3.1 1.9,-.4 1.1,-.5 .4,-3.2 -1.4,-2.7 -1.2,-.7 2,-1.3 -.1,-1.8 h -1.5 l -2.3,-1.4 -.1,-3.1 6.2,-6.1 .7,-2.4 3.7,-6.3 5.9,-6.4 2.1,-1.7 2.5,.1 20.6,-5.2 z">
+<title>New York</title></path>
+
+<path class="nc" d="m 829,300.1 -29.1,6.1 -39.4,7.3 -29.4,3.5 v 5.2 l -1.5,-.1 -1.4,1.2 -2.4,5.2 -2.6,-1.1 -3.5,2.5 -.7,2.1 -1.5,1.2 -.8,-.8 -.1,-1.5 -.8,-.2 -4,3.3 -.6,3.4 -4.7,2.4 -.5,1.2 -3.2,2.6 -3.6,.5 -4.6,3 -.8,4.1 -1.3,.9 -1.5,-.1 -1.4,1.3 -.1,4.9 21.4,-3 4.4,-1.9 1.3,-.1 7.3,-4.3 23.2,-2.2 .4,.5 -.2,1.4 .7,.3 1.2,-1.5 3.3,3 .1,2.6 19.7,-2.8 24.5,17.1 4,-2.2 3,-.7 h 1.7 l 1.1,1.1 .8,-2 .6,-5 1.7,-3.9 5.4,-6.1 4.1,-3.5 5.4,-2.3 2.5,-.4 1.3,.4 .7,1.1 3.3,-6.6 3.3,-5.3 -.7,-.3 -4.4,6.8 -.5,-.8 2,-2.2 -.4,-1.5 -2,-.5 1,1.3 -1.2,.1 -1.2,-1.8 -1.2,2 -1.6,.2 1,-2.7 .7,-1.7 -.2,-2.9 -2.2,-.1 .9,-.9 1.1,.3 2.7,.1 .8,-.5 h 2.3 l 2,-1.9 .2,-3.2 1.3,-1.4 1.2,-.2 1.3,-1 -.5,-3.7 -2.2,-3.8 -2.7,-.2 -.9,1.6 -.5,-1 -2.7,.2 -1.2,.4 -1.9,1.2 -.3,-.4 h -.9 l -1.8,1.2 -2.6,.5 v -1.3 l .8,-1 1,.7 h 1 l 1.7,-2.1 3.7,-1.7 2,-2.2 h 2.4 l .8,1.3 1.7,.8 -.5,-1.5 -.3,-1.6 -2.8,-3.1 -.3,-1.4 -.4,1 -.9,-1.3 z m 7,31 2.7,-2.5 4.6,-3.3 v -3.7 l -.4,-3.1 -1.7,-4.2 1.5,1.4 1,3.2 .4,7.6 -1.7,.4 -3.1,2.4 -3.2,3.2 z m 1.9,-19.3 -.9,-.2 v 1 l 2.5,2.2 -.2,-1.4 z m 2.9,2.1 -1.4,-2.8 -2.2,-3.4 -2.4,-3 -2.2,-4.3 -.8,-.7 2.2,4.3 .3,1.3 3.4,5.5 1.8,2.1 z">
+<title>North Carolina</title></path>
+
+<path class="nd" d="m 464.7,68.6 -1.1,2.8 .8,1.4 -.3,5.1 -.5,1.1 2.7,9.1 1.3,2.5 .7,14 1,2.7 -.4,5.8 2.9,7.4 .3,5.8 -.1,2.1 -29.5,-.4 -46,-2.1 -39.2,-2.9 5.2,-66.7 44.5,3.4 55.3,1.6 z">
+<title>North Dakota</title></path>
+
+<path class="oh" d="m 685.7,208.8 1.9,-.4 3,1.3 2.1,.6 .7,.9 h 1 l 1,-1.5 1.3,.8 h 1.5 l -.1,1 -3.1,.5 -2,1.1 1.9,.8 1.6,-1.5 2.4,-.4 2.2,1.5 1.5,-.1 2.5,-1.7 3.6,-2.1 5.2,-.3 4.9,-5.9 3.8,-3.1 9.3,-5.1 4.9,29.9 -2.2,1.2 1.4,2.1 -.1,2.2 .6,2 -1.1,3.4 -.1,5.4 -1,3.6 .5,1.1 -.4,2.2 -1.1,.5 -2,3.3 -1.8,2 h -.6 l -1.8,1.7 -1.3,-1.2 -1.5,1.8 -.3,1.2 h -1.3 l -1.3,2.2 .1,2.1 -1,.5 1.4,1.1 v 1.9 l -1,.2 -.7,.8 -1,.5 -.6,-2.1 -1.6,-.5 -1,2.3 -.3,2.2 -1.1,1.3 1.3,3.6 -1.5,.8 -.4,3.5 h -1.5 l -3.2,1.4 -1.2,-2.1 -3.5,-1.4 -.8,-2.9 -.5,-.8 -3.4,1.8 -.6,1.7 h -.9 l -1.3,.7 -1.2,-.8 -3,-.8 -1.9,.8 v 1 l -2.2,-.2 -1.9,-2.1 -2.3,.2 -4.1,-.7 v -1 l -2.2,-3.4 -2.9,-1.2 -1.9,.8 -2.2,-.1 -1.3,-.5 -6.6,-57.2 21.4,-3.5 z">
+<title>Ohio</title></path>
+
+<path class="ok" d="m 501.5,398.6 -4.6,-3.8 -2.2,-.9 -.5,1.6 -5.1,.3 -.6,-1.5 -5,2.5 -1.6,-.7 -3.7,.3 -.6,1.7 -3.6,.9 -1.3,-1.2 -1.2,.1 -2,-1.8 -2.1,.7 -2,-.5 -1.8,-2 -2.5,4.2 -1.2,.8 -1,-1.8 .3,-2 -1.2,-.7 -2.3,2.5 -1.7,-1.2 -.1,-1.5 -1.3,.5 -2.6,-1.7 -3,2.6 -2.3,-1.1 .7,-2.1 -2.3,.1 -1.9,-3 -3.5,-1.1 -2,2.3 -2.3,-2.2 -1.4,.4 -2,.1 -3.5,-1.9 -2.3,.1 -1.2,-.7 -.5,-2.9 -2.3,-1.7 -1.1,1.5 -1.4,-1 -1.2,-.4 -1.1,1 -1.5,-.3 -2.5,-3 -2.7,-1.3 1.4,-42.7 -52.6,-3.2 .6,-10.6 16.5,1 67.7,2.9 62,.1 .2,10.8 4.1,24.4 -.7,39 z">
+<title>Oklahoma</title></path>
+
+<path class="or" d="m 93.9,166.5 47,11.2 8.5,-37.3 2.9,-5.8 .4,-2.1 .8,-.9 -.9,-2 -2.9,-1.2 .2,-4.2 4,-5.8 2.5,-.8 1.6,-2.3 -.1,-1.6 1.8,-1.6 3.2,-5.5 4.2,-4.8 -.5,-3.2 -3.5,-3.1 -1.6,-3.6 -30.3,-7.3 -2.8,1 -5.4,-.9 -1.8,-.9 -1.5,1.2 -3.3,-.4 -4.5,.5 -.9,.7 -4.2,-.4 -.8,-1.6 -1.2,-.2 -4.4,1.3 -1.6,-1.1 -2.2,.8 -.2,-1.8 -2.3,-1.2 -1.5,-.2 -1,-1.1 -3,.3 -1.2,-.8 h -1.2 l -1.2,.9 -5.5,.7 -6.6,-4.2 1.1,-5.6 -.4,-4.1 -3.2,-3.7 -3.7,.1 -.4,-1.1 .4,-1.2 -.7,-.8 -1,.1 -1.1,1.3 -1.5,-.2 -.5,-1.1 -1,-.1 -.7,.6 -2,-1.9 v 4.3 l -1.3,1.3 -1.1,3.5 -.1,2.3 -4.5,12.3 -13.2,31.3 -3.2,4.6 -1.6,-.1 .1,2.1 -5.2,7.1 -.3,3.3 1,1.3 .1,2.4 -1.2,1.1 -1.2,3 .1,5.7 1.2,2.9 z">
+<title>Oregon</title></path>
+
+<path class="pa" d="m 826.3,189.4 -1.9,.3 -3,-2.2 -3,-5.8 h -2 l -.4,-1.5 -1.7,-1.1 -70.5,13.9 -.8,-6 -4.2,3.4 -.9,.1 -2.7,3 -3.3,1.7 4.9,29.9 3.2,19.7 17.4,-2.9 60.5,-11.8 1.2,-2.1 1.5,-1.1 1.6,-.3 1.6,.6 1.4,-1.7 1.6,-.6 1.8,-3 1.6,-2.3 3.3,-2.6 -4.2,-3.2 -2.1,-1.1 -1,-2.8 -2.7,-.9 -.5,-3.6 1,-1 .7,-2 -1.5,-1.8 3,-5.4 -.1,-2.2 1.8,-2.5 z">
+<title>Pennsylvania</title></path>
+
+<path class="ri" d="m 883.2,170.7 -1.3,-1.1 -2.6,-1.3 -.6,-2.2 h -.8 l -.7,-2.6 -6.5,2 3.2,12.3 -.4,1.1 .4,1.8 5.6,-3.6 .1,-3 -.8,-.8 .4,-.6 -.1,-1.3 -.9,-.7 1.2,-.4 -.9,-1.6 1.8,.7 .3,1.4 .7,1.2 -1.4,-.8 1.1,1.7 -.3,1.2 -.6,-1.1 v 2.5 l .6,-.9 .4,.9 1.3,-1.5 -.2,-2.5 1.4,3.1 1,-.9 z m -4.7,12.2 h .9 l .5,-.6 -.8,-1.3 -.7,.7 z">
+<title>Rhode Island</title></path>
+
+<path class="sc" d="m 772.3,350.2 -19.7,2.8 -.1,-2.6 -3.3,-3 -1.2,1.5 -.7,-.3 .2,-1.4 -.4,-.5 -23.2,2.2 -7.3,4.3 -1.3,.1 -4.4,1.9 -.1,1.9 -1.9,1 -1.4,3.2 .2,1.3 6.1,3.8 2.6,-.3 3.1,4 .4,1.7 4.2,5.1 2.6,1.7 1.4,.2 2.2,1.6 1.1,2.2 2,1.6 1.8,.5 2.7,2.7 .1,1.4 2.6,2.8 5,2.3 3.6,6.7 .3,2.7 3.9,2.1 2.5,4.8 .8,3.1 4.2,.4 .8,-1.5 h .6 l 1.8,-1.5 .5,-2 3.2,-2.1 .3,-2.4 -1.2,-.9 .8,-.7 .8,.4 1.3,-.4 1.8,-2.1 3.8,-1.8 1.6,-2.4 .1,-.7 4.8,-4.4 -.1,-.5 -.9,-.8 1.1,-1.5 h .8 l .4,.5 .7,-.8 h 1.3 l .6,-1.5 2.3,-2.1 -.3,-5.4 .8,-2.3 3.6,-6.2 2.4,-2.2 2.2,-1.1 z">
+<title>South Carolina</title></path>
+
+<path class="sd" d="m 396.5,125.9 46,2.1 29.5,.4 -.1,2.2 -.9,2 -3.1,1.9 -.3,1.2 1.7,2.5 .4,1.8 2.6,.6 1.5,1.9 -.2,39.5 -2.2,-.1 -.1,1.6 1.3,1.5 -.1,1.1 -1,.5 .4,1.6 1.3,.4 .7,2 -1.7,5.1 -1,4.3 1.3,1.2 .3,1.3 .7,1.7 -1.5,.2 -1.8,-.7 -.9,-2.6 -1.2,-1.3 -6.1,-2.2 -.6,-1.1 -2,-.6 -1.4,.6 -1,-.5 -.9,.4 -.7,-.4 -.9,.4 -.7,-.5 -1,.7 -1.5,-.6 -1.8,2 -1.8,.1 -2.1,-2 -1.7,-.2 -3.4,-3.2 -38,-1.6 -51.1,-3.5 3.9,-43.9 2,-20.7 z">
+<title>South Dakota</title></path>
+
+<path class="tn" d="m 620.9,365.1 45.7,-4 22.9,-2.9 .1,-4.9 1.4,-1.3 1.5,.1 1.3,-.9 .8,-4.1 4.6,-3 3.6,-.5 3.2,-2.6 .5,-1.2 4.7,-2.4 .6,-3.4 4,-3.3 .8,.2 .1,1.5 .8,.8 1.5,-1.2 .7,-2.1 3.5,-2.5 2.6,1.1 2.4,-5.2 1.4,-1.2 1.5,.1 0,-5.2 .3,-.7 -4.6,.5 -.2,1 -28.9,3.3 -5.6,1.4 -20.5,1.4 -5.2,.8 -17.4,1 -2.6,.8 -22.6,2 -.7,-.6 h -3.7 l 1.2,3.2 -.6,.9 -23.3,1.5 -.8,1 -.8,-.7 h -1 v 1.3 l .6,1 -.1,1 -1.4,.5 1.4,1.5 -.8,.7 -1.7,-.2 .6,1 1.2,1.1 v .7 l -1.2,.5 -1,2 .1,.6 1.4,1 -.4,.7 h -1.5 v .5 l .9,.9 .1,.8 -1.4,.2 -.5,.8 -1.6,.2 -.9,.9 .6,.9 1.1,-.1 .5,.9 -1.6,1.3 .4,1.5 -2,-.6 -.1,.7 .4,1.1 -.3,1.4 -1.3,-.8 -.8,.8 1.1,.1 .1,1.5 -.6,1 1.1,.9 -.3,1.5 .8,.7 -.7,1 -1.2,-.5 -.9,2.2 -1.6,.7 z">
+<title>Tennessee</title></path>
+
+<path class="tx" d="m 282.3,429 .3,-3 34.4,3.6 31.8,2.6 7.9,-99.3 .8,0 52.6,3.2 -1.4,42.7 2.7,1.3 2.5,3 1.5,.3 1.1,-1 1.2,.4 1.4,1 1.1,-1.5 2.3,1.7 .5,2.9 1.2,.7 2.3,-.1 3.5,1.9 2,-.1 1.4,-.4 2.3,2.2 2,-2.3 3.5,1.1 1.9,3 2.3,-.1 -.7,2.1 2.3,1.1 3,-2.6 2.6,1.7 1.3,-.5 .1,1.5 1.7,1.2 2.3,-2.5 1.2,.7 -.3,2 1,1.8 1.2,-.8 2.5,-4.2 1.8,2 2,.5 2.1,-.7 2,1.8 1.2,-.1 1.3,1.2 3.6,-.9 .6,-1.7 3.7,-.3 1.6,.7 5,-2.5 .6,1.5 5.1,-.3 .5,-1.6 2.2,.9 4.6,3.8 6.4,1.9 2.6,2.3 2.8,-1.3 3.2,.8 .2,11.9 .5,19.9 .7,3.4 2.6,2.8 .7,5.4 3.8,4.6 .8,4.3 h 1 l -.1,7.3 -3.3,6.4 1.3,2.3 -1.3,1.5 .7,3 -.1,4.3 -2.2,3.5 -.1,.8 -1.7,1.2 1,1.8 1.2,1.1 -3.5,.3 -8.4,3.9 -3.5,1.4 -1.8,1.8 -.7,-.5 2.1,-2.3 1.8,-.7 .5,-.9 -2.9,-.1 -.7,-.8 .8,-2 -.9,-1.8 h -.6 l -2.4,1.3 -1.9,2.6 .3,1.7 3.3,3.4 1.3,.3 v .8 l -2.3,1.6 -4.9,4 -4,3.9 -3.2,1.4 -5,3 -3.7,2 -4.5,1.9 -4.1,2.5 3.2,-3 v -1.1 l .6,-.8 -.2,-1.8 -1.5,-.1 -1.1,1.5 -2.6,1.3 -1.8,-1.2 -.3,-1.7 h -1.5 l .8,2.2 1.4,.7 1.2,.9 1.8,1.6 -.7,.8 -3.9,1.7 -1.7,.1 -1.2,-1.2 -.5,2.1 .5,1.1 -2.7,2 -1.5,.2 -.8,.7 -.4,1.7 -1.8,3.3 -1.6,.7 -1.6,-.6 -1.8,1.1 .3,1.4 1.3,.8 1,.8 -1.8,3.5 -.3,2.8 -1,1.7 -1.4,1 -2.9,.4 1.8,.6 1.9,-.6 -.4,3.2 -1.1,-.1 .2,1.2 .3,1.4 -1.3,.9 v 3.1 l 1.6,1.4 .6,3.1 -.4,2.2 -1,.4 .4,1.5 1.1,.4 .8,1.7 v 2.6 l 1.1,2.1 2.2,2.6 -.1,.7 -2.2,-.2 -1.6,1.4 .2,1.4 -.9,-.3 -1.4,-.2 -3.4,-3.7 -2.3,-.6 h -7.1 l -2.8,-.8 -3.6,-3 -1.7,-1 -2.1,.1 -3.2,-2.6 -5.4,-1.6 v -1.3 l -1.4,-1.8 -.9,-4.7 -1.1,-1.7 -1.7,-1.4 v -1.6 l -1.4,-.6 .6,-2.6 -.3,-2.2 -1.3,-1.4 .7,-3 -.8,-3.2 -1.7,-1.4 h -1.1 l -4,-3.5 .1,-1.9 -.8,-1.7 -.8,-.2 -.9,-2.4 -2,-1.6 -2.9,-2.5 -.2,-2.1 -1,-.7 .2,-1.6 .5,-.7 -1.4,-1.5 .1,-.7 -2,-2.2 .1,-2.1 -2.7,-4.9 -.1,-1.7 -1.8,-3.1 -5.1,-4.8 v -1.1 l -3.3,-1.7 -.1,-1.8 -1.2,-.4 v -.7 l -.8,-.2 -2.1,-2.8 h -.8 l -.7,-.6 -1.3,1.1 h -2.2 l -2.6,-1.1 h -4.6 l -4.2,-2.1 -1.3,1.9 -2.2,-.6 -3.3,1.2 -1.7,2.8 -2,3.2 -1.1,4.4 -1.4,1.2 -1.1,.1 -.9,1.6 -1.3,.6 -.1,1.8 -2.9,.1 -1.8,-1.5 h -1 l -2,-2.9 -3.6,-.5 -1.7,-2.3 -1.3,-.2 -2.1,-.8 -3.4,-3.4 .2,-.8 -1.6,-1.2 -1,-.1 -3.4,-3.1 -.1,-2 -2.3,-4 .2,-1.6 -.7,-1.3 .8,-1.5 -.1,-2.4 -2.6,-4.1 -.6,-4.2 -1.6,-1.6 v -1 l -1.2,-.2 -.7,-1.1 -2.4,-1.7 -.9,-.1 -1.9,-1.6 v -1.1 l -2.9,-1.8 -.6,-2.1 -2.6,-2.3 -3.2,-4.4 -3,-1.3 -2.1,-1.8 .2,-1.2 -1.3,-1.4 -1.7,-3.7 -2.4,-1 z m 174.9,138.3 .8,.1 -.6,-4.8 -3.5,-12.3 -.2,-8.1 4.9,-10.5 6.1,-8.2 7.2,-5.1 v -.7 h -.8 l -2.6,1 -3.6,2.3 -.7,1.5 -8.2,11.6 -2.8,7.9 v 8.8 l 3.6,12 z">
+<title>Texas</title></path>
+
+<path class="ut" d="m 233.2,217.9 3.3,-21.9 -47.9,-8.2 -21,109 46.2,8.2 40,6 11.5,-88.3 z">
+<title>Utah</title></path>
+
+<path class="vt" d="m 859.1,102.4 -1.1,3.5 2.1,2.8 -.4,1.7 .1,1.3 -1.1,2.1 -1.4,.4 -.6,1.3 -2.1,1 -.7,1.5 1.4,3.4 -.5,2.5 .5,1.5 -1,1.9 .4,1.9 -1.3,1.9 .2,2.2 -.7,1.1 .7,4.5 .7,1.5 -.5,2.6 .9,1.8 -.2,2.5 -.5,1.3 -.1,1.4 2.1,2.6 -12.4,2.7 -1.1,-1 .5,-2 -3,-14.2 -1.9,-1.5 -.9,1.6 -.9,-2.2 .8,-1.8 -3.1,-6.7 .3,-3.8 .4,-1 -.6,-2 .4,-2.2 -2.2,-2.3 -.5,-3.2 .4,-1.5 -1.4,-.9 .6,-1.9 -.8,-1.7 27.3,-6.9 z">
+<title>Vermont</title></path>
+
+<path class="va" d="m 834.7,265.4 -1.1,2.8 .5,1.1 .4,-1.1 .8,-3.1 z m -34.6,-7 -.7,-1 1,-.1 1,-.9 .4,-1.8 -.2,-.5 .1,-.5 -.3,-.7 -.6,-.5 -.4,-.1 -.5,-.4 -.6,-.6 h -1 l -.6,-.1 -.4,-.4 .1,-.5 -1.7,-.6 -.8,.3 -1.2,-.1 -.7,-.7 -.5,-.2 -.2,-.7 .6,-.8 v -.9 l -1.2,-.2 -1,-.9 -.9,.1 -1.6,-.3 -.4,.7 -.4,1.6 -.5,2.3 -10,-5.2 -.2,.9 .9,1.6 -.8,2.3 .1,2.9 -1.2,.8 -.5,2.1 -.9,.8 -1.4,1.8 -.9,.8 -1,2.5 -2.4,-1.1 -2.3,8.5 -1.3,1.6 -2.8,-.5 -1.3,-1.9 -2.3,-.7 -.1,4.7 -1.4,1.7 .4,1.5 -2.1,2.2 .4,1.9 -3.7,6.3 -1,3.3 1.5,1.2 -1.5,1.9 .1,1.4 -2.3,2 -.7,-1.1 -4.3,3.1 -1.5,-1 -.6,1.4 .8,.5 -.5,.9 -5.5,2.4 -3,-1.8 -.8,1.7 -1.9,1.8 -2.3,.1 -4.4,-2.3 -.1,-1.5 -1.5,-.7 .8,-1.2 -.7,-.6 -4.9,6.6 -2.9,1 -3,3 -.4,2.2 -2.1,1.3 -.1,1.7 -1.4,1.4 -1.8,.5 -.5,1.9 -1,.4 -6.9,4.2 28.9,-3.3 .2,-1 4.6,-.5 -.3,.7 29.4,-3.5 39.4,-7.3 29.1,-6.1 -.6,-1.2 .4,-.1 .9,.9 -.1,-1.4 -.3,-1.9 1.6,1.2 .9,2.1 v -1.3 l -3.4,-5.5 v -1.2 l -.7,-.8 -1.3,.7 .5,1.4 h -.8 l -.4,-1 -.6,.9 -.9,-1.1 -2.1,-.1 -.2,.7 1.5,2.1 -1.4,-.7 -.5,-1 -.4,.8 -.8,.1 -1.5,1.7 .3,-1.6 v -1.4 l -1.5,-.7 -1.8,-.5 -.2,-1.7 -.6,-1.3 -.6,1.1 -1.7,-1 -2,.3 .2,-.9 1.5,-.2 .9,.5 1.7,-.8 .9,.4 .5,1 v .7 l 1.9,.4 .3,.9 .9,.4 .9,1.2 1.4,-1.6 h .6 l -.1,-2.1 -1.3,1 -.6,-.9 1.5,-.2 -1.2,-.9 -1.2,.6 -.1,-1.7 -1.7,.2 -2.2,-1.1 -1.8,-2.2 3.6,2.2 .9,.3 1.7,-.8 -1.7,-.9 .6,-.6 -1,-.5 .8,-.2 -.3,-.9 1.1,.9 .4,-.8 .4,1.3 1.2,.8 .6,-.5 -.5,-.6 -.1,-2.5 -1.1,-.1 -1.6,-.8 .9,-1.1 -2,-.1 -.4,-.5 -1.4,.6 -1.4,-.8 -.5,-1.2 -2.1,-1.2 -2.1,-1.8 -2.2,-1.9 3,1.3 .9,1.2 2.1,.7 2.3,2.5 .2,-1.7 .6,1.3 2.3,.5 v -4 l -.8,-1.1 1.1,.4 .1,-1.6 -3.1,-1.4 -1.6,-.2 -1.3,-.2 .3,-1.2 -1.5,-.3 -.1,-.6 h -1.8 l -.2,.8 -.7,-1 h -2.7 l -1,-.4 -.2,-1 -1.2,-.6 -.4,-1.5 -.6,-.4 -.7,1.1 -.9,.2 -.9,.7 h -1.5 l -.9,-1.3 .4,-3.1 .5,-2.4 .6,.5 z m 21.9,11.6 .9,-.1 0,-.6 -.8,.1 z m 7.5,14.2 -1,2.7 1.2,-1.3 z m -1.8,-15.3 .7,.3 -.2,1.9 -.5,-.5 -1.3,1 1,.4 -1.8,4.4 .1,8.1 1.9,3.1 .5,-1.5 .4,-2.7 -.3,-2.3 .7,-.9 -.2,-1.4 1.2,-.6 -.6,-.5 .5,-.7 .8,1.1 -.2,1.1 -.4,3.9 1.1,-2.2 .4,-3.1 .1,-3 -.3,-2 .6,-2.3 1.1,-1.8 .1,-2.2 .3,-.9 -4.6,1.6 -.7,.8 z">
+<title>Virginia</title></path>
+
+<path class="wa" d="m 161.9,83.6 .7,4 -1.1,4.3 -30.3,-7.3 -2.8,1 -5.4,-.9 -1.8,-.9 -1.5,1.2 -3.3,-.4 -4.5,.5 -.9,.7 -4.2,-.4 -.8,-1.6 -1.2,-.2 -4.4,1.3 -1.6,-1.1 -2.2,.8 -.2,-1.8 -2.3,-1.2 -1.5,-.2 -1,-1.1 -3,.3 -1.2,-.8 h -1.2 l -1.2,.9 -5.5,.7 -6.6,-4.2 1.1,-5.6 -.4,-4.1 -3.2,-3.7 -3.7,.1 -.4,-1.1 .4,-1.2 -.7,-.8 -1,.1 -2.1,-1.5 -1.2,.4 -2,-.1 -.7,-1.5 -1.6,-.3 2.5,-7.5 -.7,6 .5,.5 v -2 l .8,-.2 1.1,2.3 -.5,-2.2 1.2,-4.2 1.8,.4 -1.1,-2 -1,.3 -1.5,-.4 .2,-4.2 .2,1.5 .9,.5 .6,-1.6 h 3.2 l -2.2,-1.2 -1.7,-1.9 -1.4,1.6 1.2,-3.1 -.3,-4.6 -.2,-3.6 .9,-6.1 -.5,-2 -1.4,-2.1 .1,-4 .4,-2.7 2,-2.3 -.7,-1.4 .2,-.6 .9,.1 7.8,7.6 4.7,1.9 5.1,2.5 3.2,-.1 .2,3 1,-1.6 h .7 l .6,2.7 .5,-2.6 1.4,-.2 .5,.7 -1.1,.6 .1,1.6 .7,-1.5 h 1.1 l -.4,2.6 -1.1,-.8 .4,1.4 -.1,1.5 -.8,.7 -2.5,2.9 1.2,-3.4 -1.6,.4 -.4,2.1 -3.8,2.8 -.4,1 -2.1,2.2 -.1,1 h 2.2 l 2.4,-.2 .5,-.9 -3.9,.5 v -.6 l 2.6,-2.8 1.8,-.8 1.9,-.2 1,-1.6 3,-2.3 v -1.4 h 1.1 l .1,4 h -1.5 l -.6,.8 -1.1,-.9 .3,1.1 v 1.7 l -.7,.7 -.3,-1.6 -.8,.8 .7,.6 -.9,1.1 h 1.3 l .7,-.5 .1,2 -1,1.9 -.9,1 -.1,1.8 -1,-.2 -.2,-1.4 .9,-1.1 -.8,-.5 -.8,.7 -.7,2.2 -.8,.9 -.1,-2 .8,-1.1 -.2,-1.1 -1.2,1.2 .1,2.2 -.6,.4 -2.1,-.4 -1.3,1.2 2.2,-.6 -.2,2.2 1,-1.8 .4,1.4 .5,-1 .7,1.8 h .7 l .7,-.8 .6,-.1 2,-1.9 .2,-1.2 .8,.6 .3,.9 .7,-.3 .1,-1.2 h 1.3 l .2,-2.9 -.1,-2.7 .9,.3 -.7,-2.1 1.4,-.8 .2,-2.4 2.3,-2.2 1,.1 .3,-1.4 -1.2,-1.4 -.1,-3.5 -.8,.9 .7,2.9 -.6,.1 -.6,-1.9 -.6,-.5 .3,-2.3 1.8,-.1 .3,.7 .3,-1.6 -1.6,-1.7 -.6,-1.6 -.2,2 .9,1.1 -.7,.4 -1,-.8 -1.8,1.3 1.5,.5 .2,2.4 -.3,1.8 .9,-1.3 1.4,2.3 -.4,1.9 h -1.5 v -1.2 l -1.5,-1.2 .5,-3 -1.9,-2.6 2.7,-3 .6,-4.1 h .9 l 1.4,3.2 v -2.6 l 1.2,.3 v -3.3 l -.9,-.8 -1.2,2.5 -1,-3 1.3,-.1 -1.5,-4.9 1.9,-.6 25.4,7.5 31.7,8 23.6,5.5 z m -78.7,-39.4 h .5 l .1,.8 -.5,.3 .1,.6 -.7,.4 -.2,-.9 .5,-.4 z m 5,-4.3 -1.2,1.9 -.1,.8 .4,.2 .5,-.6 1.1,.1 z m -.4,-21.6 .5,.6 1.3,-.3 .2,-1 1.2,-1.8 -1,-.4 -.7,1.6 -.1,-1.6 -1.1,.2 -.7,1.4 z m 3.2,-5.5 .7,1.5 -.9,.2 -.8,.4 -.2,-2.4 z m -2.7,-1.6 -1.1,-.2 .5,1.4 z m -1,2.5 .8,.4 -.4,1.1 1.7,-.5 -.2,-2.2 -.9,-.2 z m -2.7,-.4 .3,2.7 1.6,1.3 .6,-1.9 -1.1,-2.2 z m 1.9,-1.1 -1.1,-1 -.9,.1 1.8,1.5 z m 3.2,-7 h -1.2 v .8 l 1.2,.6 z m -.9,32.5 .4,-2.7 h -1.1 l -.2,1.9 z">
+<title>Washington</title></path>
+
+<path class="wv" d="m 723.4,297.5 -.8,1.2 1.5,.7 .1,1.5 4.4,2.3 2.3,-.1 1.9,-1.8 .8,-1.7 3,1.8 5.5,-2.4 .5,-.9 -.8,-.5 .6,-1.4 1.5,1 4.3,-3.1 .7,1.1 2.3,-2 -.1,-1.4 1.5,-1.9 -1.5,-1.2 1,-3.3 3.7,-6.3 -.4,-1.9 2.1,-2.2 -.4,-1.5 1.4,-1.7 .1,-4.7 2.3,.7 1.3,1.9 2.8,.5 1.3,-1.6 2.3,-8.5 2.4,1.1 1,-2.5 .9,-.8 1.4,-1.8 .9,-.8 .5,-2.1 1.2,-.8 -.1,-2.9 .8,-2.3 -.9,-1.6 .2,-.9 10,5.2 .5,-2.3 .4,-1.6 .4,-.7 -.9,-.4 .2,-1.6 -1,-.5 -.2,-.7 h -.7 l -.8,-1.2 .2,-1 -2.6,.4 -2.2,-1.6 -1.4,.3 -.9,1.4 h -1.3 l -1.7,2.9 -3.3,.4 -1.9,-1 -2.6,3.8 -2.2,-.3 -3.1,3.9 -.9,1.6 -1.8,1.6 -1.7,-11.4 -17.4,2.9 -3.2,-19.7 -2.2,1.2 1.4,2.1 -.1,2.2 .6,2 -1.1,3.4 -.1,5.4 -1,3.6 .5,1.1 -.4,2.2 -1.1,.5 -2,3.3 -1.8,2 h -.6 l -1.8,1.7 -1.3,-1.2 -1.5,1.8 -.3,1.2 h -1.3 l -1.3,2.2 .1,2.1 -1,.5 1.4,1.1 v 1.9 l -1,.2 -.7,.8 -1,.5 -.6,-2.1 -1.6,-.5 -1,2.3 -.3,2.2 -1.1,1.3 1.3,3.6 -1.5,.8 -.4,3.5 h -1.5 l -3.2,1.4 -.1,1.1 .6,1 -.6,3.6 1.9,1.6 .8,1.1 1,.6 -.1,.9 4.4,5.6 h 1.4 l 1.5,1.8 1.2,.3 1.4,-.1 z">
+<title>West Virginia</title></path>
+
+<path class="wi" d="m 611,144 -2.9,.8 .2,2.3 -2.4,3.4 -.2,3.1 .6,.7 .8,-.7 .5,-1.6 2,-1.1 1.6,-4.2 3.5,-1.1 .8,-3.3 .7,-.9 .4,-2.1 1.8,-1.1 v -1.5 l 1,-.9 1.4,.1 v 2 l -1,.1 .5,1.2 -.7,2.2 -.6,.1 -1.2,4.5 -.7,.5 -2.8,7.2 -.3,4.2 .6,2 .1,1.3 -2.4,1.9 .3,1.9 -.9,3.1 .3,1.6 .4,3.7 -1.1,4.1 -1.5,5 1,1.5 -.3,.3 .8,1.7 -.5,1.1 1.1,.9 v 2.7 l 1.3,1.5 -.4,3 .3,4 -45.9,2.8 -1.3,-2.8 -3.3,-.7 -2.7,-1.5 -2,-5.5 .1,-2.5 1.6,-3.3 -.6,-1.1 -2.1,-1.6 -.2,-2.6 -1.1,-4.5 -.2,-3 -2.2,-3 -2.8,-.7 -5.2,-3.6 -.6,-3.3 -6.3,-3.1 -.2,-1.3 h -3.3 l -2.2,-2.6 -2,-1.3 .7,-5.1 -.9,-1.6 .5,-5.4 1,-1.8 -.3,-2.7 -1.2,-1.3 -1.8,-.3 v -1.7 l 2.8,-5.8 5.9,-3.9 -.4,-13 .9,.4 .6,-.5 .1,-1.1 .9,-.6 1.4,1.2 .7,-.1 h 2.6 l 6.8,-2.6 .3,-1 h 1.2 l .7,-1.2 .4,.8 1.8,-.9 1.8,-1.7 .3,.5 1,-1 2.2,1.6 -.8,1.6 -1.2,1.4 .5,1.5 -1.4,1.6 .4,.9 2.3,-1.1 v -1.4 l 3.3,1.9 1.9,.7 1.9,.7 3,3.8 17,3.8 1.4,1 4,.8 .7,.5 2.8,-.2 4.9,.8 1.4,1.5 -1,1 .8,.8 3.8,.7 1.2,1.2 .1,4.4 -1.3,2.8 2,.1 1,-.8 .9,.8 -1.1,3.1 1,1.6 1.2,.3 z m -49.5,-37.3 -.5,.1 -1.5,1.6 .2,.5 1.5,-.6 v -.6 l .9,-.3 z m 1.6,-1.1 -1,.3 -.2,.7 .9,-.1 z m -1.3,-1.6 -.2,.9 h 1.7 l .6,-.4 .1,-1 z m 2.8,-3 -.3,1.9 1.2,-.5 .1,-1.4 z m 58.3,31.9 -2,.3 -.4,1.3 1.3,1.7 z">
+<title>Wisconsin</title></path>
+
+<path class="wy" d="m 355.3,143.7 -51,-5.3 -57.3,-7.9 -2,10.7 -8.5,54.8 -3.3,21.9 32.1,4.8 44.9,5.7 37.5,3.4 3.7,-44.2 z">
+<title>Wyoming</title></path>
+
+<path class="dc" d="m 803.5,252 -2.6,-1.8 -1,1.7 .5,.4 .4,.1 .6,.5 .3,.7 -.1,.5 .2,.5 z">
+<title>District of Columbia</title></path>
+
+</g>
+<circle class="state borders dccircle dc" cx="801.6" cy="252.1" r="5">
+<title>District of Columbia</title></circle>
+<g class="borders" fill="none">
+<path class="al-fl" d="m 687.6,447.4 -48.8,5.1 -.5,2.9 2.5,2.8 1.7,.7 .9,1.2 -.4,7.3 -1.1,.6"/>
+<path class="al-ga" d="m 666.6,361.1 12.9,45.8 2.9,6.1 1.8,1.9 v 3.2 l 1.7,1 .2,1.1 -2.2,3.8 -.3,3.7 -.5,2.6 2.4,5.7 -.6,6.3 .5,1.4 1.5,1.5 .7,2.2"/>
+<path class="al-ms" d="m 620.9,365.1 1.3,2 -1.3,67 4.4,33.2"/>
+<path class="al-tn" d="m 620.9,365.1 45.7,-4"/>
+<path class="ar-la" d="m 516.7,414.2 52.3,-1.3"/>
+<path class="ar-mo" d="m 591.7,344.9 -11.2,.8 2.8,-5.1 1.7,-1.5 v -2.2 l -1.6,-2.5 -39.8,2 -39.1,.7"/>
+<path class="ar-ms" d="m 569,412.9 1.2,-1.5 .5,-3 -1.5,-2.3 -.5,-2.2 .9,-.7 v -.8 l -1.7,-1.1 -.1,-.7 1.6,-.9 -1.2,-1.1 1.7,-7.1 3.4,-1.6 0,-.8 -1.1,-1.4 2.9,-5.4 h 1.9 l 1.5,-1.2 -.3,-5.2 3.1,-4.5 1.8,-.6 -.5,-3.1"/>
+<path class="ar-ok" d="m 507.9,400.5 .7,-39 -4.1,-24.4"/>
+<path class="ar-tn" d="m 582.6,367.7 1.6,-.7 .9,-2.2 1.2,.5 .7,-1 -.8,-.7 .3,-1.5 -1.1,-.9 .6,-1 -.1,-1.5 -1.1,-.1 .8,-.8 1.3,.8 .3,-1.4 -.4,-1.1 .1,-.7 2,.6 -.4,-1.5 1.6,-1.3 -.5,-.9 -1.1,.1 -.6,-.9 .9,-.9 1.6,-.2 .5,-.8 1.4,-.2 -.1,-.8 -.9,-.9 0,-.5 h 1.5 l .4,-.7 -1.4,-1 -.1,-.6"/>
+<path class="ar-tx" d="m 507.9,400.5 2.6,2.3 2.8,-1.3 3.2,.8 .2,11.9"/>
+<path class="az-ca" d="m 149,338.1 -.9,2.1 1.3,3.4 1.4,1.8 1.2,5.8 2.3,2.5 .4,1.9 -1.3,1.3 -4.8,1.7 -2.4,3.6 -1.6,7 -2.4,3.2 -1.6,.3 -1.1,6.9 1.1,1.6 1.8,.2 1,1.6 -.8,2.4 -3,2.2 -2.2,-.1"/>
+<path class="az-nm" d="m 253.8,311 -17.4,124.1"/>
+<path class="az-nv" d="m 167.6,296.8 -3.4,17.5 -2.4,2.9 h -2 l -1.2,-2.7 -3.7,-1.4 -3.5,.6 -1,13.6 .5,4.9 -.5,2.9 -1.4,3"/>
+<path class="az-ut" d="m 167.6,296.8 46.2,8.2 40,6"/>
+<path class="ca-nv" d="m 93.9,166.5 -16.4,63.1 1.1,3.5 70.4,105"/>
+<path class="ca-or" d="m 27.8,147.9 66.1,18.6"/>
+<path class="co-ks" d="m 379.4,256.3 -4.8,67"/>
+<path class="co-ne" d="m 347.7,231.8 33.1,2.4 -1.4,22.1"/>
+<path class="co-nm" d="m 253.8,311 52.6,6.5 51.7,4.8"/>
+<path class="co-ok" d="m 358.1,322.3 16.5,1"/>
+<path class="co-ut" d="m 265.3,222.7 -11.5,88.3"/>
+<path class="co-wy" d="m 265.3,222.7 44.9,5.7 37.5,3.4"/>
+<path class="ct-ma" d="m 843.8,171.3 10.5,-2.4 .5,.7 .9,-.3 0,-.7 14.9,-3.4 .1,.3"/>
+<path class="ct-ny" d="m 846.6,194.7 -1.7,-2.2 3.5,-3.4 -1.8,-1.5 -2.8,-16.3"/>
+<path class="ct-ri" d="m 870.7,165.5 3.2,12.3 -.4,1.1 .4,1.8"/>
+<path class="dc-md" d="m 801.8,254.6 1.7,-2.6 -2.6,-1.8 -1,1.7"/>
+<path class="dc-va" d="m 799.9,251.9 .5,.4 .4,.1 .6,.5 .3,.7 -.1,.5 .2,.5"/>
+<path class="de-md" d="m 817.9,230.1 7.6,27.1 10.9,-2.3"/>
+<path class="de-nj" d="m 823.8,227.2 -1,2.2 -.3,2.1"/>
+<path class="de-pa" d="m 817.9,230.1 1.2,-2.1 1.5,-1.1 1.6,-.3 1.6,.6"/>
+<path class="fl-ga" d="m 687.6,447.4 3.3,6 50.1,-3.3 .6,3.2 1,1.1 2.1,-.6 .5,-4.3 -1.4,-2.1 v -2.5 l 2.2,-1.4 1.7,.9 4,.7 3.6,-.3"/>
+<path class="ga-nc" d="m 689.5,358.2 21.4,-3"/>
+<path class="ga-sc" d="m 710.9,355.2 -.1,1.9 -1.9,1 -1.4,3.2 .2,1.3 6.1,3.8 2.6,-.3 3.1,4 .4,1.7 4.2,5.1 2.6,1.7 1.4,.2 2.2,1.6 1.1,2.2 2,1.6 1.8,.5 2.7,2.7 .1,1.4 2.6,2.8 5,2.3 3.6,6.7 .3,2.7 3.9,2.1 2.5,4.8 .8,3.1 4.2,.4"/>
+<path class="ga-tn" d="m 666.6,361.1 22.9,-2.9"/>
+<path class="ia-il" d="m 556.8,249.7 .7,-.7 .1,-2.3 -.7,-.9 1,-1.5 1.8,-.6 .9,-.3 1,-1.2 0,-2.4 1.7,-2.4 .5,-.5 .1,-3.5 -.9,-1.4 -1,-.3 -1.1,-1.6 1,-4 3,-.8 h 2.4 l 4.2,-1.8 1.7,-2.2 .1,-2.4 1.1,-1.3 1.3,-3.2 -.1,-2.6 -2.8,-3.5 -1.2,0 -.9,-1.1 .2,-1.6 -1.7,-1.7 -2.5,-1.3 .5,-.6"/>
+<path class="ia-mn" d="m 473.6,182 28.2,0 36.3,-.9 18.6,-.7"/>
+<path class="ia-mo" d="m 484.5,246.8 25.9,.1 27.2,-1.2 14.3,-.8 1.7,1.3 .6,1.6 1.1,1.1 1.5,.8"/>
+<path class="ia-ne" d="m 484.5,246.8 -1.8,-4.4 .7,-2.2 -.8,-3.3 .2,-2.9 -1.3,-.7 -.4,-6.1 -2.8,-5 -.2,-3.7 -2.2,-4.3 -1.3,-3.7 v -1.4 l -.6,-1.7 v -2.3 l -.5,-.9"/>
+<path class="ia-sd" d="m 473.5,204.2 -.7,-1.7 -.3,-1.3 -1.3,-1.2 1,-4.3 1.7,-5.1 -.7,-2 -1.3,-.4 -.4,-1.6 1,-.5 .1,-1.1 -1.3,-1.5 .1,-1.6 2.2,.1"/>
+<path class="ia-wi" d="m 567.2,202 -1.3,-2.8 -3.3,-.7 -2.7,-1.5 -2,-5.5 .1,-2.5 1.6,-3.3 -.6,-1.1 -2.1,-1.6 -.2,-2.6"/>
+<path class="id-mt" d="m 188.8,30.5 -4.8,22 3.7,7.4 -1.6,4.8 3.6,4.8 1.9,.7 3.9,8.3 v 2.1 l 2.3,3 h .9 l 1.4,2.1 h 3.2 v 1.6 l -7.1,17 -.5,4.1 1.4,.5 1.6,2.6 2.8,-1.4 3.6,-2.4 1.9,1.9 .5,2.5 -.5,3.2 2.5,9.7 2.6,3.5 2.3,1.4 .4,3 v 4.1 l 2.3,2.3 1.6,-2.3 6.9,1.6 2.1,-1.2 9,1.7 2.8,-3.3 1.8,-.6 1.2,1.8 1.6,4.1 .9,.1"/>
+<path class="id-nv" d="m 140.9,177.7 24.4,5.4 23.3,4.7"/>
+<path class="id-or" d="m 140.9,177.7 8.5,-37.3 2.9,-5.8 .4,-2.1 .8,-.9 -.9,-2 -2.9,-1.2 .2,-4.2 4,-5.8 2.5,-.8 1.6,-2.3 -.1,-1.6 1.8,-1.6 3.2,-5.5 4.2,-4.8 -.5,-3.2 -3.5,-3.1 -1.6,-3.6"/>
+<path class="id-ut" d="m 236.5,196 -47.9,-8.2"/>
+<path class="id-wa" d="m 174.6,27.5 -12.7,56.1 .7,4 -1.1,4.3"/>
+<path class="id-wy" d="m 245,141.2 -8.5,54.8"/>
+<path class="il-in" d="m 619.4,215.7 4.1,50.2 -1,5.2 v 2 l 2.4,3.5 v .7 l -.3,.9 .9,1.9 -.3,2.4 -1.6,1.8 -1.3,4.2 -3.8,5.3 -.1,7 h -1 l .9,1.9"/>
+<path class="il-ky" d="m 599.9,322.5 -.3,-1.8 4,-3.7 6.9,3 1.5,-.3 .4,-2.4 -1.7,-1.8 .4,-3.3 1,-.5 1.2,.6 .6,-1.2 3.7,-.6 .1,-.9 -1.5,-2.2 -.1,-1.1 2.2,-2.7 v -.9"/>
+<path class="il-mo" d="m 599.9,322.5 -2.8,0 -1.4,-1.5 -1.8,-3.8 v -1.9 l .8,-.6 .1,-1.3 -1.7,-1.9 -.9,-2.5 -2.7,-4.1 -4.8,-1.3 -7.4,-7.1 -.4,-2.4 2.8,-7.6 -.4,-1.9 1.2,-1.1 v -1.3 l -2.8,-1.5 -3,-.7 -3.4,1.2 -1.3,-2.3 .6,-1.9 -.7,-2.4 -8.6,-8.4 -2.2,-1.5 -2.5,-5.9 -1.2,-5.4 1.4,-3.7"/>
+<path class="il-wi" d="m 567.2,202 45.9,-2.8"/>
+<path class="in-ky" d="m 618.3,302.7 1.1,.8 .6,-1 -.7,-1.7 4.6,-.5 .2,1.2 1.1,.2 .4,-.9 -.6,-1.3 .3,-.8 1.3,.8 1.7,-.4 1.7,.6 3.4,2.1 1.8,-2.8 3.5,-2.2 3,3.3 1.6,-2.1 .3,-2.7 3.8,-2.3 .2,1.3 1.9,1.2 3,-.2 1.2,-.7 .1,-3.4 2.5,-3.7 4.6,-4.4 -.1,-1.7 1.2,-3.8 2.2,1 6.7,-4.5 -.4,-1.7 -1.5,-2.1 1,-1.9"/>
+<path class="in-mi" d="m 630.9,213.2 32.4,-3.4 .1,1.4"/>
+<path class="in-oh" d="m 670,268.4 -6.6,-57.2"/>
+<path class="ks-mo" d="m 504.3,326.3 -.5,-48.1 -3.2,-.7 -2.6,-4.7 -2.5,-2.5 .5,-2.3 2.7,-2.6 .1,-1.2 -1.5,-2.1 -.9,1 -2,-.6 -2.9,-3"/>
+<path class="ks-ne" d="m 379.4,256.3 36,2 43.7,1.2 h 32.4"/>
+<path class="ks-ok" d="m 374.6,323.3 67.7,2.9 62,.1"/>
+<path class="ky-mo" d="m 596.7,333.5 1,-2.7 1.4,.9 .7,-.4 1.2,-4.1 -1,-1 1,-2 .2,-.9 -1.3,-.8 m -5.8,11.3 -.7,-.7 .2,-1 h 1.1 l .7,.7 -.3,1"/>
+<path class="ky-oh" d="m 670,268.4 1.3,.5 2.2,.1 1.9,-.8 2.9,1.2 2.2,3.4 v 1 l 4.1,.7 2.3,-.2 1.9,2.1 2.2,.2 v -1 l 1.9,-.8 3,.8 1.2,.8 1.3,-.7 h .9 l .6,-1.7 3.4,-1.8 .5,.8 .8,2.9 3.5,1.4 1.2,2.1"/>
+<path class="ky-tn" d="m 596.7,333.5 23.3,-1.5 .6,-.9 -1.2,-3.2 h 3.7 l .7,.6 22.6,-2 2.6,-.8 17.4,-1 5.2,-.8 20.5,-1.4 5.6,-1.4 m -103.6,12.7 h 1"/>
+<path class="ky-va" d="m 697.7,321.1 6.9,-4.2 1,-.4 .5,-1.9 1.8,-.5 1.4,-1.4 .1,-1.7 2.1,-1.3 .4,-2.2 3,-3 2.9,-1 4.9,-6.6"/>
+<path class="ky-wv" d="m 709.3,279.4 -.1,1.1 .6,1 -.6,3.6 1.9,1.6 .8,1.1 1,.6 -.1,.9 4.4,5.6 h 1.4 l 1.5,1.8 1.2,.3 1.4,-.1"/>
+<path class="la-ms" d="m 569,412.9 -.6,1.4 1.6,7.1 1.2,1 -.5,1.7 2.4,2.5 v 3.3 l -2,0 1.8,2.5 -6,8.4 -2.4,4.8 -1.7,11.9 36,-2 -.1,1.4 -1,1.4 -.9,4.6 4.8,6.8 -.3,1.3 1.2,1.8 .6,.7"/>
+<path class="la-tx" d="m 516.7,414.2 .5,19.9 .7,3.4 2.6,2.8 .7,5.4 3.8,4.6 .8,4.3 h 1 l -.1,7.3 -3.3,6.4 1.3,2.3 -1.3,1.5 .7,3 -.1,4.3 -2.2,3.5 -.1,.8 -1.7,1.2 1,1.8 1.2,1.1"/>
+<path class="ma-nh" d="m 856,152.6 18.4,-3.8 1,-1.5 .3,-1.7 1.9,-.6 .5,-1.1 1.7,-1.1 1.3,.3"/>
+<path class="ma-ny" d="m 843.8,171.3 -.7,-1 .5,-15"/>
+<path class="ma-ri" d="m 870.7,165.5 6.5,-2 .7,2.6 h .8 l .6,2.2 2.6,1.3 1.3,1.1 1.4,3"/>
+<path class="ma-vt" d="m 843.6,155.3 12.4,-2.7"/>
+<path class="md-pa" d="m 757.4,241.9 60.5,-11.8"/>
+<path class="md-va" d="m 822.9,269.3 -.8,.1 m 13.2,-4.3 -.6,.3 m -1.3,.2 -4.6,1.6 -.7,.8 m -28.2,-16.1 -.6,-.6 h -1 l -.6,-.1 -.4,-.4 .1,-.5 -1.7,-.6 -.8,.3 -1.2,-.1 -.7,-.7 -.5,-.2 -.2,-.7 .6,-.8 v -.9 l -1.2,-.2 -1,-.9 -.9,.1 -1.6,-.3 m 11.6,13.5 .3,-.4 -.7,-1 1,-.1 1,-.9 .4,-1.8"/>
+<path class="md-wv" d="m 757.4,241.9 1.7,11.4 1.8,-1.6 .9,-1.6 3.1,-3.9 2.2,.3 2.6,-3.8 1.9,1 3.3,-.4 1.7,-2.9 h 1.3 l .9,-1.4 1.4,-.3 2.2,1.6 2.6,-.4 -.2,1 .8,1.2 h .7 l .2,.7 1,.5 -.2,1.6 .9,.4"/>
+<path class="me-nh" d="m 881.9,138.3 -2.3,-1.4 -.8,-2.2 -3.2,-2 -.6,-4 -11.9,-36.8"/>
+<path class="mi-oh" d="m 663.4,211.2 21.4,-3.5"/>
+<path class="mi-wi" d="m 565.6,112.3 1.9,.7 3,3.8 17,3.8 1.4,1 4,.8 .7,.5 2.8,-.2 4.9,.8 1.4,1.5 -1,1 .8,.8 3.8,.7 1.2,1.2 .1,4.4 -1.3,2.8 2,.1 1,-.8 .9,.8 -1.1,3.1 1,1.6 1.2,.3"/>
+<path class="mn-nd" d="m 462.3,61.3 2.4,7.3 -1.1,2.8 .8,1.4 -.3,5.1 -.5,1.1 2.7,9.1 1.3,2.5 .7,14 1,2.7 -.4,5.8 2.9,7.4 .3,5.8 -.1,2.1"/>
+<path class="mn-sd" d="m 473.6,182 .2,-39.5 -1.5,-1.9 -2.6,-.6 -.4,-1.8 -1.7,-2.5 .3,-1.2 3.1,-1.9 .9,-2 .1,-2.2"/>
+<path class="mn-wi" d="m 556.7,180.4 -1.1,-4.5 -.2,-3 -2.2,-3 -2.8,-.7 -5.2,-3.6 -.6,-3.3 -6.3,-3.1 -.2,-1.3 -3.3,0 -2.2,-2.6 -2,-1.3 .7,-5.1 -.9,-1.6 .5,-5.4 1,-1.8 -.3,-2.7 -1.2,-1.3 -1.8,-.3 v -1.7 l 2.8,-5.8 5.9,-3.9 -.4,-13 .9,.4 .6,-.5 .1,-1.1 .9,-.6 1.4,1.2 .7,-.1"/>
+<path class="mo-ne" d="m 491.5,259.5 -3.9,-6.3 -2.1,-3.7 .3,-1.4 -1.3,-1.3"/>
+<path class="mo-ok" d="m 504.3,326.3 .2,10.8"/>
+<path class="mo-tn" d="m 591.7,344.9 1,-2 1.2,-.5 v -.7 l -1.2,-1.1 -.6,-1 1.7,.2 .8,-.7 -1.4,-1.5 1.4,-.5 .1,-1 -.6,-1 0,-1.3 m 1,0 .8,.7 .8,-1"/>
+<path class="ms-tn" d="m 582.6,367.7 38.3,-2.6"/>
+<path class="mt-nd" d="m 362.5,56.3 -5.2,66.7"/>
+<path class="mt-sd" d="m 357.3,123 -2,20.7"/>
+<path class="mt-wy" d="m 355.3,143.7 -51,-5.3 -57.3,-7.9 -2,10.7"/>
+<path class="nc-sc" d="m 710.9,355.2 4.4,-1.9 1.3,-.1 7.3,-4.3 23.2,-2.2 .4,.5 -.2,1.4 .7,.3 1.2,-1.5 3.3,3 .1,2.6 19.7,-2.8 24.5,17.1"/>
+<path class="nc-tn" d="m 731.1,317 0,5.2 -1.5,-.1 -1.4,1.2 -2.4,5.2 -2.6,-1.1 -3.5,2.5 -.7,2.1 -1.5,1.2 -.8,-.8 -.1,-1.5 -.8,-.2 -4,3.3 -.6,3.4 -4.7,2.4 -.5,1.2 -3.2,2.6 -3.6,.5 -4.6,3 -.8,4.1 -1.3,.9 -1.5,-.1 -1.4,1.3 -.1,4.9"/>
+<path class="nc-va" d="m 731.1,317 29.4,-3.5 39.4,-7.3 29.1,-6.1"/>
+<path class="nd-sd" d="m 357.3,123 39.2,2.9 46,2.1 29.5,.4"/>
+<path class="ne-sd" d="m 351.4,187.6 51.1,3.5 38,1.6 3.4,3.2 1.7,.2 2.1,2 1.8,-.1 1.8,-2 1.5,.6 1,-.7 .7,.5 .9,-.4 .7,.4 .9,-.4 1,.5 1.4,-.6 2,.6 .6,1.1 6.1,2.2 1.2,1.3 .9,2.6 1.8,.7 1.5,-.2"/>
+<path class="ne-wy" d="m 347.7,231.8 3.7,-44.2"/>
+<path class="nh-vt" d="m 857.9,100.1 1.2,2.3 -1.1,3.5 2.1,2.8 -.4,1.7 .1,1.3 -1.1,2.1 -1.4,.4 -.6,1.3 -2.1,1 -.7,1.5 1.4,3.4 -.5,2.5 .5,1.5 -1,1.9 .4,1.9 -1.3,1.9 .2,2.2 -.7,1.1 .7,4.5 .7,1.5 -.5,2.6 .9,1.8 -.2,2.5 -.5,1.3 -.1,1.4 2.1,2.6"/>
+<path class="nj-ny" d="m 827.9,190.5 14.6,4.9 -.4,5.9"/>
+<path class="nj-pa" d="m 823.8,227.2 1.4,-1.7 1.6,-.6 1.8,-3 1.6,-2.3 3.3,-2.6 -4.2,-3.2 -2.1,-1.1 -1,-2.8 -2.7,-.9 -.5,-3.6 1,-1 .7,-2 -1.5,-1.8 3,-5.4 -.1,-2.2 1.8,-2.5"/>
+<path class="nm-ok" d="m 358.1,322.3 -.6,10.6"/>
+<path class="nm-tx" d="m 284.3,431.2 -2,-2.2 .3,-3 34.4,3.6 31.8,2.6 7.9,-99.3 .8,0"/>
+<path class="nv-or" d="m 93.9,166.5 47,11.2"/>
+<path class="nv-ut" d="m 188.6,187.8 -21,109"/>
+<path class="ny-pa" d="m 827.9,190.5 -1.6,-1.1 -1.9,.3 -3,-2.2 -3,-5.8 h -2 l -.4,-1.5 -1.7,-1.1 -70.5,13.9 -.8,-6"/>
+<path class="ny-vt" d="m 843.6,155.3 -1.1,-1 .5,-2 -3,-14.2 -1.9,-1.5 -.9,1.6 -.9,-2.2 .8,-1.8 -3.1,-6.7 .3,-3.8 .4,-1 -.6,-2 .4,-2.2 -2.2,-2.3 -.5,-3.2 .4,-1.5 -1.4,-.9 .6,-1.9 -.8,-1.7"/>
+<path class="oh-pa" d="m 736.8,225.1 -4.9,-29.9"/>
+<path class="oh-wv" d="m 709.3,279.4 3.2,-1.4 h 1.5 l .4,-3.5 1.5,-.8 -1.3,-3.6 1.1,-1.3 .3,-2.2 1,-2.3 1.6,.5 .6,2.1 1,-.5 .7,-.8 1,-.2 v -1.9 l -1.4,-1.1 1,-.5 -.1,-2.1 1.3,-2.2 h 1.3 l .3,-1.2 1.5,-1.8 1.3,1.2 1.8,-1.7 h .6 l 1.8,-2 2,-3.3 1.1,-.5 .4,-2.2 -.5,-1.1 1,-3.6 .1,-5.4 1.1,-3.4 -.6,-2 .1,-2.2 -1.4,-2.1 2.2,-1.2"/>
+<path class="ok-tx" d="m 357.5,332.9 52.6,3.2 -1.4,42.7 2.7,1.3 2.5,3 1.5,.3 1.1,-1 1.2,.4 1.4,1 1.1,-1.5 2.3,1.7 .5,2.9 1.2,.7 2.3,-.1 3.5,1.9 2,-.1 1.4,-.4 2.3,2.2 2,-2.3 3.5,1.1 1.9,3 2.3,-.1 -.7,2.1 2.3,1.1 3,-2.6 2.6,1.7 1.3,-.5 .1,1.5 1.7,1.2 2.3,-2.5 1.2,.7 -.3,2 1,1.8 1.2,-.8 2.5,-4.2 1.8,2 2,.5 2.1,-.7 2,1.8 1.2,-.1 1.3,1.2 3.6,-.9 .6,-1.7 3.7,-.3 1.6,.7 5,-2.5 .6,1.5 5.1,-.3 .5,-1.6 2.2,.9 4.6,3.8 6.4,1.9"/>
+<path class="or-wa" d="m 161.5,91.9 -30.3,-7.3 -2.8,1 -5.4,-.9 -1.8,-.9 -1.5,1.2 -3.3,-.4 -4.5,.5 -.9,.7 -4.2,-.4 -.8,-1.6 -1.2,-.2 -4.4,1.3 -1.6,-1.1 -2.2,.8 -.2,-1.8 -2.3,-1.2 -1.5,-.2 -1,-1.1 -3,.3 -1.2,-.8 h -1.2 l -1.2,.9 -5.5,.7 -6.6,-4.2 1.1,-5.6 -.4,-4.1 -3.2,-3.7 -3.7,.1 -.4,-1.1 .4,-1.2 -.7,-.8 -1,.1"/>
+<path class="pa-wv" d="m 736.8,225.1 3.2,19.7 17.4,-2.9"/>
+<path class="sd-wy" d="m 351.4,187.6 3.9,-43.9"/>
+<path class="tn-va" d="m 697.7,321.1 28.9,-3.3 .2,-1 4.6,-.5 -.3,.7"/>
+<path class="ut-wy" d="m 236.5,196 -3.3,21.9 32.1,4.8"/>
+<path class="va-wv" d="m 722.7,296.9 .7,.6 -.8,1.2 1.5,.7 .1,1.5 4.4,2.3 2.3,-.1 1.9,-1.8 .8,-1.7 3,1.8 5.5,-2.4 .5,-.9 -.8,-.5 .6,-1.4 1.5,1 4.3,-3.1 .7,1.1 2.3,-2 -.1,-1.4 1.5,-1.9 -1.5,-1.2 1,-3.3 3.7,-6.3 -.4,-1.9 2.1,-2.2 -.4,-1.5 1.4,-1.7 .1,-4.7 2.3,.7 1.3,1.9 2.8,.5 1.3,-1.6 2.3,-8.5 2.4,1.1 1,-2.5 .9,-.8 1.4,-1.8 .9,-.8 .5,-2.1 1.2,-.8 -.1,-2.9 .8,-2.3 -.9,-1.6 .2,-.9 10,5.2 .5,-2.3 .4,-1.6 .4,-.7"/>
+</g>
+<path class="separator1" fill="none" d="m 215,493 v 55 l 36,45 m -251,-168 h 147 l 68,68 h 85 l 54,54 v 46"/>
+`;
+
+// Full names for the map tooltip, derived from the state dropdown list.
+const FULLNAME_BY_CODE = Object.fromEntries(
+  STATES.filter(s => s[0] !== 'OTHER').map(([code, name]) => [code, name])
+);
+
+const MAP_STATE_CODES = Object.keys(FULLNAME_BY_CODE);
+
+const MAP_BINS = [
+  {max:0,        color:'#D9DEE6', label:'0'},
+  {max:5,        color:'#8FDDA0', label:'1–5'},
+  {max:15,       color:'#39CEF6', label:'6–15'},
+  {max:40,       color:'#F2994A', label:'16–40'},
+  {max:Infinity, color:'#2E4985', label:'41+'}
+];
+
+function binForCount(count){
+  for(const bin of MAP_BINS){
+    if(count <= bin.max) return bin;
+  }
+  return MAP_BINS[MAP_BINS.length - 1];
+}
+
+function computeStateCounts(){
+  const counts = {};
+  candidates.forEach(c => {
+    const code = c.state;
+    if(code && code !== 'OTHER'){
+      counts[code] = (counts[code] || 0) + 1;
+    }
+  });
+  return counts;
+}
+
+let mapBuilt = false;
+
+function renderMap(){
+  const wrap = document.getElementById('mapWrap');
+  const legend = document.getElementById('mapLegend');
+  const note = document.getElementById('mapNote');
+  if(!wrap) return;
+
+  if(!mapBuilt){
+    wrap.innerHTML =
+      '<svg viewBox="0 0 959 593" role="img" aria-label="Map of logged members by state" id="usMapSvg">' +
+      '<style id="usMapDefaultStyle">.state{fill:#D0D0D0}.borders{stroke:#ffffff;stroke-width:1}.separator1{stroke:#B0B0B0;stroke-width:2}</style>' +
+      US_MAP_INNER_SVG +
+      '<style id="usMapColorStyle"></style>' +
+      '</svg>';
+    mapBuilt = true;
+  }
+
+  const counts = computeStateCounts();
+  const svgEl = wrap.querySelector('#usMapSvg');
+  const colorStyle = wrap.querySelector('#usMapColorStyle');
+
+  const rules = MAP_STATE_CODES.map(code => {
+    const count = counts[code] || 0;
+    const bin = binForCount(count);
+    return `.${code.toLowerCase()}{fill:${bin.color}}`;
+  }).join('');
+  if(colorStyle) colorStyle.textContent = rules;
+
+  MAP_STATE_CODES.forEach(code => {
+    const el = svgEl && svgEl.querySelector('.' + code.toLowerCase());
+    if(!el) return;
+    const title = el.querySelector('title');
+    const count = counts[code] || 0;
+    const fullName = FULLNAME_BY_CODE[code] || code;
+    const text = `${fullName}: ${count} member${count === 1 ? '' : 's'}`;
+    if(title){
+      title.textContent = text;
+    } else {
+      const t = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+      t.textContent = text;
+      el.appendChild(t);
+    }
+  });
+
+  legend.innerHTML = MAP_BINS.map(b =>
+    `<span class="swatch"><span class="chip" style="background:${b.color}"></span>${b.label}</span>`
+  ).join('');
+
+  const listEl = document.getElementById('mapStateList');
+  if(listEl){
+    const rows = MAP_STATE_CODES
+      .map(code => ({
+        code,
+        name: FULLNAME_BY_CODE[code] || code,
+        count: counts[code] || 0,
+        color: binForCount(counts[code] || 0).color
+      }))
+      .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+
+    listEl.innerHTML = rows.map(r => `
+      <div class="row${r.count === 0 ? ' zero' : ''}">
+        <span class="name"><span class="dot" style="background:${r.color}"></span>${escapeHtml(r.name)}</span>
+        <span class="count">${r.count}</span>
+      </div>
+    `).join('');
+  }
+
+  if(note){
+    const otherCount = candidates.filter(c => !c.state || c.state === 'OTHER').length;
+    note.textContent = otherCount
+      ? `${otherCount} member${otherCount === 1 ? '' : 's'} outside the US or with no state on file aren't shown on the map.`
+      : '';
+  }
+}
+
+const stateSelect = document.getElementById('stateInput');
+STATES.forEach(([code,name])=>{
+  const opt = document.createElement('option');
+  opt.value = code;
+  opt.textContent = `${name} (${code})`;
+  stateSelect.appendChild(opt);
+});
+
+const form = document.getElementById('candidateForm');
+const nameInput = document.getElementById('nameInput');
+const linkedinInput = document.getElementById('linkedinInput');
+const licenseInput = document.getElementById('licenseInput');
+const submitBtn = document.getElementById('submitBtn');
+const formStatus = document.getElementById('formStatus');
+const listWrap = document.getElementById('listWrap');
+const countTag = document.getElementById('countTag');
+const searchInput = document.getElementById('searchInput');
+const exportBtn = document.getElementById('exportBtn');
+
+const LIST_KEY = 'atc-members:list';
+let candidates = [];
+let filterText = '';
+
+function escapeHtml(str){
+  return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function normalizeUrl(url){
+  if(!/^https?:\/\//i.test(url)) return 'https://' + url;
+  return url;
+}
+
+async function loadCandidates(){
+  try{
+    const res = await window.storage.get(LIST_KEY, true);
+    candidates = res && res.value ? JSON.parse(res.value) : [];
+  }catch(e){
+    candidates = [];
+  }
+
+  const wasEmpty = candidates.length === 0;
+
+  if(wasEmpty && typeof SEED_DATA !== 'undefined' && SEED_DATA.length){
+    const base = Date.now() - SEED_DATA.length * 1000;
+    candidates = SEED_DATA.map((d, i) => ({
+      id: `seed-${i}-${Math.random().toString(36).slice(2,8)}`,
+      name: d.name,
+      state: d.state,
+      license: d.license,
+      linkedin: d.linkedin,
+      addedAt: base + i * 1000
+    }));
+    try{
+      await saveCandidates();
+    }catch(e){
+      // Storage write failed — still show the roster for this session
+      // rather than leaving the page empty.
+    }
+  }
+
+  {
+    // Catch-up pass: add any supplemental members not already present
+    // (matched by LinkedIn URL) to the list.
+    const allSupplemental = []
+      .concat(typeof SUPPLEMENTAL_ADDS !== 'undefined' ? SUPPLEMENTAL_ADDS : []);
+    const existingUrls = new Set(candidates.map(c => (c.linkedin || '').toLowerCase().trim()));
+    const toAdd = allSupplemental.filter(d => !existingUrls.has(d.linkedin.toLowerCase().trim()));
+    if(toAdd.length){
+      const now = Date.now();
+      const newEntries = toAdd.map((d, i) => ({
+        id: `supp-${i}-${Math.random().toString(36).slice(2,8)}`,
+        name: d.name,
+        state: d.state,
+        license: d.license,
+        linkedin: d.linkedin,
+        addedAt: now + i
+      }));
+      candidates = candidates.concat(newEntries);
+      try{
+        await saveCandidates();
+      }catch(e){
+        // If save fails, still show the additions for this session.
+      }
+    }
+  }
+
+  // Apply any pending field corrections (matched by LinkedIn URL) to
+  // existing entries, whether they came from the seed or were added later.
+  if(typeof FIELD_UPDATES !== 'undefined' && FIELD_UPDATES.length){
+    let changed = false;
+    candidates = candidates.map(c => {
+      const fix = FIELD_UPDATES.find(u => u.linkedin.toLowerCase().trim() === (c.linkedin || '').toLowerCase().trim());
+      if(!fix) return c;
+      const next = { ...c };
+      if('name' in fix && next.name !== fix.name){ next.name = fix.name; changed = true; }
+      if('license' in fix && next.license !== fix.license){ next.license = fix.license; changed = true; }
+      if('state' in fix && next.state !== fix.state){ next.state = fix.state; changed = true; }
+      return next;
+    });
+    if(changed){
+      try{
+        await saveCandidates();
+      }catch(e){
+        // If save fails, corrections still apply for this session.
+      }
+    }
+  }
+
+  // Remove entries confirmed to have left the group (matched by LinkedIn URL).
+  if(typeof REMOVE_URLS !== 'undefined' && REMOVE_URLS.length){
+    const before = candidates.length;
+    candidates = candidates.filter(c => !REMOVE_URLS.includes((c.linkedin || '').toLowerCase().trim()));
+    if(candidates.length !== before){
+      try{
+        await saveCandidates();
+      }catch(e){
+        // If save fails, the removal still applies for this session.
+      }
+    }
+  }
+
+  render();
+}
+
+async function saveCandidates(){
+  await window.storage.set(LIST_KEY, JSON.stringify(candidates), true);
+}
+
+function render(){
+  renderMap();
+  const q = filterText.trim().toLowerCase();
+  const filtered = q
+    ? candidates.filter(c => c.name.toLowerCase().includes(q) || c.state.toLowerCase().includes(q) || (c.license || '').toLowerCase().includes(q))
+    : candidates;
+
+  countTag.textContent = candidates.length
+    ? `${candidates.length} member${candidates.length===1?'':'s'} logged${q ? ` · ${filtered.length} shown` : ''}`
+    : '';
+
+  if(!candidates.length){
+    listWrap.innerHTML = `
+      <div class="empty">
+        <div class="bubble"></div>
+        <p>No group members logged yet. Add the first one above.</p>
+      </div>`;
+    return;
+  }
+
+  if(!filtered.length){
+    listWrap.innerHTML = `<div class="empty"><p>No matches for "${escapeHtml(filterText)}".</p></div>`;
+    return;
+  }
+
+  const sorted = [...filtered].sort((a,b) => b.addedAt - a.addedAt);
+
+  const rows = sorted.map(c => {
+    const date = new Date(c.addedAt);
+    const dateStr = date.toLocaleDateString(undefined, {month:'short', day:'numeric', year:'numeric'});
+    return `
+      <tr data-id="${c.id}">
+        <td class="name-cell">${escapeHtml(c.name)}</td>
+        <td><span class="state-chip">${escapeHtml(c.state)}</span></td>
+        <td>${escapeHtml(c.license || '—')}</td>
+        <td><a class="li-link" href="${escapeHtml(c.linkedin)}" target="_blank" rel="noopener noreferrer">${escapeHtml(c.linkedin.replace(/^https?:\/\//,''))}</a></td>
+        <td class="ts">${dateStr}</td>
+        <td><button class="del-btn" data-id="${c.id}" aria-label="Remove ${escapeHtml(c.name)}">Remove</button></td>
+      </tr>`;
+  }).join('');
+
+  listWrap.innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>State</th>
+          <th>Master's / License</th>
+          <th>LinkedIn</th>
+          <th>Added</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+
+  listWrap.querySelectorAll('.del-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const id = btn.getAttribute('data-id');
+      candidates = candidates.filter(c => c.id !== id);
+      await saveCandidates();
+      render();
+    });
+  });
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = nameInput.value.trim();
+  const state = stateSelect.value;
+  const license = licenseInput.value.trim();
+  let linkedin = linkedinInput.value.trim();
+
+  if(!name || !state || !license || !linkedin){
+    formStatus.textContent = 'Please fill in all fields.';
+    formStatus.classList.add('error');
+    return;
+  }
+  linkedin = normalizeUrl(linkedin);
+  if(!/linkedin\.com/i.test(linkedin)){
+    formStatus.textContent = 'That doesn\'t look like a LinkedIn URL — add it anyway or double-check the link.';
+    formStatus.classList.add('error');
+  } else {
+    formStatus.classList.remove('error');
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Adding…';
+  // entry represents a member of the Associate Therapist Collective LinkedIn group
+
+  const entry = {
+    id: `${Date.now()}-${Math.random().toString(36).slice(2,8)}`,
+    name,
+    state: stateSelect.options[stateSelect.selectedIndex].text.match(/\(([^)]+)\)/)?.[1] || state,
+    license,
+    linkedin,
+    addedAt: Date.now()
+  };
+
+  candidates.push(entry);
+  try{
+    await saveCandidates();
+    form.reset();
+    formStatus.textContent = `Added ${name}.`;
+    formStatus.classList.remove('error');
+  }catch(err){
+    candidates.pop();
+    formStatus.textContent = 'Could not save — please try again.';
+    formStatus.classList.add('error');
+  }finally{
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Add member';
+    render();
+    setTimeout(() => { formStatus.textContent = ''; }, 4000);
+  }
+});
+
+searchInput.addEventListener('input', (e) => {
+  filterText = e.target.value;
+  render();
+});
+
+function buildCsv(){
+  const header = 'Name,State,Master\'s Degree / License Type,LinkedIn,Added\n';
+  const rows = candidates
+    .sort((a,b)=>b.addedAt-a.addedAt)
+    .map(c => [c.name, c.state, c.license || '', c.linkedin, new Date(c.addedAt).toISOString().slice(0,10)]
+      .map(v => `"${String(v).replace(/"/g,'""')}"`).join(','))
+    .join('\n');
+  return header + rows;
+}
+
+exportBtn.addEventListener('click', async () => {
+  if(!candidates.length) return;
+  const csv = buildCsv();
+
+  // Try a real file download first (works in a full browser tab).
+  let downloaded = false;
+  try{
+    const blob = new Blob([csv], {type:'text/csv'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'associate-therapist-collective-log.csv';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    downloaded = true;
+  }catch(e){
+    downloaded = false;
+  }
+
+  // Regardless of whether the download worked, also copy to clipboard as a
+  // reliable fallback — downloads are sometimes blocked inside the embedded
+  // artifact preview (especially on mobile), but clipboard copy still works.
+  try{
+    await navigator.clipboard.writeText(csv);
+    exportBtn.textContent = downloaded ? 'Downloaded + copied ✓' : 'Copied to clipboard ✓';
+  }catch(e){
+    exportBtn.textContent = downloaded ? 'Downloaded ✓' : 'Download blocked — try opening this artifact in a full browser tab';
+  }
+  setTimeout(() => { exportBtn.textContent = 'Export CSV'; }, 3500);
+});
+
+loadCandidates();
+</script>
+
+</body>
+</html>
