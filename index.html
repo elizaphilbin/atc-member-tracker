@@ -1000,10 +1000,7 @@ function normalizeUrl(url){
 
 async function loadCandidates(){
   try{
-    const res = await window.storage.get(LIST_KEY, true);
-    candidates = res && res.value ? JSON.parse(res.value) : [];
-  }catch(e){
-    candidates = [];
+candidates = await loadCandidates();
   }
 
   const wasEmpty = candidates.length === 0;
@@ -1090,8 +1087,22 @@ async function loadCandidates(){
   render();
 }
 
+const API_URL = 'https://script.google.com/macros/s/AKfycbw3Tz9MJIk-6SKKvegYTHdHSgstfrXS1NjhThzqha12HVzU4ERA3Dda5w9ZMN02B2R-/exec';
+
 async function saveCandidates(){
-  await window.storage.set(LIST_KEY, JSON.stringify(candidates), true);
+  const res = await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(candidates)
+  });
+  const out = await res.json();
+  if(!out.ok) throw new Error(out.error || 'Save failed');
+}
+
+async function loadCandidates(){
+  const res = await fetch(API_URL);
+  if(!res.ok) throw new Error('Load failed: ' + res.status);
+  return await res.json();
 }
 
 function render(){
@@ -1199,7 +1210,7 @@ form.addEventListener('submit', async (e) => {
     form.reset();
     formStatus.textContent = `Added ${name}.`;
     formStatus.classList.remove('error');
-  }catch(err){
+console.error(err);    
     candidates.pop();
     formStatus.textContent = 'Could not save — please try again.';
     formStatus.classList.add('error');
