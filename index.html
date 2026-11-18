@@ -998,9 +998,12 @@ function normalizeUrl(url){
   return url;
 }
 
-async function loadCandidates(){
+async function init(){
   try{
-candidates = await loadCandidates();
+    candidates = await loadCandidates();
+  }catch(e){
+    console.error(e);
+    candidates = [];
   }
 
   const wasEmpty = candidates.length === 0;
@@ -1210,7 +1213,8 @@ form.addEventListener('submit', async (e) => {
     form.reset();
     formStatus.textContent = `Added ${name}.`;
     formStatus.classList.remove('error');
-console.error(err);    
+}catch(err){
+    console.error(err);   
     candidates.pop();
     formStatus.textContent = 'Could not save — please try again.';
     formStatus.classList.add('error');
@@ -1270,7 +1274,7 @@ exportBtn.addEventListener('click', async () => {
   setTimeout(() => { exportBtn.textContent = 'Export CSV'; }, 3500);
 });
 
-loadCandidates();
+init();
 </script>
 
 </body>
